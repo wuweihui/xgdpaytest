@@ -1,0 +1,28 @@
+*** Settings ***
+Resource          TradeResources.txt
+
+Test Setup        connect test server      ${POS SERVER}     ${POS PORT}     ${TRANSITION PROTOCOL}
+Test Teardown     close connection
+
+*** Variables ***
+
+
+
+*** Keywords ***
+
+
+*** Test Cases ***
+valid check in
+      ${Rand ID}=             generate transactionRandId
+      send pos message        ${TEMPLATE_POSCHECKIN_1}    terminalId=${VALID TERMINALID}     merchantId=${VALID MERCHANTID}   transactionRandId=${Rand ID}
+      field should be         terminalId                  ${VALID TERMINALID}
+      field should be         merchantId                  ${VALID MERCHANTID}
+      send pos message        ${TEMPLATE_POSCHECKIN_2}    terminalId=${VALID TERMINALID}     merchantId=${VALID MERCHANTID}   transactionRandId=${Rand ID}
+      field should be         terminalId                  ${VALID TERMINALID}
+      field should be         merchantId                  ${VALID MERCHANTID}
+      response code should be   ${RESPOND SUCCESS}
+
+valid check out
+      check out pos           terminalId=${VALID TERMINALID}     merchantId=${VALID MERCHANTID}
+      field should be         terminalId                  ${VALID TERMINALID}
+      field should be         merchantId                  ${VALID MERCHANTID}

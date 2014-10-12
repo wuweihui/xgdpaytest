@@ -1,0 +1,19 @@
+*** Settings ***
+Resource          TradeResources.txt
+Test Setup        connect and checkin pos
+Test Teardown     disconnect and checkout pos
+
+*** Variables ***
+
+
+
+*** Keywords ***
+
+
+
+*** Test Cases ***
+valid pos inquery
+      send pos message     ${TEMPLATE_POSINQUIRY}    terminalId=${VALID TERMINALID}     merchantId=${VALID MERCHANTID} 
+      field should be      terminalId                  ${VALID TERMINALID}
+      field should be      merchantId                  ${VALID MERCHANTID}
+      response code should be    ${RESPOND SUCCESS}

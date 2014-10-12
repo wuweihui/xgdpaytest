@@ -1,0 +1,18 @@
+*** Settings ***
+Resource          TradeResources.txt
+Test Setup        connect and checkin pos
+Test Teardown     disconnect and checkout pos
+
+*** Variables ***
+
+
+
+*** Keywords ***
+
+
+*** Test Cases ***
+valid pos trade
+      send pos message     ${TEMPLATE_POSTRADE}        terminalId=${VALID TERMINALID}     merchantId=${VALID MERCHANTID}   operationData.tradeAmount=000000003333
+      field should be      terminalId                  ${VALID TERMINALID}
+      field should be      merchantId                  ${VALID MERCHANTID}
+      response code should be    ${RESPOND SUCCESS}
