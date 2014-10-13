@@ -1,0 +1,27 @@
+#=================================
+#       DB INFO
+#=================================
+
+DBTpye			Host:Port			DBName		User		Password
+oracle			172.20.5.67			jydb		trade_mpay	trade123
+mysql			localhost			test		root		111111
+
+#172.172.5.72   3308  root  11111 1  card_branch  t_tr_tradelist
+
+#=================================
+#       DB OPERATION INFO
+#=================================
+
+OpTpye			SQL
+queryorder	select order_id,trade_id from t_trade_order where order_id='1011410103100000095831'
+aqueryorder	select order_id,trade_id from t_trade_order where order_id='1011410103100000095831'
+aqueryorder1	select order_id,trade_id from t_trade_order where order_id like '10114100821000000416%'
+aqueryorder2	select order_id,trade_id from t_trade_order where order_id='1011410103100000095830'
+queryorder1	select * from t_trade_order where order_id='%s' and trade_id='%s'
+queryorder2	select * from t_trade_order where order_id='%s'
+update		update t_trade_order set trade_id='%s' where order_id='1011409161100500'
+querytest	select * from mytable
+insert		insert into mytable values('%d','%s')
+deletetest	delete from mytable where id='%d'
+updatetest	update mytable set name='%s' where id='%d'
+

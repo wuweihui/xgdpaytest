@@ -1,0 +1,21 @@
+*** Settings ***
+| Resource       |  TradeResources.txt
+| Test Setup     |  connect and checkin pos
+| Test Teardown  |  disconnect and checkout pos
+
+*** Variables ***
+
+
+
+*** Keywords ***
+
+
+*** Test Cases ***
+valid settlement
+|  | ${amount}=         | Set Variable    | 000000003333
+|  | pos trade          | ${amount}       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|  | ${tradseq}=        | get field       | tradeSeq
+|  | ${MAC}=            | get field       | MAC
+|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.tradeSeq=${tradseq} | operationData.correctionMsg.tradeMAC=${MAC}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | checkout pos       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}

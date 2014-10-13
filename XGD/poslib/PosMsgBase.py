@@ -4,7 +4,6 @@
 (C) Copyright 2004 wei_cloud@126.com
 
 """
-from test.test_float import toHex
 
 __author__ =  'wei_cloud@126.com'
 __version__=  '1.0'
@@ -907,7 +906,7 @@ class singleSelectOptions(Pos3DirectiveMsg):
 
    def construct_options(self):
       options = self.getField('options')      
-      msg = toHex(len(options)).zfill(2)
+      msg = toHexstr(len(options)).zfill(2)
       for option in options:
          msg += self._construct_option(option)
       
@@ -1169,10 +1168,11 @@ class correctionMsg(Pos3DirectiveMsg):
    3   交易MAC   N8   HEX   
    4   TAG记录内容   VAR      本域采用TLV （tag-length-value ）的表示方式。若为发卡行认证失败的冲正则要上送95和9F10。 若为一般冲正，该域为空。
    """
+   #TODO: TAG is not include in the packet
    id = 15
    fields = fixdict()
    fields[1] = ['1', 'validLegth', 'N', 'HEX', '1']
-   fields[2] = ['2', 'tradeList', 'N', 'BCD', '3']
+   fields[2] = ['2', 'tradeSeq', 'N', 'BCD', '3']
    fields[3] = ['3', 'tradeMAC', 'N', 'HEX', '8']
    
 class terminalAppVersion(Pos3DirectiveMsg):

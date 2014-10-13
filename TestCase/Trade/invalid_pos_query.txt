@@ -1,0 +1,39 @@
+*** Settings ***
+| Resource        | TradeResources.txt
+| Test Setup      | connect and checkin pos
+| Test Teardown   | disconnect and checkout pos
+
+*** Variables ***
+
+
+
+*** Keywords ***
+
+
+
+*** Test Cases ***
+query without check in
+|     | checkout pos   |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}      
+|     | send pos message   | ${TEMPLATE_POSINQUIRY}  | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID} 
+|     | field should be    | terminalId      |  ${VALID TERMINALID}
+|     | field should be    | merchantId      |  ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND NOT CHECKIN}
+      
+query with invalid terminalId
+|     | send pos message   | ${TEMPLATE_POSINQUIRY}  | terminalId=${INVALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|     | field should be    | terminalId       | ${INVALID TERMINALID}
+|     | field should be    | merchantId       | ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND INVALID ID}
+      
+query with invalid merchantId
+|     | send pos message   | ${TEMPLATE_POSINQUIRY}  | terminalId=${VALID TERMINALID}  |  merchantId=${INVALID MERCHANTID}
+|     | field should be    | terminalId       | ${VALID TERMINALID}
+|     | field should be    | merchantId       | ${INVALID MERCHANTID}
+|     | response code should be  | ${RESPOND INVALID ID}
+      
+query on inactive pos
+|     | send pos message   | ${TEMPLATE_POSINQUIRY}  | terminalId=${INACTIVE TERMINALID}   | merchantId=${INVALID MERCHANTID}
+|     | field should be    | terminalId      |  ${INACTIVE TERMINALID}
+|     | field should be    | merchantId      |  ${INVALID MERCHANTID}
+|     | response code should be  | ${RESPOND INVALID ID}
+      

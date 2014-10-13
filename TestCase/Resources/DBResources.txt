@@ -1,0 +1,15 @@
+*** Settings ***
+| Documentation | Keywords for Database
+| Library       |   XGD.dblib.DatabaseLibrary
+
+*** Variables ***
+
+
+
+*** Keywords ***
+Query balance from database
+|     | [return]     |  123456
+      
+      
+get balance from database
+|     | [return]     |  123456

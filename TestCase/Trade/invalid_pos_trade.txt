@@ -1,0 +1,34 @@
+*** Settings ***
+| Resource        | TradeResources.txt
+| Test Setup      | connect and checkin pos
+| Test Teardown   | disconnect and checkout pos
+
+*** Variables ***
+
+
+
+*** Keywords ***
+
+*** Test Cases ***
+trade before check in
+|     | checkout pos       |   terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|     | ${amount}=   | Set Variable   |  000000003333
+|     | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
+|     | field should be    | terminalId                | ${VALID TERMINALID}
+|     | field should be    | merchantId                | ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND NOT CHECKIN}
+
+trade amount larger than maximum amount
+|     | ${amount}=   | Evaluate  | str(int(${TRADE MAXIMUM AMOUNT})+1).zfill(12)
+|     | send pos message   | ${TEMPLATE_POSTRADE}    |   terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
+|     | field should be    | terminalId              |   ${VALID TERMINALID}
+|     | field should be    | merchantId              |   ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND NOT CHECKIN}
+      
+trade amount larger than balance
+|     | ${balance}=  | get balance from database
+|     | ${amount}=   | Evaluate  | str(int(${balance})+1).zfill(12)
+|     | send pos message   | ${TEMPLATE_POSTRADE}     |  terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
+|     | field should be    | terminalId               |  ${VALID TERMINALID}
+|     | field should be    | merchantId               |  ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND NOT CHECKIN}

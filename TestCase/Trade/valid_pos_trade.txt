@@ -1,18 +1,47 @@
 *** Settings ***
-Resource          TradeResources.txt
-Test Setup        connect and checkin pos
-Test Teardown     disconnect and checkout pos
+| Resource        | TradeResources.txt
+| Test Setup      | connect and checkin pos
+| Test Teardown   | disconnect and checkout pos
 
 *** Variables ***
 
 
 
 *** Keywords ***
+trade amount should be
+|     | [Arguments]   |  ${amount}
+|     | ${tradelist}=   | get field    | operationData.ICOnlineDataHandle.recordList
+|     | ${tradedetail}= | Get From List   | ${tradelist}   |  0
+|     | should be equal   |  ${tradedetail}.tradeAmount  | ${amount}
 
 
 *** Test Cases ***
 valid pos trade
-      send pos message     ${TEMPLATE_POSTRADE}        terminalId=${VALID TERMINALID}     merchantId=${VALID MERCHANTID}   operationData.tradeAmount=000000003333
-      field should be      terminalId                  ${VALID TERMINALID}
-      field should be      merchantId                  ${VALID MERCHANTID}
-      response code should be    ${RESPOND SUCCESS}
+|     | ${amount}=   | Set Variable    | 000000003333
+|     | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount}
+|     | field should be    | terminalId                | ${VALID TERMINALID}
+|     | field should be    | merchantId                | ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND SUCCESS}
+
+trade with minimum amount
+|     | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${TRADE MINIMUM AMOUNT}
+|     | field should be    | terminalId                | ${VALID TERMINALID}
+|     | field should be    | merchantId                | ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND SUCCESS}
+      
+trade with maximum amount
+|     | [Documentation]   | TODO: need to udpate balance and check it's large than maximum amount
+|     | send pos message  |  ${TEMPLATE_POSTRADE}     |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${TRADE MAXIMUM AMOUNT}
+|     | field should be   |  terminalId               |  ${VALID TERMINALID}
+|     | field should be   |  merchantId               |  ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND SUCCESS}
+      
+trade with balance
+|     | [Documentation]   | TODO: need to get balance from database
+|     | ${amount}=   | get balance from database
+|     | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
+|     | field should be    | terminalId                | ${VALID TERMINALID}
+|     | field should be    | merchantId                | ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND SUCCESS}
+
+trade wi

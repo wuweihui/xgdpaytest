@@ -1,0 +1,36 @@
+*** Settings ***
+| Resource       |  TradeResources.txt
+| Test Setup     |  connect and checkin pos
+| Test Teardown  |  disconnect and checkout pos
+
+*** Variables ***
+
+
+
+*** Keywords ***
+pos query
+|     | [Arguments]   |   @{paralist}
+|     | send pos message   | ${TEMPLATE_POSINQUIRY}  | @{paralist}
+|     | response code should be  | ${RESPOND SUCCESS}
+
+
+*** Test Cases ***
+valid pos query
+|     | send pos message   | ${TEMPLATE_POSINQUIRY}   | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|     | field should be    | terminalId               |  ${VALID TERMINALID}
+|     | field should be    | merchantId               |  ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND SUCCESS}
+      
+muiltiple query
+|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+      
+query zero balance
+|     | Convert To Hex  | 255
+
+query larg balance
+|     | Convert To Hex  | 255
+

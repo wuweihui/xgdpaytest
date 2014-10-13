@@ -29,6 +29,12 @@ def calcCardNumber(base):
       ret += int(base)
       
    return ret%10 != 0 and 10 - ret%10 or 0
+
+def intToBCD(base):
+   return ''.join(['3'+i for i in str(base).split()])
+
+def BCDToIntstr(base):
+   return base[1::2]
       
 class fixdict(dict):
    """

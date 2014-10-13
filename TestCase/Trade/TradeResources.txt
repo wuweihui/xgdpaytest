@@ -1,47 +1,67 @@
 *** Settings ***
 
 Documentation  Keywords for trade
-Library        XGD.poslib.PosLibrary
-Resource          MessageTemplate.txt
+| Library    |   XGD.poslib.PosLibrary
+| Resource   |   MessageTemplate.txt
+| Resource   |   ../Resources/DBResources.txt
 
 
 *** Variables ***
 
-${POS SERVER}               172.20.5.200
-${POS PORT}                 8569
-${TRANSITION PROTOCOL}      tcp
+| ${POS SERVER}            |  172.20.5.200
+| ${POS PORT}              |  8569
+| ${TRANSITION PROTOCOL}   |  tcp
 
-${VALID TERMINALID}         3830303134303939
-${VALID MERCHANTID}         383439343430333533313136303331
+| ${VALID TERMINALID}      |  3830303134303939
+| ${VALID MERCHANTID}      |  383439343430333533313136303331
+| ${INVALID TERMINALID}    |  3030303030303030
+| ${INVALID MERCHANTID}    |  303030303030303030303030303030
+| ${INACTIVE TERMINALID}   |  3131313132323232
+| ${INACTIVE MERCHANTID}   |  313131313131313132323232323232
 
-${RESPOND SUCCESS}          3030
+| ${VALID CARD TRACK}      |  99f9968e277596166fbe792b281151955484ba0c3b957ab6
+| ${VALID CARD PASSWD}     |  ffffffffffffffff
+
+| ${TRADE MINIMUM AMOUNT}  |  000000000001
+| ${TRADE MAXIMUM AMOUNT}  |  111111111111
+
+| ${RESPOND SUCCESS}       |  3030
+| ${RESPOND INVALID ID}    |  5331
+| ${RESPOND NOT CHECKIN}   |  5333
 
 
 *** Keywords ***
 checkin pos
-      [Arguments]      @{paralist} 
-      ${Rand ID}=             generate transactionRandId
-      send pos message        ${TEMPLATE_POSCHECKIN_1}    @{paralist}    transactionRandId=${Rand ID}
-      send pos message        ${TEMPLATE_POSCHECKIN_2}    @{paralist}    transactionRandId=${Rand ID}
-      check in should success
-      update tradeseq
+|     | [Arguments]   |  @{paralist} 
+|     | ${Rand ID}=          |  generate transactionRandId
+|     | send pos message     |  ${TEMPLATE_POSCHECKIN_1}  | @{paralist}  | transactionRandId=${Rand ID}
+|     | send pos message     |  ${TEMPLATE_POSCHECKIN_2}  | @{paralist}  | transactionRandId=${Rand ID}
+|     | check in should success
+|     | update tradeseq
          
 response code should be 
-      [Arguments]      ${retcode} 
-      field should be         operationData.showReultMsg.responseCode   ${retcode} 
+|     | [Arguments]   |  ${retcode} 
+|     | field should be     |   operationData.showReultMsg.responseCode | ${retcode} 
          
 check in should success
-      response code should be   ${RESPOND SUCCESS}
+|     | response code should be | ${RESPOND SUCCESS}
 
-check out pos
-      [Arguments]      @{paralist} 
-      send pos message        ${TEMPLATE_POSCHECKOUT}     @{paralist} 
+checkout pos
+|     | [Arguments]   |  @{paralist} 
+|     | send pos message     |  ${TEMPLATE_POSCHECKOUT}   | @{paralist} 
+
+pos trade
+|     | [Arguments]   |  ${amount}  | @{paralist} 
+|     | send pos message   | ${TEMPLATE_POSTRADE}      | operationData.tradeAmount=${amount}  | @{paralist} 
+|     | field should be    | terminalId                | ${VALID TERMINALID}
+|     | field should be    | merchantId                | ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND SUCCESS}
 
 connect and checkin pos
-      connect test server      ${POS SERVER}     ${POS PORT}     ${TRANSITION PROTOCOL}
-      checkin pos              terminalId=${VALID TERMINALID}     merchantId=${VALID MERCHANTID}
+|     | connect test server   |  ${POS SERVER}   | ${POS PORT}   | ${TRANSITION PROTOCOL}
+|     | checkin pos           |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
       
 disconnect and checkout pos
-      check out pos     terminalId=${VALID TERMINALID}     merchantId=${VALID MERCHANTID}
-      close connection
+|     | checkout pos   | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|     | close connection
       

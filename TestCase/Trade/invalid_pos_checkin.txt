@@ -1,0 +1,65 @@
+*** Settings ***
+| Documentation  |  this case will not check the right hand checkin and checkout status.
+  
+| Resource       |  TradeResources.txt
+
+| Test Setup     |  connect test server   |  ${POS SERVER}  |  ${POS PORT}   | ${TRANSITION PROTOCOL}
+| Test Teardown  |  close connection
+
+*** Variables ***
+
+
+
+*** Keywords ***
+
+
+*** Test Cases ***
+check in with invalid terminalId
+|     | ${Rand ID}=          |  generate transactionRandId
+|     | send pos message     |  ${TEMPLATE_POSCHECKIN_1}  | terminalId=${INVALID TERMINALID}   | merchantId=${VALID MERCHANTID} | transactionRandId=${Rand ID}
+|     | field should be      |  terminalId                | ${INVALID TERMINALID}
+|     | field should be      |  merchantId                | ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND INVALID ID}
+
+check in with invalid merchantId
+|     | ${Rand ID}=          |  generate transactionRandId
+|     | send pos message     |  ${TEMPLATE_POSCHECKIN_1}  | terminalId=${VALID TERMINALID}   | merchantId=${INVALID MERCHANTID} | transactionRandId=${Rand ID}
+|     | field should be      |  terminalId                | ${VALID TERMINALID}
+|     | field should be      |  merchantId                | ${INVALID MERCHANTID}
+|     | response code should be  | ${RESPOND INVALID ID}
+      
+check out with invalid terminalId
+|     | send pos message      | ${TEMPLATE_POSCHECKOUT}   | terminalId=${INVALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|     | field should be       | terminalId                | ${INVALID TERMINALID}
+|     | field should be       | merchantId                | ${VALID MERCHANTID}
+|     | response code should be  | ${RESPOND INVALID ID}
+      
+check out with invalid merchantId
+|     | send pos message      | ${TEMPLATE_POSCHECKOUT}   | terminalId=${VALID TERMINALID}   | merchantId=${INVALID MERCHANTID} 
+|     | field should be       | terminalId                | ${VALID TERMINALID}
+|     | field should be       | merchantId                | ${INVALID MERCHANTID} 
+|     | response code should be  | ${RESPOND INVALID ID}
+      
+check in with inactive pos
+|     | send pos message     |  ${TEMPLATE_POSCHECKIN_1}  | terminalId=${INACTIVE TERMINALID}  |  merchantId=${INACTIVE MERCHANTID}
+|     | field should be      |  terminalId                | ${INACTIVE TERMINALID}
+|     | field should be      |  merchantId                | ${INACTIVE MERCHANTID}
+|     | response code should be  | ${RESPOND INVALID ID}
+
+check out before settlement
+|     | ${amount}=           | Set Variable               | 000000003333
+|     | pos trade            | ${amount}                  | terminalId=${VALID TERMINALID}     | merchantId=${VALID MERCHANTID}
+|     | send pos message     |  ${TEMPLATE_POSCHECKIN_1}  | terminalId=${INACTIVE TERMINALID}  |  merchantId=${INACTIVE MERCHANTID}
+|     | field should be      |  terminalId                | ${INACTIVE TERMINALID}
+|     | field should be      |  merchantId                | ${INACTIVE MERCHANTID}
+|     | response code should be  | ${RESPOND INVALID ID}  | #TODO: verify the response code
+      
+check in with different transactionrandid
+|     | [Documentation]   | This case expect a timeout, it will take 20s.    TODO: check if work as design
+|     | send pos message      | ${TEMPLATE_POSCHECKIN_1}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|     | field should be       | terminalId                | ${VALID TERMINALID}
+|     | field should be       | merchantId                | ${VALID MERCHANTID}
+|     | ${msg}= | Run Keyword And Expect Error | * | send pos message | ${TEMPLATE_POSCHECKIN_2} | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID}
+|     | Should Start With  | ${msg}    | timeout
+      
+      
