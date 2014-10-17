@@ -1,34 +1,77 @@
 *** Settings ***
 | Resource        | TradeResources.txt
+| Suite Setup     |  connect to database | ${TRAD DB TYPE} | ${TRAD DB Name} | ${TRAD DB USER} | ${TRAD DB PASS} | ${TRAD DB SERVERIP} | ${TRAD DB SERVERPORT}
+| Suite Teardown  |  disconnect from database
 | Test Setup      | connect and checkin pos
 | Test Teardown   | disconnect and checkout pos
 
 *** Variables ***
-
-
+| ${Terminal Rigth Status Busy}         | B
+| ${Terminal Rigth Status Settle}       | F
+| ${Terminal Rigth Status Not Checkin}  | S
 
 *** Keywords ***
 
 *** Test Cases ***
 trade before check in
-|     | checkout pos       |   terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|     | ${amount}=   | Set Variable   |  000000003333
-|     | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
-|     | field should be    | terminalId                | ${VALID TERMINALID}
-|     | field should be    | merchantId                | ${VALID MERCHANTID}
-|     | response code should be  | ${RESPOND NOT CHECKIN}
+|  | checkout pos       |   terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | ${amount}=   | Set Variable   |  000000003333
+|  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND NOT CHECKIN}
+|  | pos trade should fail
 
 trade amount larger than maximum amount
-|     | ${amount}=   | Evaluate  | str(int(${TRADE MAXIMUM AMOUNT})+1).zfill(12)
-|     | send pos message   | ${TEMPLATE_POSTRADE}    |   terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
-|     | field should be    | terminalId              |   ${VALID TERMINALID}
-|     | field should be    | merchantId              |   ${VALID MERCHANTID}
-|     | response code should be  | ${RESPOND NOT CHECKIN}
+|  | ${amount}=   | Evaluate  | str(int(${TRADE MAXIMUM AMOUNT})+1).zfill(12)
+|  | send pos message   | ${TEMPLATE_POSTRADE}    |   terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
+|  | field should be    | terminalId              |   ${VALID TERMINALID}
+|  | field should be    | merchantId              |   ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND NOT CHECKIN}
+|  | pos trade should fail
       
 trade amount larger than balance
-|     | ${balance}=  | get balance from database
-|     | ${amount}=   | Evaluate  | str(int(${balance})+1).zfill(12)
-|     | send pos message   | ${TEMPLATE_POSTRADE}     |  terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
-|     | field should be    | terminalId               |  ${VALID TERMINALID}
-|     | field should be    | merchantId               |  ${VALID MERCHANTID}
-|     | response code should be  | ${RESPOND NOT CHECKIN}
+|  | ${balance}=  | get balance from database
+|  | ${amount}=   | Evaluate  | str(int(${balance})+1).zfill(12)
+|  | send pos message   | ${TEMPLATE_POSTRADE}     |  terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
+|  | field should be    | terminalId               |  ${VALID TERMINALID}
+|  | field should be    | merchantId               |  ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND NOT CHECKIN}
+|  | pos trade should fail
+
+terminal right status is busy
+|  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Busy}
+|  | ${amount}=   | Set Variable    | 000000003333
+|  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}  | #TODO: fix response code
+|  | pos trade should fail
+|  | [Teardown]         | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Not Checkin}
+
+terminal right status is under settle
+|  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Settle}
+|  | ${amount}=   | Set Variable    | 000000003333
+|  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}  | #TODO: fix response code
+|  | pos trade should fail
+|  | [Teardown]         | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Not Checkin}
+
+cancel with nonexist voucherno
+|  | ${vouchno}        | Set Variable   | 303030303030
+|  | send pos message  | ${TEMPLATE_POSTRADECANCEL}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${vouchno}
+|  | response code should be  | ${RESPOND NO TRADE RECORD}   | #TODO: fix response code
+|  | pos trade should fail
+
+cancel with invalid card
+|  | ${amount}=   | Set Variable    | 000000003333
+|  | pos trade    | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${amount}
+|  | ${vouchno}=  | get field     | voucherNo
+|  | ${invalidcard}=  | 111111111111111111111fffffffffffffffffffffffffff
+|  | send pos message  | ${TEMPLATE_POSTRADECANCEL}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${vouchno} | operationData.cardReadOrderResult.validData=${invalidcard}
+|  | response code should be  | ${RESPOND SUCCESS}   | #TODO: fix response code
+|  | pos trade should fail
+
+

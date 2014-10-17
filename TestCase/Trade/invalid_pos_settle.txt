@@ -1,0 +1,17 @@
+*** Settings ***
+| Resource       |  TradeResources.txt
+| Test Setup     |  connect and checkin pos
+| Test Teardown  |  disconnect and checkout pos
+
+*** Variables ***
+
+
+
+*** Keywords ***
+
+
+*** Test Cases ***
+settle after check out
+|  | checkout pos       |   terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|  | response code should be  | ${RESPOND NOT CHECKIN}

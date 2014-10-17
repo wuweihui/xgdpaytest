@@ -10,6 +10,79 @@
 Query balance from database
 |     | [return]     |  123456
       
-      
 get balance from database
-|     | [return]     |  123456
+|     | [return]     |  23456
+
+get right terminal and merchant
+|  | [Arguments]     |  ${lt_termno}      | ${lt_merchno}
+|  | ${lt_termno}=   | convert bcd to int | ${lt_termno}
+|  | ${lt_merchno}=  | convert bcd to int | ${lt_merchno}
+|  | @{rows}=        | query | select rt_termno, rt_merchno from T_POS_DYNAMIC_MAP where lt_termno = '${lt_termno}' and lt_merchno = '${lt_merchno}'
+|  | [return]        | @{rows}[0]
+
+get terminal right check in status
+|  | [Arguments]     | ${lt_termno}      | ${lt_merchno}
+|  | ${rt_termno}    | ${rt_merchno}=    | get right terminal and merchant  | ${lt_termno}  | ${lt_merchno}
+|  | @{rows}=        | query | select status from t_r_trm_useinfo where lt_termno = '${lt_termno}' and lt_merchno = '${lt_merchno}'
+|  | ${rt_stauts}=   | Evaluate | @{rows}[0][0]
+|  | [return]        | ${rt_stauts}
+
+set terminal right check in status
+|  | [Arguments]     | ${lt_termno}      | ${lt_merchno} | ${status}
+|  | ${rt_termno}    | ${rt_merchno}=    | get right terminal and merchant  | ${lt_termno}  | ${lt_merchno}
+|  | execute sql string  | update t_r_trm_useinfo set status='${status}' where rtermno='${rt_termno}' and rmerchno='${rt_merchno}'
+
+set terminal left status
+|  | [Arguments]     | ${lt_termno}      | ${lt_merchno} | ${status}
+|  | ${lt_termno}=   | convert bcd to int | ${lt_termno}
+|  | ${lt_merchno}=  | convert bcd to int | ${lt_merchno}
+|  | execute sql string  | update t_l_terminal set lt_stauts='${status}' where lt_termno='${lt_termno}' and lt_merchno='${lt_merchno}'
+
+get left tradelist info
+|  | [Arguments]   |  ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | ${rt_termno}    | ${rt_merchno}=    | get right terminal and merchant  | ${lt_termno}  | ${lt_merchno}
+|  | @{rows}=        | query | select ltl_autoid,ltl_type,ltl_status,ltl_demo,ltl_amount from t_l_tradelist where lt_termno = '${lt_termno}' and lt_merchno = '${lt_merchno}' and ltl_vouchno = '${vouchno}' and ltl_batchno = '${batchno}'
+|  | [return]        | @{rows}[-1]
+
+get right tradelist info
+|  | [Arguments]   |  ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | @{rawdata}=   | get left tradelist info | ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | ${ltl_autoid} | Get From List | @{rawdata} | 0
+|  | @{rows}=      | query | select rtl_autoid,rtl_type,rtl_status,rtl_demo,rtl_amount from t_r_tradelist where ltl_tlautoid = '${ltl_autoid}'
+|  | [return]      | @{rows}[-1]
+
+check no tradelist
+|  | [Arguments]   |  ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | ${rt_termno}    | ${rt_merchno}=    | get right terminal and merchant  | ${lt_termno}  | ${lt_merchno}
+|  | row count is 0  | query | select * from t_l_tradelist where lt_termno = '${lt_termno}' and lt_merchno = '${lt_merchno}' and ltl_vouchno = '${vouchno}' and ltl_batchno = '${batchno}'
+
+check if resetlist exists
+|  | [Arguments]   |  ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | @{rawdata}=   | get left tradelist info | ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | ${ltl_autoid} | Get From List | @{rawdata} | 0
+|  | row_count_is_equal_to_x | select * from t_r_resetlist where ltl_tlautoid = '${ltl_autoid}' | 1
+
+check if settdata exists
+|  | [Arguments]   |  ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | @{rawdata}=   | get right tradelist info | ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | ${rtl_autoid} | Get From List | @{rawdata} | 0
+|  | row_count_is_equal_to_x  | select * from t_r_settdata where rtl_tlautoid = '${rtl_autoid}' | 1
+
+check query updated in db
+|  | [Arguments]      |  ${lt_termno}   | ${lt_merchno} | ${vouchno} | ${batchno} | ${ltl_type}=${EMPTY} | ${ltl_status}=${EMPTY} | ${ltl_demo}=${EMPTY} | ${rtl_type}=${EMPTY} | ${rtl_status}=${EMPTY} | ${rtl_demo}=${EMPTY} | ${amount}=${EMPTY}
+|  | @{ltrawdata}=    | get left tradelist info | ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | Run Keyword If   | '${ltl_type}'!='${EMPTY}'   | sholud be equal  | @{ltrawdata}[1] | ${ltl_type}
+|  | Run Keyword If   | '${ltl_status}'!='${EMPTY}' | sholud be equal  | @{ltrawdata}[2] | ${ltl_status}
+|  | Run Keyword If   | '${ltl_demo}'!='${EMPTY}'   | sholud be equal  | @{ltrawdata}[3] | ${ltl_demo}
+|  | Run Keyword If   | '${amount}'!='${EMPTY}'     | sholud be equal  | @{ltrawdata}[4] | ${amount}
+|  | @{rtrawdata}=    | get right tradelist info | ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | Run Keyword If   | '${rtl_type}'!='${EMPTY}'   | sholud be equal  | @{rtrawdata}[1] | ${rtl_type}
+|  | Run Keyword If   | '${rtl_status}'!='${EMPTY}' | sholud be equal  | @{rtrawdata}[2] | ${rtl_status}
+|  | Run Keyword If   | '${rtl_demo}'!='${EMPTY}'   | sholud be equal  | @{rtrawdata}[3] | ${rtl_demo}
+|  | Run Keyword If   | '${amount}'!='${EMPTY}'     | sholud be equal  | @{rtrawdata}[4] | ${amount}
+
+check trade updated in db
+|  | [Arguments]      |  ${lt_termno}   | ${lt_merchno} | ${vouchno} | ${batchno} | ${ltl_type}=${EMPTY} | ${ltl_status}=${EMPTY} | ${ltl_demo}=${EMPTY} | ${rtl_type}=${EMPTY} | ${rtl_status}=${EMPTY} | ${rtl_demo}=${EMPTY} | ${amount}=${EMPTY}
+|  | check query updated in db  | ${lt_termno}   | ${lt_merchno} | ${vouchno} | ${batchno} | ${ltl_type} | ${ltl_status} | ${ltl_demo} | ${rtl_type} | ${rtl_status} | ${rtl_demo}
+|  | check if resetlist exists  | ${lt_termno}   | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | check if settdata exists   | ${lt_termno}   | ${lt_merchno} | ${vouchno} | ${batchno}

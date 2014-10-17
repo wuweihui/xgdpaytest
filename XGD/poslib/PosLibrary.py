@@ -4,6 +4,8 @@ from PosMsg import *
 from pos3client import *
 import random
 from robot.api import logger
+import re
+import codeop
 
 
 class PosLibrary():
@@ -11,7 +13,8 @@ class PosLibrary():
    def __init__(self):
       self.client = Pos3Client()
       self.currentmsg = ''
-      self.tradeseq = ''      
+      self.voucherNo = ''
+      self.batchNo = ''
       self.protocol = None
       
    def connect_test_server(self, host, port, protocol=TCP_PROTOCOL):
@@ -30,11 +33,17 @@ class PosLibrary():
       for k, v in kws.items():
             msg.setField(k, v)
             
-      if not kws or 'tradeSeq' not in kws.keys():
-         msg.setField('tradeSeq', self._get_next_tradeseq())
+      if not kws or 'voucherNo' not in kws.keys():
+         msg.setField('voucherNo', self._get_next_voucherNo())
+      
+      if self.batchNo and (not kws or 'batchNo' not in kws.keys()):
+         msg.setField('batchNo', self.batchNo)
       
       if not kws or 'transactionRandId' not in kws.keys():
          msg.setField('transactionRandId', self.generate_transactionRandId())
+         
+      #Bypass mac
+      msg.setField('MAC', 'ffffffffffffffff')
          
       packet = msg.constructMsg()
       ret = self._send_receive_msg(packet)
@@ -74,7 +83,7 @@ class PosLibrary():
    def field_should_like(self, fieldname, expectexp):
       if type(expectexp) == str:
          expectexp = re.compile(expectexp)      
-      msg = Pos3Msg(self.currentmsg)
+      msg = self._get_Pos3Msg()
       ret = expectexp.search(msg.getField(fieldname))
       if not ret:
          raise AssertionError("Field value not equal! %s:%s expected:%s" %(fieldname, msg.getField(fieldname), expectstr))
@@ -84,6 +93,34 @@ class PosLibrary():
       if expectstr not in msg.getField(fieldname):
          raise AssertionError("Field value not equal! %s:%s expected:%s" %(fieldname, msg.getField(fieldname), expectstr))
 
+   def field_should_not_be(self, fieldname, expectstr):
+      msg = self._get_Pos3Msg()
+      if msg.getField(fieldname) == expectstr:
+         raise AssertionError("Field value not equal! %s:%s expected:%s" %(fieldname, msg.getField(fieldname), expectstr))
+   
+   def field_should_not_like(self, fieldname, expectexp):
+      if type(expectexp) == str:
+         expectexp = re.compile(expectexp)      
+      msg = self._get_Pos3Msg()
+      ret = expectexp.search(msg.getField(fieldname))
+      if ret:
+         raise AssertionError("Field value not equal! %s:%s expected:%s" %(fieldname, msg.getField(fieldname), expectstr))
+   
+   def field_should_not_contain(self, fieldname, expectstr):
+      msg = self._get_Pos3Msg()
+      if expectstr in msg.getField(fieldname):
+         raise AssertionError("Field value not equal! %s:%s expected:%s" %(fieldname, msg.getField(fieldname), expectstr))
+
+   def operation_codes_should_be(self, codelist):
+      msg = self._get_Pos3Msg()
+      opcodes = msg.getField('operationCode').opcodes
+      if len(codelist) != len(opcodes):
+         raise AssertionError("Operation codes not equal! %s expected:%s" %(str([i.codenumber for i in opcodes]), str(codelist)))
+      
+      for i in range(len(codelist)):
+         if int(codelist[i]) != opcodes[i].codenumber:
+            raise AssertionError("Operation codes not equal! %s expected:%s" %(str([i.codenumber for i in opcodes]), str(codelist)))
+   
    def _send_receive_msg(self, msg):
       self.client.connect_to_server(self.host, self.port, self.protocol)
       self.currentmsg = self.client.send_receive(msg)
@@ -92,18 +129,19 @@ class PosLibrary():
    def close_connection(self):
       self.client.close_connection()
       
-   def _get_next_tradeseq(self):
-      if self.tradeseq.lower() == 'ffffff':
-         self.tradeseq = '1'
-      elif not self.tradeseq:
-         self.tradeseq = 'ffffff'
+   def _get_next_voucherNo(self):
+      if self.voucherNo.lower() == 'ffffff':
+         self.voucherNo = '1'
+      elif not self.voucherNo:
+         self.voucherNo = '1'
       else:
-         self.tradeseq = toHexstr(int(self.tradeseq, 16)+1)
-      return self.tradeseq
+         self.voucherNo = toHexstr(int(self.voucherNo, 16)+1)
+      return self.voucherNo
    
-   def update_tradeseq(self):
+   def update_voucher_number(self):
       if self.currentmsg:
-         self.tradeseq = self._get_Pos3Msg().getField('tradeSeq')
+         self.voucherNo = self._get_Pos3Msg().getField('voucherNo')
+         self.batchNo = self._get_Pos3Msg().getField('batchNo')
       else:
          pass
    
@@ -111,3 +149,17 @@ class PosLibrary():
       if self.currentmsg and isinstance(self.currentmsg, basestring):
          self.currentmsg = Pos3Msg(self.currentmsg)
       return self.currentmsg
+   
+   def convert_int_to_bcd(self, base):
+      re_bcd = re.compile('(3\d)+$')
+      if re_bcd.match(str(base)):
+         return str(base)
+      else:
+         return ''.join(['3'+i for i in list(str(base))])
+
+   def convert_bcd_to_int(self, base):
+      re_bcd = re.compile('(3\d)+$')
+      if re_bcd.match(str(base)):
+         return base[1::2]
+      else:
+         return str(base)

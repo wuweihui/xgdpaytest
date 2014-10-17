@@ -12,6 +12,13 @@ Documentation  Keywords for trade
 | ${POS PORT}              |  8569
 | ${TRANSITION PROTOCOL}   |  tcp
 
+| ${TRAD DB TYPE}          |  cx_Oracle
+| ${TRAD DB Name}          |  mpay
+| ${TRAD DB USER}          |  nac_user
+| ${TRAD DB PASS}          |  dqa_testic
+| ${TRAD DB SERVERIP}      |  172.20.5.165
+| ${TRAD DB SERVERPORT}    |  1521
+
 | ${VALID TERMINALID}      |  3830303134303939
 | ${VALID MERCHANTID}      |  383439343430333533313136303331
 | ${INVALID TERMINALID}    |  3030303030303030
@@ -25,43 +32,89 @@ Documentation  Keywords for trade
 | ${TRADE MINIMUM AMOUNT}  |  000000000001
 | ${TRADE MAXIMUM AMOUNT}  |  111111111111
 
-| ${RESPOND SUCCESS}       |  3030
-| ${RESPOND INVALID ID}    |  5331
-| ${RESPOND NOT CHECKIN}   |  5333
+| ${RESPOND SUCCESS}           |  3030
+| ${RESPOND INVALID ID}        |  5331
+| ${RESPOND NOT CHECKIN}       |  5333
+| ${RESPOND NO TRADE RECORD}   |  4d35
+| ${RESPOND NOT SETTLE}        |  5335
+
+| ${INVALID VOUCHER NUMBER}    |  999999
+| ${INVALID TRADE MAC}         |  EEEEEEEEFFFFFFFF
 
 
 *** Keywords ***
 checkin pos
-|     | [Arguments]   |  @{paralist} 
-|     | ${Rand ID}=          |  generate transactionRandId
-|     | send pos message     |  ${TEMPLATE_POSCHECKIN_1}  | @{paralist}  | transactionRandId=${Rand ID}
-|     | send pos message     |  ${TEMPLATE_POSCHECKIN_2}  | @{paralist}  | transactionRandId=${Rand ID}
-|     | check in should success
-|     | update tradeseq
-         
+|  | [Arguments]  | ${terminalId} | ${merchantId} | @{paralist} 
+|  | ${Rand ID}=          |  generate transactionRandId
+|  | send pos message     |  ${TEMPLATE_POSCHECKIN_1}  | @{paralist} | terminalId=${terminalId} | merchantId=${merchantId}  | transactionRandId=${Rand ID}
+|  | update voucher number
+|  | ${voucherno}=        | get field  | voucherNo
+|  | send pos message     |  ${TEMPLATE_POSCHECKIN_2}  | @{paralist} | terminalId=${terminalId} | merchantId=${merchantId}  | transactionRandId=${Rand ID}
+|  | ${nextvoucherno}=    | get field  | voucherNo
+|  | should be true       | int('${nextvoucherno}',16) == int('${voucherno}',16)+1
+|  | check in should success
+
 response code should be 
-|     | [Arguments]   |  ${retcode} 
-|     | field should be     |   operationData.showReultMsg.responseCode | ${retcode} 
+|  | [Arguments]   |  ${retcode} 
+|  | field should be     |   operationData.showReultMsg.responseCode | ${retcode} 
+
+response code should not be 
+|  | [Arguments]   |  ${retcode} 
+|  | field should not be     |   operationData.showReultMsg.responseCode | ${retcode} 
          
 check in should success
-|     | response code should be | ${RESPOND SUCCESS}
+|  | response code should be | ${RESPOND SUCCESS}
 
 checkout pos
-|     | [Arguments]   |  @{paralist} 
-|     | send pos message     |  ${TEMPLATE_POSCHECKOUT}   | @{paralist} 
+|  | [Arguments]  | ${terminalId} | ${merchantId} | @{paralist}
+|  | send pos message   |  ${TEMPLATE_POSCHECKOUT} | @{paralist} | terminalId=${terminalId} | merchantId=${merchantId}
+
+pos query
+|  | [Arguments]  | ${terminalId} | ${merchantId} | @{paralist}
+|  | send pos message   | ${TEMPLATE_POSINQUIRY}   | @{paralist}   | terminalId=${terminalId}   | merchantId=${merchantId} 
+|  | field should be    | terminalId               |  ${VALID TERMINALID}
+|  | field should be    | merchantId               |  ${VALID MERCHANTID}
+|  | pos query should success
+
+pos query should success
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check query updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
 
 pos trade
-|     | [Arguments]   |  ${amount}  | @{paralist} 
-|     | send pos message   | ${TEMPLATE_POSTRADE}      | operationData.tradeAmount=${amount}  | @{paralist} 
-|     | field should be    | terminalId                | ${VALID TERMINALID}
-|     | field should be    | merchantId                | ${VALID MERCHANTID}
-|     | response code should be  | ${RESPOND SUCCESS}
+|  | [Arguments]  | ${terminalId} | ${merchantId} | ${amount}  | @{paralist} 
+|  | send pos message   | ${TEMPLATE_POSTRADE}      | @{paralist}   | terminalId=${terminalId} | merchantId=${merchantId} | operationData.tradeAmount=${amount}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | pos trade should succes  | ${amount}
+
+trade amount should be
+|  | [Arguments]   |  ${amount}
+|  | ${tradelist}=   | get field    | operationData.ICOnlineDataHandle.recordList
+|  | ${tradeamout}=  | Evaluate     | ${tradelist}[0].tradeAmount
+|  | should be equal   |  ${tradeamout}    | ${amount}
+
+pos trade should success
+|  | [Arguments]   |  ${amount}=${EMPTY}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | Run Keyword If   | '${amount}'!='${EMPTY}'  | trade amount should be   | ${amount}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check trade updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
+
+pos trade should fail
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check no tradelist  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
 
 connect and checkin pos
-|     | connect test server   |  ${POS SERVER}   | ${POS PORT}   | ${TRANSITION PROTOCOL}
-|     | checkin pos           |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | connect test server   |  ${POS SERVER}   | ${POS PORT}   | ${TRANSITION PROTOCOL}
+|  | checkin pos           |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
       
 disconnect and checkout pos
-|     | checkout pos   | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|     | close connection
+|  | send pos message  | ${TEMPLATE_POSFAKESETTLE} | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | checkout pos   | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | close connection
       

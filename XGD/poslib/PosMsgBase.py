@@ -262,6 +262,23 @@ class TLVField(Pos3DirectiveMsg):
    
    fields[1] = ['1', 'tag', 'N', 'ASC', '2']
    fields[2] = ['2', 'value', 'NVAR', 'HEX', '1']
+   
+   #This filed is not implemented as standard, tag should left fill zero if it's a single byte tag, but it doesn't
+   #Also in the document it says length field is 3 bytes long, but actually 1 byte
+   #TODO: This implementation is only for bypassing this issue, should be remove after bug fixed.
+   def read_tag(self, strcontent):
+      offset = 0
+      firstbyte = strcontent[offset:offset+2]
+      offset += 2
+      secondbyte = ''
+      if int(firstbyte, 16) & 0b1111 == 0b1111:
+         secondbyte = strcontent[offset:offset+2]
+         offset += 2
+      self.setField('tag', firstbyte+secondbyte)
+      return offset
+   
+   def construct_tag(self):
+      return self.getField('tag')
 
 class _terminalPara(Pos3DirectiveMsg):
    id = 00
@@ -521,7 +538,7 @@ class readSpecialICTradeResult(Pos3DirectiveMsg):
    fields[1] = ['1', 'validLength', 'N', 'HEX', '2']
    fields[2] = ['2', 'tradeType', 'N', 'HEX', '1']
    fields[3] = ['3', 'cardType', 'N', 'HEX', '1']
-   fields[4] = ['4', 'tradeSeq', 'N', 'BCD', '3']   
+   fields[4] = ['4', 'voucherNo', 'N', 'BCD', '3']   
    fields[5] = ['5', 'tradeCode', 'N', 'HEX', '3']
    fields[6] = ['6', 'tradeInfo', 'NVAR', 'HEX', '2']
    
@@ -550,7 +567,7 @@ class readICTradeResult(Pos3DirectiveMsg):
    fields = fixdict()
    
    fields[1] = ['1', 'validLength', 'N', 'HEX', '2']
-   fields[2] = ['2', 'tradeSeq', 'AN', 'BCD', '3']
+   fields[2] = ['2', 'voucherNo', 'AN', 'BCD', '3']
    fields[3] = ['3', 'tradeMAC', 'AN', 'BCD', '8']
    fields[4] = ['4', 'tradeInfo', 'NVAR', 'HEX', '2']
    
@@ -1172,7 +1189,7 @@ class correctionMsg(Pos3DirectiveMsg):
    id = 15
    fields = fixdict()
    fields[1] = ['1', 'validLegth', 'N', 'HEX', '1']
-   fields[2] = ['2', 'tradeSeq', 'N', 'BCD', '3']
+   fields[2] = ['2', 'voucherNo', 'N', 'BCD', '3']
    fields[3] = ['3', 'tradeMAC', 'N', 'HEX', '8']
    
 class terminalAppVersion(Pos3DirectiveMsg):
@@ -1493,4 +1510,7 @@ class checkIdentifyingCode(Pos3DirectiveMsg):
 
 if __name__ == '__main__':
    data = '009200000001010100000c0f5204d6d0b9fa0f510f3834393434303335333131363033310f530838303031343039390f600230311f2108c5a9d2b5d2f8d0d09f010830313033303030301f120b3242454243304531422f530f150530392f33301f1304cffbb7d11f170c3132333435363738393031321f1513323031342f31302f31312031353a30303a30301f180535352e353500113002303009bdbbd2d7b3c9b9a620000000000c030100000c00000d00020101f9eca75906294c1005'
+   ret = printSalesslipTemplate(data)
+   
+   data = '00b500000002010100000f0f5204d6d0b9fa0f510f3834393434303335333131363033310f530838303031343039390f600230311f2108c5a9d2b5d2f8d0d09f010830313033303030301f1212363232363136303630303030353030302f530f150531362f30321f1306d4a4cadac8a80f55063030303031390f540633313631393289063235383733301f170c3137333131333230383532341f1513323031342f31302f31312031353a30303a30301f180535352e3535'
    ret = printSalesslipTemplate(data)

@@ -13,36 +13,41 @@
 
 *** Test Cases ***
 valid check in
-|    | ${Rand ID}=         |   generate transactionRandId
-|    | send pos message    |   ${TEMPLATE_POSCHECKIN_1}  | terminalId=${VALID TERMINALID}  | merchantId=${VALID MERCHANTID} | transactionRandId=${Rand ID}
-|    | field should be     |   terminalId                | ${VALID TERMINALID}
-|    | field should be     |   merchantId                | ${VALID MERCHANTID}
-|    | send pos message    |   ${TEMPLATE_POSCHECKIN_2}  | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID} | transactionRandId=${Rand ID}
-|    | field should be     |   terminalId                | ${VALID TERMINALID}
-|    | field should be     |   merchantId                | ${VALID MERCHANTID}
-|    | check in should success
+|  | # No database related change right now
+|  | ${Rand ID}=         |   generate transactionRandId
+|  | send pos message    |   ${TEMPLATE_POSCHECKIN_1}  | terminalId=${VALID TERMINALID}  | merchantId=${VALID MERCHANTID} | transactionRandId=${Rand ID}
+|  | field should be     |   terminalId                | ${VALID TERMINALID}
+|  | field should be     |   merchantId                | ${VALID MERCHANTID}
+|  | update voucher number
+|  | ${voucherno}=        | get field  | voucherNo
+|  | send pos message    |   ${TEMPLATE_POSCHECKIN_2}  | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID} | transactionRandId=${Rand ID}
+|  | field should be     |   terminalId                | ${VALID TERMINALID}
+|  | field should be     |   merchantId                | ${VALID MERCHANTID}
+|  | check in should success
+|  | ${nextvoucherno}=    | get field  | voucherNo
+|  | should be true       | int('${nextvoucherno}',16) == int('${voucherno}',16)+1
 
 valid check out
-|    | checkout pos        |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | field should be     |  terminalId           |      ${VALID TERMINALID}
-|    | field should be     |  merchantId           |      ${VALID MERCHANTID}
+|  | checkout pos        |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | field should be     |  terminalId           |      ${VALID TERMINALID}
+|  | field should be     |  merchantId           |      ${VALID MERCHANTID}
       
 double checkin
-|    | checkin pos         |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkin pos         |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkin pos         |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkin pos         |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
       
 double checkout
-|    | checkout pos        | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
-|    | checkout pos        | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|  | checkout pos        | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|  | checkout pos        | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
       
 multiple checkin and checkout
-|    | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkout pos        | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkout pos        | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkout pos        | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkout pos        | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|    | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkout pos        | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkout pos        | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkout pos        | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkout pos        | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | checkin pos         | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
 

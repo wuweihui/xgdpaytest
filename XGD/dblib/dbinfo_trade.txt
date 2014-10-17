@@ -1,0 +1,14 @@
+#=================================
+#       DB INFO
+#=================================
+
+DBTpye         Host:Port         DBName      User     Password
+cx_Oracle      172.20.5.165      mpay       nac_user     dqa_testic
+
+
+#=================================
+#       DB OPERATION INFO
+#=================================
+
+OpTpye         SQL
+queryrtterno  select * from nac_user.T_POS_DYNAMIC_MAP  where lt_termno = '%s'

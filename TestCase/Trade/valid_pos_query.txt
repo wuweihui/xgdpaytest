@@ -1,7 +1,9 @@
 *** Settings ***
-| Resource       |  TradeResources.txt
-| Test Setup     |  connect and checkin pos
-| Test Teardown  |  disconnect and checkout pos
+| Resource             |  TradeResources.txt
+| Suite Setup     |  connect to database | ${TRAD DB TYPE} | ${TRAD DB Name} | ${TRAD DB USER} | ${TRAD DB PASS} | ${TRAD DB SERVERIP} | ${TRAD DB SERVERPORT}
+| Suite Teardown  |  disconnect from database
+| Test Setup           |  connect and checkin pos
+| Test Teardown        |  disconnect and checkout pos
 
 *** Variables ***
 
@@ -9,28 +11,31 @@
 
 *** Keywords ***
 pos query
-|     | [Arguments]   |   @{paralist}
-|     | send pos message   | ${TEMPLATE_POSINQUIRY}  | @{paralist}
-|     | response code should be  | ${RESPOND SUCCESS}
+|  | [Arguments]   |   @{paralist}
+|  | send pos message   | ${TEMPLATE_POSINQUIRY}  | @{paralist}
+|  | response code should be  | ${RESPOND SUCCESS}
 
 
 *** Test Cases ***
 valid pos query
-|     | send pos message   | ${TEMPLATE_POSINQUIRY}   | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
-|     | field should be    | terminalId               |  ${VALID TERMINALID}
-|     | field should be    | merchantId               |  ${VALID MERCHANTID}
-|     | response code should be  | ${RESPOND SUCCESS}
+|  | send pos message   | ${TEMPLATE_POSINQUIRY}   | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|  | field should be    | terminalId               |  ${VALID TERMINALID}
+|  | field should be    | merchantId               |  ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check query updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
       
 muiltiple query
-|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
-|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
-|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
-|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
-|     | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|  | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|  | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|  | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|  | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|  | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
       
 query zero balance
-|     | Convert To Hex  | 255
+|  | Convert To Hex  | 255
 
 query larg balance
-|     | Convert To Hex  | 255
+|  | Convert To Hex  | 255
 

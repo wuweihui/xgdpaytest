@@ -1,0 +1,33 @@
+*** Settings ***
+| Resource       |  ../Trade/TradeResources.txt
+| Library        | Collections
+| Test Setup     | connect to database | cx_Oracle | mpay | nac_user | dqa_testic | 172.20.5.165 | 1521
+| Test Teardown  | disconnect from database
+
+*** Variables ***
+| @{testlist}  | 1 | 2 | 3
+| ${test}      | ${EMPTY}
+
+*** Keywords ***
+get terminal right check in status
+|  | [Arguments]   |  ${lt_termno}=80014099
+|  | @{rows}= | query one | select rt_termno, rt_merchno from nac_user.T_POS_DYNAMIC_MAP where lt_termno = '${lt_termno}'
+|  | [return] | @{rows}
+
+
+*** Test Cases ***
+some test
+|  | @{rid}= | get terminal right check in status
+|  | ${id}=  | Get From List | ${rid} | 0
+|  | should be equal    | ${id}   | 47231369
+|  | ${id}=  | Run Keyword If  | len('${id}') < 10  | convert int to bcd | ${id}
+|  | ...     | ELSE            | Set Variable       | ${id}
+|  | should be equal    | ${id}   | 3437323331333639
+|  | Run Keyword If | '${test}' | Fail | equal
+
+query test
+|  | connect test server   |  ${POS SERVER}   | ${POS PORT}   | ${TRANSITION PROTOCOL}
+|  | send pos message   | ${TEMPLATE_POSINQUIRY}   | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | voucherNo=000011 | batchNo=000001
+|  | field should be    | terminalId               |  ${VALID TERMINALID}
+|  | field should be    | merchantId               |  ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}

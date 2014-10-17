@@ -58,6 +58,19 @@ class Query(object):
         finally :
             if cur :
                 self._dbconnection.rollback() 
+    
+    def query_one(self, selectStatement):
+        """
+        """
+        cur = None
+        try:
+            cur = self._dbconnection.cursor()
+            self.__execute_sql(cur, selectStatement)
+            row = cur.fetchone()
+            return row
+        finally :
+            if cur :
+                self._dbconnection.rollback() 
 
     def row_count(self, selectStatement):
         """

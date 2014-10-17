@@ -14,8 +14,8 @@
 valid settlement
 |  | ${amount}=         | Set Variable    | 000000003333
 |  | pos trade          | ${amount}       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
-|  | ${tradseq}=        | get field       | tradeSeq
+|  | ${voucherno}=      | get field       | voucherNo
 |  | ${MAC}=            | get field       | MAC
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.tradeSeq=${tradseq} | operationData.correctionMsg.tradeMAC=${MAC}
+|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherno} | operationData.correctionMsg.tradeMAC=${MAC}
 |  | response code should be  | ${RESPOND SUCCESS}
 |  | checkout pos       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}

@@ -82,6 +82,7 @@ class ConnectionManager(object):
             logger.debug ('Connecting using : %s.connect(DRIVER={SQL Server};SERVER=%s,%s;DATABASE=%s;UID=%s;PWD=%s)' % (dbapiModuleName,dbHost,dbPort,dbName,dbUsername, dbPassword))
             self._dbconnection = db_api_2.connect('DRIVER={SQL Server};SERVER=%s,%s;DATABASE=%s;UID=%s;PWD=%s'%(dbHost,dbPort,dbName,dbUsername,dbPassword))
         elif dbapiModuleName in ['cx_Oracle']:
+            dbPort = dbPort or 1521
             logger.debug ('Connecting using : %s.connect(DRIVER={Oracle Server};SERVER=%s,%s;DATABASE=%s;UID=%s;PWD=%s)' % (dbapiModuleName,dbHost,dbPort,dbName,dbUsername, dbPassword))
             self._dbconnection = db_api_2.connect (dbUsername, dbPassword, dbHost+':'+str(dbPort)+'/'+dbName)
         else:
