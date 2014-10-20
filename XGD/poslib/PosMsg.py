@@ -115,7 +115,7 @@ class PosTradeMSG(Pos3MsgBase):
       return len(codemsg)
       
    def construct_operationCode(self):
-      if type(self.operationCode) == str:
+      if isinstance(self.operationCode, basestring):
          return self.operationCode
       else:
          return self.operationCode.construct_operation_msg()
@@ -127,7 +127,7 @@ class PosTradeMSG(Pos3MsgBase):
       return len(data)
    
    def construct_operationData(self):
-      if type(self.operationData) == str:
+      if isinstance(self.operationData, basestring):
          return self.operationData
       else:
          return self.operationData.constructMsg()
@@ -148,7 +148,7 @@ class PosTradeMSG(Pos3MsgBase):
    def setField(self, fieldId, value):
       try:
          Pos3MsgBase.setField(self, fieldId, value)
-         if fieldId in ['operationData', 12] and type(value) == str:
+         if fieldId in ['operationData', 12] and isinstance(value, basestring):
             self.read_operationCode(value)
       except FieldNonExistError:
          if fieldId.count('.') > 0:

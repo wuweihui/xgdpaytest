@@ -75,6 +75,9 @@ pos query
 |  | field should be    | terminalId               |  ${VALID TERMINALID}
 |  | field should be    | merchantId               |  ${VALID MERCHANTID}
 |  | pos query should success
+|  | ${balance}=        | get field                | operationData.showReultMsg.PINPADShowMsg
+|  | ${balance}=        | convert bcd to int       | ${balance}
+|  | [return]           | ${balance}
 
 pos query should success
 |  | response code should be  | ${RESPOND SUCCESS}

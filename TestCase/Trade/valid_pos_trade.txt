@@ -48,8 +48,7 @@ trade with maximum amount
 |  | pos trade should succes  | ${amount}
       
 trade with balance
-|  | [Documentation]   | TODO: need to get balance from database
-|  | ${amount}=   | get balance from database
+|  | ${amount}=         | pos query                 | ${VALID TERMINALID}              | ${VALID MERCHANTID}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}

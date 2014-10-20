@@ -23,7 +23,7 @@ trade before check in
 |  | pos trade should fail
 
 trade amount larger than maximum amount
-|  | ${amount}=   | Evaluate  | str(int(${TRADE MAXIMUM AMOUNT})+1).zfill(12)
+|  | ${amount}=   | Evaluate  | str(int(${TRADE MAXIMUM AMOUNT})+1)
 |  | send pos message   | ${TEMPLATE_POSTRADE}    |   terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId              |   ${VALID TERMINALID}
 |  | field should be    | merchantId              |   ${VALID MERCHANTID}
@@ -31,8 +31,8 @@ trade amount larger than maximum amount
 |  | pos trade should fail
       
 trade amount larger than balance
-|  | ${balance}=  | get balance from database
-|  | ${amount}=   | Evaluate  | str(int(${balance})+1).zfill(12)
+|  | ${balance}=  | pos query | ${VALID TERMINALID} | ${VALID MERCHANTID}
+|  | ${amount}=   | Evaluate  | str(int(${balance})+1)
 |  | send pos message   | ${TEMPLATE_POSTRADE}     |  terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId               |  ${VALID TERMINALID}
 |  | field should be    | merchantId               |  ${VALID MERCHANTID}
