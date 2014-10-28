@@ -1,0 +1,81 @@
+*** Settings ***
+| Resource        | TradeResources.txt
+| Suite Setup     |  connect to database | ${TRAD DB TYPE} | ${TRAD DB Name} | ${TRAD DB USER} | ${TRAD DB PASS} | ${TRAD DB SERVERIP} | ${TRAD DB SERVERPORT}
+| Suite Teardown  |  disconnect from database
+| Test Setup      | connect and checkin pos
+| Test Teardown   | disconnect and checkout pos
+
+*** Variables ***
+| ${Terminal Rigth Status Not Checkin}  | S
+
+
+*** Keywords ***
+kw pos preauth
+|  | ${amount}=   | Set Variable    | 000000003333
+|  | set field          | cardno    | ${VALID CARD NO}
+|  | send pos message   | ${TEMPLATE_PREAUTH}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | trade amount should be   | ${amount}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check trade status from db | ltl_status=1 | rtl_status=2
+
+*** Test Cases ***
+valid pos preauth
+|  | kw pos preauth
+
+preauth before right checkin
+|  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Not Checkin}
+|  | kw pos preauth
+
+valid pos preauth cancel
+|  | ${amount}=   | Set Variable    | 000000003333
+|  | kw pos preauth
+|  | set field          | cardno       | ${VALID CARD NO}
+|  | ${reclist}=        | get field    | operationData.saveTradeList.recordList
+|  | ${authnumber}=     | Set Variable | ${reclist[0].authNumber}
+|  | ${readdate}=       | Set Variable | ${reclist[0].tradeTime[:8]} 
+|  | send pos message   | ${TEMPLATE_PREAUTHCANCEL} | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount} | operationData.searchOriginalTradeResult.searchResult=${authnumber} | readDate=${readdate}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check trade status from db | ltl_status=1 | rtl_status=2
+
+valid pos preauth complete
+|  | ${amount}=   | Set Variable    | 000000003333
+|  | kw pos preauth
+|  | set field          | cardno       | ${VALID CARD NO}
+|  | ${reclist}=        | get field    | operationData.saveTradeList.recordList
+|  | ${authnumber}=     | Set Variable | ${reclist[0].authNumber}
+|  | send pos message   | ${TEMPLATE_PREAUTHCOMPLETE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount} | operationData.searchOriginalTradeResult.searchResult=${authnumber}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check trade status from db | ltl_status=1 | rtl_status=2
+
+valid pos preauth complete cancel
+|  | ${amount}=   | Set Variable    | 000000003333
+|  | kw pos preauth
+|  | set field          | cardno       | ${VALID CARD NO}
+|  | ${reclist}=        | get field    | operationData.saveTradeList.recordList
+|  | ${authnumber}=     | Set Variable | ${reclist[0].authNumber}
+|  | send pos message   | ${TEMPLATE_PREAUTHCOMPLETE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount} | operationData.searchOriginalTradeResult.searchResult=${authnumber}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check trade status from db | ltl_status=1 | rtl_status=2
+|  | set field          | cardno       | ${VALID CARD NO}
+|  | ${origvouchno}=  | convert int to bcd  | ${vouchno}
+|  | send pos message  | ${TEMPLATE_PREAUTHCANCELCOMPLETE}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${origvouchno}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check trade updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}

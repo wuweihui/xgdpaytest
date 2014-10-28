@@ -13,5 +13,7 @@
 *** Test Cases ***
 settle after check out
 |  | checkout pos       |   terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | set field          | voucherNo | 000001
+|  | set field          | batchNo   | 000001  
 |  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
 |  | response code should be  | ${RESPOND NOT CHECKIN}

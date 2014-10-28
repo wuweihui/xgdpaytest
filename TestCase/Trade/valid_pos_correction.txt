@@ -1,5 +1,7 @@
 *** Settings ***
 | Resource        | TradeResources.txt
+| Suite Setup     |  connect to database | ${TRAD DB TYPE} | ${TRAD DB Name} | ${TRAD DB USER} | ${TRAD DB PASS} | ${TRAD DB SERVERIP} | ${TRAD DB SERVERPORT}
+| Suite Teardown  |  disconnect from database
 | Test Setup      | connect and checkin pos
 | Test Teardown   | disconnect and checkout pos
 
@@ -13,25 +15,41 @@
 *** Test Cases ***
 valid pos correction
 |  | ${amount}=         | Set Variable    | 000000003333
-|  | pos trade          | ${amount}       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|  | ${mac}=            | Set Variable    | 969b9a4a20f19a63
+|  | pos trade          | ${VALID TERMINALID}   | ${VALID MERCHANTID} | ${VALID CARD NO} | ${amount} | MAC=${mac}
 |  | ${voucherNo}=      | get field       | voucherNo
-|  | ${MAC}=            | get field       | MAC
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${MAC}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${mac} | MAC=${mac}
 |  | response code should be  | ${RESPOND SUCCESS}
 
 
 multiple pos correction
 |  | ${amount}=         | Set Variable    | 000000003333
-|  | pos trade          | ${amount}       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|  | set field         | cardno    | ${VALID CARD NO}
+|  | ${mac}=            | Set Variable    | 969b9a4a20f19a63
+|  | pos trade          | ${VALID TERMINALID}   | ${VALID MERCHANTID} | ${VALID CARD NO} | ${amount} | MAC=${mac}
 |  | ${voucherNo}=      | get field       | voucherNo
-|  | ${MAC}=            | get field       | MAC
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${MAC}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${mac}
 |  | response code should be  | ${RESPOND SUCCESS}
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${MAC}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${mac}
 |  | response code should be  | ${RESPOND SUCCESS}
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${MAC}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${mac}
 |  | response code should be  | ${RESPOND SUCCESS}
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${MAC}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${mac}
 |  | response code should be  | ${RESPOND SUCCESS}
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${MAC}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherNo} | operationData.correctionMsg.tradeMAC=${MAC}
 |  | response code should be  | ${RESPOND SUCCESS}
+
+valid trade cancel correction
+|  | ${amount}=   | Set Variable    | 000000003333
+|  | pos trade    | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${VALID CARD NO} | ${amount}
+|  | ${vouchno}=  | get field           | voucherNo
+|  | ${vouchno}=  | convert int to bcd  | ${vouchno}
+|  | set field         | cardno    | ${VALID CARD NO}
+|  | ${mac}=           | Set Variable    | 969b9a4a20f19a63
+|  | send pos message  | ${TEMPLATE_POSTRADECANCEL}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${vouchno} | MAC=${mac}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check trade updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${vouchno} | operationData.correctionMsg.tradeMAC=${mac} | MAC=${mac}
+|  | response code should be  | ${TRADE NOT EXIST}

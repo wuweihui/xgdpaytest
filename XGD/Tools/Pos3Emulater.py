@@ -19,6 +19,7 @@ class MessageBuilder(wx.Panel):
       wx.Panel.__init__(self, parent, id, style=wx.TAB_TRAVERSAL|wx.CLIP_CHILDREN)
       self.SetFont(Courier_New())
       self.frame = frame
+      self.autoid = True
             
       self.fieldpanel = scrolled.ScrolledPanel(self, -1, style=wx.TAB_TRAVERSAL|wx.SUNKEN_BORDER)
       self.vsizer = wx.BoxSizer(wx.VERTICAL)
@@ -152,7 +153,11 @@ class MessageBuilder(wx.Panel):
             self.messagetc.SetEvtHandlerEnabled(True)
       
    def OnSendMessage(self, evt):
-      msg = self.messagetc.GetValue().strip()
+      if self.autoid:
+         #TODO: Update Id by sending check in message
+         msg = self.messagetc.GetValue().strip()
+      else:
+         msg = self.messagetc.GetValue().strip()      
       if not msg:
          return
       self.frame.start_logging()
@@ -166,6 +171,12 @@ class MessageBuilder(wx.Panel):
       finally:
          self.sendbtn.Enable(True)
          self.frame.stop_logging()
+      
+   def _update_voucherNumber(self):
+      #TODO: implement this
+      checkmsg = self.frame.templatepanel.templatemap['TEMPLATE_POSCHECKIN_1']
+      
+      pass
       
    def Clear(self):
       self.messagetc.SetValue('')
@@ -209,6 +220,73 @@ class SSHTc(wx.TextCtrl):
       
    def clear_log(self):
       self.SetValue('')
+      
+class TemplatePanel(wx.Panel):
+   def __init__(self, parent, id=-1, frame=None):
+      wx.Panel.__init__(self, parent, id)
+      self.frame = frame
+      
+      self.searchctrl = wx.SearchCtrl(self, size=(200,-1), style=wx.TE_PROCESS_ENTER)
+      self.searchctrl.ShowSearchButton(True)
+      self.searchctrl.ShowCancelButton(True)
+      
+      self.read_templates()
+      self.indexlb = wx.ListBox(self, -1, style=wx.LB_SINGLE)
+      self.indexlb.SetItems([' '+item for item in self.templatemap.keys()])
+      self.indexlb.GetStringSelection = lambda:wx.ListBox.GetStringSelection(self.indexlb).strip()
+      self.indexlb.SetFont(Courier_New())
+      
+      space = 5
+      vsizer = wx.BoxSizer(wx.VERTICAL)
+      vsizer.Add(self.searchctrl, 0, wx.EXPAND|wx.ALL, space)
+      vsizer.Add(self.indexlb, 1, wx.EXPAND|wx.ALL, space)
+      
+      self.SetSizer(vsizer)
+      
+      self.indexlb.Bind(wx.EVT_LISTBOX_DCLICK, self.OnFunctionDClick)
+      self.searchctrl.Bind(wx.EVT_TEXT, self.OnSearch)
+      self.searchctrl.Bind(wx.EVT_SEARCHCTRL_CANCEL_BTN, self.OnSearchCancelBtn)
+   
+   def read_templates(self):
+      path = '../../TestCase/Trade/MessageTemplate.txt'
+      values = fixdict()
+      with open(path, 'rb') as fp:
+         lines = fp.readlines()
+      for line in lines:
+         if line.startswith('|'):
+            _, k, v = line.split('|')
+            k = k.strip()[2:-1]
+            values[k] = v.strip()
+      self.templatemap = values
+            
+   def OnFunctionDClick(self, evt):
+      if isinstance(evt, basestring):
+         cn = evt
+      else:
+         cn = self.indexlb.GetStringSelection()
+      
+      msgbuilder = self.frame.builder
+      msgbuilder.messagetc.SetValue(self.templatemap[cn])
+      
+   def OnSearch(self, evt):
+      sk = self.searchctrl.GetValue().strip()
+      if sk:
+         matchlist = []
+         if sk.count('*') == 0:
+            for c in self.templatemap.keys():
+               if sk in c:
+                  matchlist.append(c)
+         else:
+            sk = sk.replace('*', '.*')
+            for c in self.templatemap.keys():
+               if re.match(sk, c):
+                  matchlist.append(c)
+         self.indexlb.SetItems(matchlist)
+      else:
+         self.indexlb.SetItems([' '+item for item in self.templatemap.keys()])
+         
+   def OnSearchCancelBtn(self, evt):
+      self.searchctrl.SetValue('')
       
 Devil = PyEmbeddedImage(
    "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAABrpJ"
@@ -263,10 +341,11 @@ class TestToolFrame(wx.Frame):
 
       self.builder = MessageBuilder(self.panel, frame=self)
       self.reader = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE|wx.TE_READONLY)
+      self.templatepanel = TemplatePanel(self.panel, frame=self)
       
       self.operationnb = wx.aui.AuiNotebook(self.panel, style=wx.aui.AUI_NB_BOTTOM | wx.aui.AUI_NB_TAB_SPLIT \
                                             | wx.aui.AUI_NB_TAB_MOVE | wx.aui.AUI_NB_SCROLL_BUTTONS)
-      
+      self.operationnb.AddPage(self.templatepanel, 'Template')
       
       self.operationnb.Bind(wx.aui.EVT_AUINOTEBOOK_PAGE_CHANGED, self.OnOperationChange)
       

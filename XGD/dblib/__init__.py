@@ -20,30 +20,30 @@ from opquery import OPQuery
 __version__ = '0.6'
 
 class DatabaseLibrary(ConnectionManager, Query, Assertion, OPQuery):
-    """
+   """
     Database Library contains utilities meant for Robot Framework's usage.
-    
+   
     This can allow you to query your database after an action has been made to verify the results.
-    
+   
     This is `compatible*` with any Database API Specification 2.0 module.
-    
-    
-    
+   
+   
+   
     References:
-    
+   
      + Database API Specification 2.0 - http://www.python.org/dev/peps/pep-0249/
-     
+   
      + Lists of DB API 2.0 - http://wiki.python.org/moin/DatabaseInterfaces
-     
+   
      + Python Database Programming - http://wiki.python.org/moin/DatabaseProgramming/
-    
+   
     Notes:
-    
-    
-    
+   
+   
+   
     `compatible* - or at least theoretically it should be compatible. Currently tested only with postgresql
     (using psycopg2).`
-    
+   
     Example Usage:
     | # Setup |
     | Connect to Database |
@@ -62,6 +62,6 @@ class DatabaseLibrary(ConnectionManager, Query, Assertion, OPQuery):
     | # Teardown |
     | Disconnect from Database | 
     """
-    
-    ROBOT_LIBRARY_SCOPE = 'GLOBAL'
-
+   
+   ROBOT_LIBRARY_SCOPE = 'GLOBAL'
+   

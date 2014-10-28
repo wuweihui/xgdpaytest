@@ -6,72 +6,89 @@
 | Test Teardown   | disconnect and checkout pos
 
 *** Variables ***
-| ${Terminal Rigth Status Busy}         | B
-| ${Terminal Rigth Status Settle}       | F
-| ${Terminal Rigth Status Not Checkin}  | S
+| ${Terminal Right Status Busy}         | B
+| ${Terminal Right Status Settle}       | F
+| ${Terminal Right Status Not Checkin}  | S
 
 *** Keywords ***
 
 *** Test Cases ***
 trade before check in
 |  | checkout pos       |   terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | set field          | voucherNo | 000001
+|  | set field          | batchNo   | 000001  
 |  | ${amount}=   | Set Variable   |  000000003333
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}
 |  | response code should be  | ${RESPOND NOT CHECKIN}
-|  | pos trade should fail
+|  | pos trade should fail with no record
 
 trade amount larger than maximum amount
+|  | Pass Execution  | butterfly not support this case
 |  | ${amount}=   | Evaluate  | str(int(${TRADE MAXIMUM AMOUNT})+1)
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}    |   terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId              |   ${VALID TERMINALID}
 |  | field should be    | merchantId              |   ${VALID MERCHANTID}
-|  | response code should be  | ${RESPOND NOT CHECKIN}
-|  | pos trade should fail
+|  | response code should be  | ${NOT ENOUGH MONEY}
+|  | check trade status from db | ltl_status=2 | rtl_status=3  | #TODO: butterfly not support this case
       
 trade amount larger than balance
+|  | Pass Execution  | butterfly not support this case
 |  | ${balance}=  | pos query | ${VALID TERMINALID} | ${VALID MERCHANTID}
 |  | ${amount}=   | Evaluate  | str(int(${balance})+1)
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}     |  terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId               |  ${VALID TERMINALID}
 |  | field should be    | merchantId               |  ${VALID MERCHANTID}
-|  | response code should be  | ${RESPOND NOT CHECKIN}
-|  | pos trade should fail
+|  | response code should be  | ${NOT ENOUGH MONEY}
+|  | check trade status from db | ltl_status=2 | rtl_status=3  | #TODO: butterfly not support this case
 
 terminal right status is busy
-|  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Busy}
+|  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Right Status Busy}
 |  | ${amount}=   | Set Variable    | 000000003333
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}
-|  | response code should be  | ${RESPOND SUCCESS}  | #TODO: fix response code
-|  | pos trade should fail
-|  | [Teardown]         | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Not Checkin}
+|  | response code should be  | ${RIGHT STATUS BUSY}
+|  | check trade status from db | ltl_status=2
+|  | [Teardown]         | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Right Status Not Checkin}
 
 terminal right status is under settle
-|  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Settle}
+|  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Right Status Settle}
 |  | ${amount}=   | Set Variable    | 000000003333
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}
-|  | response code should be  | ${RESPOND SUCCESS}  | #TODO: fix response code
-|  | pos trade should fail
-|  | [Teardown]         | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Not Checkin}
+|  | response code should be  | ${RIGHT STATUS UNDER SETTLE}
+|  | check trade status from db | ltl_status=2
+|  | [Teardown]         | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Right Status Not Checkin}
 
 cancel with nonexist voucherno
-|  | ${vouchno}        | Set Variable   | 303030303030
+|  | ${vouchno}        | Set Variable   | 393939393939
+|  | set field         | cardno    | ${VALID CARD NO}
 |  | send pos message  | ${TEMPLATE_POSTRADECANCEL}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${vouchno}
-|  | response code should be  | ${RESPOND NO TRADE RECORD}   | #TODO: fix response code
-|  | pos trade should fail
+|  | response code should be  | ${RESPOND NO TRADE RECORD} 
+|  | pos trade should fail with no record
 
-cancel with invalid card
+double cancel trade
 |  | ${amount}=   | Set Variable    | 000000003333
-|  | pos trade    | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${amount}
-|  | ${vouchno}=  | get field     | voucherNo
-|  | ${invalidcard}=  | 111111111111111111111fffffffffffffffffffffffffff
-|  | send pos message  | ${TEMPLATE_POSTRADECANCEL}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${vouchno} | operationData.cardReadOrderResult.validData=${invalidcard}
-|  | response code should be  | ${RESPOND SUCCESS}   | #TODO: fix response code
-|  | pos trade should fail
-
+|  | pos trade    | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${VALID CARD NO} | ${amount}
+|  | ${vouchno}=  | get field           | voucherNo
+|  | ${origvouchno}=  | convert int to bcd  | ${vouchno}
+|  | set field         | cardno    | ${VALID CARD NO}
+|  | send pos message  | ${TEMPLATE_POSTRADECANCEL}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${origvouchno}
+|  | response code should be  | ${RESPOND SUCCESS}
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | check trade updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
+|  | send pos message  | ${TEMPLATE_POSTRADECANCEL}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${origvouchno}
+|  | response code should be  | ${RESPOND NO TRADE RECORD} 
+|  | ${vouchno}=      | get field       | voucherNo
+|  | ${batchno}=      | get field       | batchNo
+|  | pos trade should fail with no record
 

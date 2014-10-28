@@ -1,0 +1,814 @@
+[10/22 08:13:26.021][transponder][SYS][21968][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 4
+[10/22 08:13:26.021][transponder][DBG][21968][    0] 00 00 00 00
+[10/22 08:13:26.021][transponder][DBG][21968][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:29.548][nac_zx_sz][ERR][22163][transthread.cpp:CUPTranThread:131] TradeThread[22163] connect to[172.20.5.200:9005]failure, try later...
+[10/22 08:13:29.550][nac_abc_sz][ERR][22159][transthread.cpp:CUPTranThread:133] nac_abc_sz TradeThread[22159] connect to[172.20.5.200:3004]failure, try later...
+[10/22 08:13:30.003][transponder][DBG][21969][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbfb2b600
+[10/22 08:13:30.003][transponder][SYS][21969][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 4
+[10/22 08:13:30.004][transponder][DBG][21969][    0] 00 00 00 00
+[10/22 08:13:30.004][transponder][DBG][21969][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:30.754][nac_cup_sz][DBG][22156][myprotocol.cpp:ManageThread:916] ### TradePool check...UnsettledPack=0, ActiveThds=4 ###
+[10/22 08:13:31.884][nac_monitor][DBG][22211][mydatahandle.cpp:CallFunCheck:81] bigin to selfcheck...
+[10/22 08:13:31.884][nac_monitor][DBG][2489][mydatahandle.cpp:CallAnalyseData:121] test channel is unblocked...
+[10/22 08:13:31.884][nac_monitor][DBG][22213][mydatahandle.cpp:CallAnalyseData:121] test channel is unblocked...
+[10/22 08:13:31.884][nac_monitor][DBG][22212][myprotocol.cpp:OnAnalyseData:226] tradelist channel is unblocked...
+[10/22 08:13:32.284][nac_monitor][DBG][22211][mydatahandle.cpp:CallFunCheck:96] the CheckResult is [1]
+[10/22 08:13:32.284][nac_monitor][DBG][22211][mydatahandle.cpp:CallFunCheck:101] the check data [48]
+[10/22 08:13:32.284][nac_monitor][DBG][22211][    0] 00 2E 09 0C 31 37 32 2E 32 30 2E 35 2E 32 30 30 0B 4E 41 43
+[10/22 08:13:32.284][nac_monitor][DBG][22211][   20] 5F 4D 4F 4E 49 54 4F 52 0B 6E 61 63 5F 6D 6F 6E 69 74 6F 72
+[10/22 08:13:32.284][nac_monitor][DBG][22211][   40] 06 30 30 31 37 3A 31 11
+[10/22 08:13:32.285][nac_monitor][DBG][22211][mydatahandle.cpp:CallFunCheck:104] end to selfcheck...
+[10/22 08:13:33.599][nac_zx_sz][ERR][22163][transthread.cpp:CUPTranThread:131] TradeThread[22163] connect to[172.20.5.200:9005]failure, try later...
+[10/22 08:13:33.601][nac_abc_sz][ERR][22159][transthread.cpp:CUPTranThread:133] nac_abc_sz TradeThread[22159] connect to[172.20.5.200:3004]failure, try later...
+[10/22 08:13:35.012][transponder][DBG][21970][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbfbf7af0
+[10/22 08:13:35.012][transponder][SYS][21970][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 4
+[10/22 08:13:35.012][transponder][DBG][21970][    0] 00 00 00 00
+[10/22 08:13:35.012][transponder][DBG][21970][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:37.650][nac_zx_sz][ERR][22163][transthread.cpp:CUPTranThread:131] TradeThread[22163] connect to[172.20.5.200:9005]failure, try later...
+[10/22 08:13:37.652][nac_abc_sz][ERR][22159][transthread.cpp:CUPTranThread:133] nac_abc_sz TradeThread[22159] connect to[172.20.5.200:3004]failure, try later...
+[10/22 08:13:39.017][transponder][DBG][21968][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbf8d75d0
+[10/22 08:13:39.017][transponder][SYS][21968][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 4
+[10/22 08:13:39.017][transponder][DBG][21968][    0] 00 00 00 00
+[10/22 08:13:39.017][transponder][DBG][21968][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:40.062][transponder][DBG][21969][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbfb2b600
+[10/22 08:13:40.062][transponder][SYS][21969][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 4
+[10/22 08:13:40.062][transponder][DBG][21969][    0] 00 00 00 00
+[10/22 08:13:40.062][transponder][DBG][21969][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:40.343][transponder][DBG][21970][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbfbf7af0
+[10/22 08:13:40.343][transponder][SYS][21970][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 183
+[10/22 08:13:40.343][transponder][DBG][21970][    0] B7 00 F1 00 00 00 00 AE 60 00 03 00 00 20 20 20 20 20 20 20
+[10/22 08:13:40.343][transponder][DBG][21970][   20] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+[10/22 08:13:40.343][transponder][DBG][21970][   40] 20 20 20 20 20 20 31 37 32 2E 32 30 2E 30 2E 31 33 36 1F 20
+[10/22 08:13:40.343][transponder][DBG][21970][   60] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 87 FA EF
+[10/22 08:13:40.343][transponder][DBG][21970][   80] 4C 86 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 38 30
+[10/22 08:13:40.343][transponder][DBG][21970][  100] 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 41 02 00 31 04
+[10/22 08:13:40.343][transponder][DBG][21970][  120] 00 05 00 62 FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.343][transponder][DBG][21970][  140] 00 00 00 00 00 00 00 00 00 01 30 35 31 01 82 00 10 00 00 00
+[10/22 08:13:40.343][transponder][DBG][21970][  160] 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF FF FF FF FF FF
+[10/22 08:13:40.343][transponder][DBG][21970][  180] FF 34 32
+[10/22 08:13:40.343][transponder][DBG][21970][myservices.cpp:TRANSPONDER:121] Term Version:'3104', srvr:'AS_SPOS_V3'
+[10/22 08:13:40.343][transponder][DBG][21970][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][mpaymacro.h:svrCharge:24] Services[AS_SPOS_V3] Invoke BEGIN...0xbf96b5c0
+[10/22 08:13:40.344][as_spos_v3][SYS][28280][myservices.cpp:AS_SPOS_V3:128] CLI[54407194]:AS_SPOS_V3 ---RECV--, LEN = 183
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][    0] B7 00 F1 00 00 00 00 AE 60 00 03 00 00 20 20 20 20 20 20 20
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][   20] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][   40] 20 20 20 20 20 20 31 37 32 2E 32 30 2E 30 2E 31 33 36 1F 20
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][   60] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 87 FA EF
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][   80] 4C 86 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 38 30
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][  100] 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 41 02 00 31 04
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][  120] 00 05 00 62 FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][  140] 00 00 00 00 00 00 00 00 00 01 30 35 31 01 82 00 10 00 00 00
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][  160] 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF FF FF FF FF FF
+[10/22 08:13:40.344][as_spos_v3][DBG][28280][  180] FF 34 32
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][protocol.cpp:OnSPOS:216] Peer[1413509524]: Trace In OnSPos!
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:294] TermSockAddr:[172.20.0.136]
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:300] Buf:
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][    0] 87 FA EF 4C 86 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][   20] 31 38 30 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 41 02
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][   40] 00 31 04 00 05 00 62 FF FF FF 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][   60] 00 00 00 00 00 00 00 00 00 00 00 00 01 30 35 31 01 82 00 10
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][   80] 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF FF FF
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][  100] FF FF FF FF 34
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:327] MerNo[849440353116031] TermNo[80014099] TermVer[3104] RandomNo:
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][    0] FA EF 4C 86
+[10/22 08:13:40.345][as_spos_v3][DBG][28280][climodel.cpp:redisCliConnect:86] ping redis suc....[172.20.5.200] [6379]
+[10/22 08:13:40.346][as_spos_v3][DBG][28280][climodel.cpp:redisCliConnect:107] redis suc....
+[10/22 08:13:40.346][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:344] redis connect suc......
+[10/22 08:13:40.346][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:464] Peer[1413509524] Merchant[849440353116031] Terminal[80014099]: New Node Add 1!
+[10/22 08:13:40.346][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:472] The First packets. HGET STR:MPAY:AS:84944035311603180014099FAEF4C86spos_base spos_base_data
+[10/22 08:13:40.346][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:489] reply->type:[4] reply->integer[0] reply->len[0]
+[10/22 08:13:40.348][as_spos_v3][DBG][28280][protocol.cpp:GetModelId:2683] TmsParam:'0'
+[10/22 08:13:40.348][as_spos_v3][DBG][28280][protocol.cpp:GetModelId:2694] ISICCMENU:[1]
+[10/22 08:13:40.348][as_spos_v3][DBG][28280][protocol.cpp:GetModelId:2704] menuModel:'00050062'
+[10/22 08:13:40.348][as_spos_v3][DBG][28280][mpaymacro.h:svrCharge:24] Services[TF>>CheckTerm>>] Invoke BEGIN...0xbf967ae8
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][mpaymacro.h:tickTime:35] Services[TF>>CheckTerm>>] Invoke END...Charge: 5(ms)
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][    0] 20 13 01 84
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:641] termVer:[3104] PosBatchno:[FFFFFF]
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][mpaymacro.h:svrCharge:24] Services[TF>>CheckPosseq>>] Invoke BEGIN...0xbf967ae8
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:151] =====DataCheck====
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:158] inLMchNo = 849440353116031
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:159] inLTrmNo = 80014099
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:160] inLVouchNo = 000001
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:161] inLBatchNo = FFFFFF
+[10/22 08:13:40.354][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:162] inUptBatVouch = true
+[10/22 08:13:40.361][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:183] lRet:[3], TradeNo:[051]
+[10/22 08:13:40.361][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:192] Sign In, Got posSeq:316296
+[10/22 08:13:40.361][as_spos_v3][DBG][28280][extern.cpp:Ext_CheckPosseq_Term:220] DATACHECK END.[1]
+[10/22 08:13:40.361][as_spos_v3][DBG][28280][mpaymacro.h:tickTime:35] Services[TF>>CheckPosseq>>] Invoke END...Charge: 7(ms)
+[10/22 08:13:40.361][as_spos_v3][DBG][28280][protocol.cpp:GetIccVer:2717] Peer[1413509524]: Trace In GetModelId!
+[10/22 08:13:40.362][as_spos_v3][DBG][28280][protocol.cpp:GetIccVer:2728] Sql: SELECT  paramvalue  from spos_user1.t_dictinfo where paramtype='103' and paramid='0'
+[10/22 08:13:40.362][as_spos_v3][DBG][28280][protocol.cpp:GetIccVer:2742] iccver:20130184
+[10/22 08:13:40.362][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:993] Approaching execute 87 code [2H]...
+[10/22 08:13:40.362][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:1116] szFlowNo:051; Buf 01
+[10/22 08:13:40.362][as_spos_v3][DBG][28280][protocol.cpp:SetNextPack:1356] Trace In SetNextPack...
+[10/22 08:13:40.363][as_spos_v3][DBG][28280][protocol.cpp:GetMaxCommandNum:2148] Step in GetMaxCommandNum CommandNum[1]
+[10/22 08:13:40.365][as_spos_v3][DBG][28280][protocol.cpp:SetNextPack:1363] CommMax=3
+[10/22 08:13:40.365][as_spos_v3][DBG][28280][protocol.cpp:GetNextCommandNum:2072] pDataNode->pItem->CommandNum = 1
+[10/22 08:13:40.367][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:1892] The Last Package! CommandNum = 2
+[10/22 08:13:40.367][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:1933] Sql: SELECT P.CommandID,P.TransType,P.Paramvalue1, P.BIT1*128+BIT2A3*32+BIT4*16+BIT5A6A7*2+BIT8 as Paramvalue2,                    P.CommandParam, P.ProcessCode, D.UNCONSUMETYPE, P.ResultCode,P.Refreshcode,P.DynamicMenu,P.DynamicMenuTitle,                    P.PRINTDATA, P.inputdata                     FROM T_MenuInfoD D INNER JOIN T_MenuProcess P ON D.SID=P.SID                     WHERE D.modelid ='1' AND D.TransType = '051' AND P.CommandNum = 2 AND P.CanUse <>'0' ORDER BY P.apx
+[10/22 08:13:40.369][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:1945] inputdata 0:"" CommandNum=2, CommandID=39H
+[10/22 08:13:40.369][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.370][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:1945] inputdata 1:"" CommandNum=2, CommandID=16H
+[10/22 08:13:40.370][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.370][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:1945] inputdata 2:"" CommandNum=2, CommandID=24H
+[10/22 08:13:40.370][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.370][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:1945] inputdata 3:"" CommandNum=2, CommandID=25H
+[10/22 08:13:40.370][as_spos_v3][DBG][28280][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.370][as_spos_v3][DBG][28280][protocol.cpp:SetNextPack:1395] RspCode [00] !!!
+[10/22 08:13:40.370][as_spos_v3][DBG][28280][protocol.cpp:SetNextPack:1647] Approaching execute 84 code [39H]...
+[10/22 08:13:40.371][as_spos_v3][DBG][28280][cmd39H.cpp:OnAnalyseCmd_39:9] OnTposUpdateKey...
+[10/22 08:13:40.371][as_spos_v3][DBG][28280][cmd39H.cpp:OnAnalyseCmd_39:82] GetPosWK.
+[10/22 08:13:40.371][as_spos_v3][DBG][28280][tuxcall.cpp:tuxcall:34] TuxCall_a(TUXENC) icd: 64...
+[10/22 08:13:40.371][encryptor][DBG][21963][mpaymacro.h:svrCharge:24] Services[TUXENC] Invoke BEGIN...0xbf954d34
+[10/22 08:13:40.371][encryptor][DBG][21963][myservices.cpp:TUXENC:243] Entry...TUXENC
+[10/22 08:13:40.371][encryptor][DBG][21963][myservices.cpp:TUXENC:246] ***CLI[54407194]:TUXENC MSG(receive), LEN = 4096***
+[10/22 08:13:40.371][encryptor][DBG][21963][tradeserver.cpp:TradeHandle:1133] TradeHandle CMD, LEN=1
+[10/22 08:13:40.371][encryptor][DBG][21963][    0] 43
+[10/22 08:13:40.371][encryptor][DBG][21963][tradeserver.cpp:OnGetPublicField:1459] OnGetPublicField, to add PosMerNo...
+[10/22 08:13:40.371][encryptor][DBG][21963][tradeserver.cpp:OnGetPublicField:1468] OnGetPublicField POS_MERNO: 849440353116031, LEN=16
+[10/22 08:13:40.371][encryptor][DBG][21963][tradeserver.cpp:OnGetPublicField:1480] OnGetPublicField iOffset=21
+[10/22 08:13:40.371][encryptor][DBG][21963][tradeserver.cpp:OnGetPublicField:1490] OnGetPublicField POSNO: 80014099, LEN=9
+[10/22 08:13:40.371][encryptor][DBG][21963][tradeserver.cpp:TradeHandle:1152] OnGetPublicField,POS_Flag:00
+[10/22 08:13:40.371][encryptor][DBG][21963][tradeserver.cpp:TradeHandle:1153] OnGetPublicField,Return Value = 37
+[10/22 08:13:40.371][encryptor][DBG][21963][tradeserver.cpp:TradeHandle:1154] OnGetPublicField,Return tmpBuf:
+[10/22 08:13:40.371][encryptor][DBG][21963][    0] 43 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20 20
+[10/22 08:13:40.371][encryptor][DBG][21963][   20] 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20
+[10/22 08:13:40.372][encryptor][DBG][21963][tradeserver.cpp:ConnectHSM:878] Before to connect HSM, iHsmSocketHandle= 10, IfConnectHSM=0
+[10/22 08:13:40.372][encryptor][DBG][21963][tradeserver.cpp:ConnectHSM:882] tmCurrent =1413936820,tmHsmSocketLive =1413887883,diff_t(tmCurrent, tmHsmSocketLive) = 48937
+[10/22 08:13:40.392][encryptor][DBG][21963][tradeserver.cpp:ConnectHSM:889] idle timeout, Closed connect to HSM! iHsmSocketHandle= -1
+[10/22 08:13:40.393][encryptor][SYS][21963][dbpool.cpp:GetConnection:147] GetConnection[0] object is timeout, disconnect begin...
+[10/22 08:13:40.441][encryptor][SYS][21963][dbpool.cpp:GetConnection:155] GetConnection object is timeout, reconnected succeed.
+[10/22 08:13:40.441][encryptor][DBG][21963][databaseproc.cpp:SelectHSMIP:279] SelectHSMIP, sSQL: select hsm_ip,hsm_port,hsm_timeout,hsm_bak from enc_user.hsmconfig where hsm_id = (select hsm_id from enc_user.poskey where merno=:merno and posno=:posno)
+[10/22 08:13:40.443][encryptor][DBG][21963][databaseproc.cpp:SelectHSMIP:285] SelectHSMIP, HSM IP from database: 172.20.5.200
+[10/22 08:13:40.443][encryptor][DBG][21963][tradeserver.cpp:DBSelectHSMIP:1109] DBSelectHSMIP: HSM IP:172.20.5.200,Port: 6667
+[10/22 08:13:40.443][encryptor][DBG][21963][tradeserver.cpp:ConnectHSM:907] After Connect Master HSM, iHsmSocketHandle= 10
+[10/22 08:13:40.443][encryptor][DBG][21963][tradeserver.cpp:ConnectHSM:911] Connect Master HSM succeed[172.20.5.200] [10]!
+[10/22 08:13:40.443][encryptor][DBG][21963][tradeserver.cpp:TradeHandle:1200] TradeHandle TERMTYPE, LEN=4
+[10/22 08:13:40.443][encryptor][DBG][21963][    0] 30 30 34 00
+[10/22 08:13:40.443][encryptor][DBG][21963][tradeserver.cpp:TradeHandle:1208] TradeHandle iOffset = 40
+[10/22 08:13:40.443][encryptor][DBG][21963][tradeserver.cpp:TradeHandle:1209] TradeHandle tmpBuf:
+[10/22 08:13:40.444][encryptor][DBG][21963][    0] 43 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20 20
+[10/22 08:13:40.444][encryptor][DBG][21963][   20] 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 30 30 34
+[10/22 08:13:40.444][encryptor][DBG][21963][protocol.cpp:OnPosGetWK:388] OnPosGetWK...Received Data:
+[10/22 08:13:40.444][encryptor][DBG][21963][    0] 43 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20 20
+[10/22 08:13:40.444][encryptor][DBG][21963][   20] 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 30 30 34
+[10/22 08:13:40.444][encryptor][DBG][21963][getkey.cpp:TPosGetWK:179] POS OnSign, to get POS Work Key...,POS No is£º
+[10/22 08:13:40.444][encryptor][DBG][21963][    0] 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20
+[10/22 08:13:40.444][encryptor][DBG][21963][databaseproc.cpp:POSSelectTMK:37] POSSelectTMK, TPosGetWK, sSQL: select tmk1,tmklen,zmkindex2 from enc_user.poskey p where p.posno=:posno and p.merno=:merno
+[10/22 08:13:40.445][encryptor][DBG][21963][getkey.cpp:TPosGetWK:225] TPosGetWK, TMK1 in PINKEY:
+[10/22 08:13:40.445][encryptor][DBG][21963][    0] 43 34 46 43 31 33 42 35 32 37 44 32 42 34 39 38 43 34 46 43
+[10/22 08:13:40.445][encryptor][DBG][21963][   20] 31 33 42 35 32 37 44 32 42 34 39 38
+[10/22 08:13:40.446][encryptor][DBG][21963][sec.cpp:sec_send:122] before sendtohost,count[25]:
+[10/22 08:13:40.446][encryptor][DBG][21963][    0] 04 21 00 0B 00 0B 01 01 01 C4 FC 13 B5 27 D2 B4 98 C4 FC 13
+[10/22 08:13:40.446][encryptor][DBG][21963][   20] B5 27 D2 B4 98
+[10/22 08:13:40.494][encryptor][DBG][21963][sec.cpp:sec_send:127] after SendToHost, Elapsed: 48(ms)
+[10/22 08:13:40.494][encryptor][DBG][21963][    0] 41 55 12 85 EB D2 68 C7 45 AB 42 D6 A5 3F 7E CC C2 CE 05 88
+[10/22 08:13:40.494][encryptor][DBG][21963][   20] 33 09 85 DB 66 C3 F2 5E AA B1 AA DE 6F 33 16 25 E7 0F 18 D0
+[10/22 08:13:40.494][encryptor][DBG][21963][   40] 5B 30 9B 45 79 3D 20 01 BB 61 47 E5 CA 38 9B AA B9 6F 60 7B
+[10/22 08:13:40.494][encryptor][DBG][21963][   60] B4 11 78 DE B3 DB 48 36 7C 6F D7 9C E8 5F FD 25 16 96 6B 3B
+[10/22 08:13:40.494][encryptor][DBG][21963][   80] 75
+[10/22 08:13:40.494][encryptor][DBG][21963][sec.cpp:sec_send:129] after SendToHost sockfd:10, ret:1, count:81
+[10/22 08:13:40.494][encryptor][DBG][21963][sec.cpp:GenerateWk:252] GenerateWk, Return from HSM:
+[10/22 08:13:40.494][encryptor][DBG][21963][    0] 41 55 12 85 EB D2 68 C7 45 AB 42 D6 A5 3F 7E CC C2 CE 05 88
+[10/22 08:13:40.494][encryptor][DBG][21963][   20] 33 09 85 DB 66 C3 F2 5E AA B1 AA DE 6F 33 16 25 E7 0F 18 D0
+[10/22 08:13:40.494][encryptor][DBG][21963][   40] 5B 30 9B 45 79 3D 20 01 BB 61 47 E5 CA 38 9B AA B9 6F 60 7B
+[10/22 08:13:40.494][encryptor][DBG][21963][   60] B4 11 78 DE B3 DB 48 36 7C 6F D7 9C E8 5F FD 25 16 96 6B 3B
+[10/22 08:13:40.494][encryptor][DBG][21963][   80] 75
+[10/22 08:13:40.494][encryptor][DBG][21963][sec.cpp:sec_send:122] before sendtohost,count[25]:
+[10/22 08:13:40.494][encryptor][DBG][21963][    0] 04 21 00 0B 00 0B 01 01 01 C4 FC 13 B5 27 D2 B4 98 C4 FC 13
+[10/22 08:13:40.494][encryptor][DBG][21963][   20] B5 27 D2 B4 98
+[10/22 08:13:40.514][encryptor][DBG][21963][sec.cpp:sec_send:127] after SendToHost, Elapsed: 19(ms)
+[10/22 08:13:40.514][encryptor][DBG][21963][    0] 41 A1 7C 91 44 01 E3 76 E7 49 5C 4F 9E 33 4E 16 DF 33 03 6D
+[10/22 08:13:40.514][encryptor][DBG][21963][   20] 31 B5 9E 6A 88 93 42 53 A8 21 2D ED 67 E3 E6 93 8F F4 BD A0
+[10/22 08:13:40.514][encryptor][DBG][21963][   40] 66 A3 68 30 85 74 4C B9 42 B9 A9 A5 B4 34 93 72 C6 7C 9B BB
+[10/22 08:13:40.514][encryptor][DBG][21963][   60] FA 3C 4C 71 6D 72 EC 5F 52 92 58 C4 BF E0 1D 3A 14 71 57 FC
+[10/22 08:13:40.514][encryptor][DBG][21963][   80] 65
+[10/22 08:13:40.514][encryptor][DBG][21963][sec.cpp:sec_send:129] after SendToHost sockfd:10, ret:1, count:81
+[10/22 08:13:40.514][encryptor][DBG][21963][sec.cpp:GenerateWk:252] GenerateWk, Return from HSM:
+[10/22 08:13:40.514][encryptor][DBG][21963][    0] 41 A1 7C 91 44 01 E3 76 E7 49 5C 4F 9E 33 4E 16 DF 33 03 6D
+[10/22 08:13:40.514][encryptor][DBG][21963][   20] 31 B5 9E 6A 88 93 42 53 A8 21 2D ED 67 E3 E6 93 8F F4 BD A0
+[10/22 08:13:40.514][encryptor][DBG][21963][   40] 66 A3 68 30 85 74 4C B9 42 B9 A9 A5 B4 34 93 72 C6 7C 9B BB
+[10/22 08:13:40.514][encryptor][DBG][21963][   60] FA 3C 4C 71 6D 72 EC 5F 52 92 58 C4 BF E0 1D 3A 14 71 57 FC
+[10/22 08:13:40.514][encryptor][DBG][21963][   80] 65
+[10/22 08:13:40.514][encryptor][DBG][21963][sec.cpp:sec_send:122] before sendtohost,count[38]:
+[10/22 08:13:40.514][encryptor][DBG][21963][    0] 59 00 0B 01 C4 FC 13 B5 27 D2 B4 98 C4 FC 13 B5 27 D2 B4 98
+[10/22 08:13:40.514][encryptor][DBG][21963][   20] 00 10 6F 60 7B B4 11 78 DE B3 DB 48 36 7C 6F D7 9C E8
+[10/22 08:13:40.534][encryptor][DBG][21963][sec.cpp:sec_send:127] after SendToHost, Elapsed: 20(ms)
+[10/22 08:13:40.534][encryptor][DBG][21963][    0] 41 00 10 CA 05 78 38 0B 95 BF 31 4A 07 31 8F 8E 4F 3B 42
+[10/22 08:13:40.534][encryptor][DBG][21963][sec.cpp:sec_send:129] after SendToHost sockfd:10, ret:1, count:19
+[10/22 08:13:40.534][encryptor][DBG][21963][sec.cpp:DecryptTrackData59:955] DecryptTrackData59, Return from HSM:
+[10/22 08:13:40.534][encryptor][DBG][21963][    0] 41 00 10 CA 05 78 38 0B 95 BF 31 4A 07 31 8F 8E 4F 3B 42
+[10/22 08:13:40.534][encryptor][DBG][21963][getkey.cpp:TPosGetWK:286] TPosGetWK, MACKÃ÷ÎÄ£º
+[10/22 08:13:40.534][encryptor][DBG][21963][    0] CA 05 78 38 0B 95 BF 31 4A 07 31 8F 8E 4F 3B 42
+[10/22 08:13:40.535][encryptor][DBG][21963][getkey.cpp:TPosGetWK:294] TPosGetWK, MACKÃ÷ÎÄ, bcd2asc£º
+[10/22 08:13:40.535][encryptor][DBG][21963][    0] 43 41 30 35 37 38 33 38 30 42 39 35 42 46 33 31 34 41 30 37
+[10/22 08:13:40.535][encryptor][DBG][21963][   20] 33 31 38 46 38 45 34 46 33 42 34 32
+[10/22 08:13:40.535][encryptor][DBG][21963][getkey.cpp:TPosGetWK:297] TPosGetWK, MACKÃÜÎÄ£¬Encrypted by xxTea£¬ saved to oracle£º
+[10/22 08:13:40.535][encryptor][DBG][21963][    0] 38 51 52 48 56 62 5A 6A 4B 6C 45 62 7A 54 79 6A 72 51 4E 35
+[10/22 08:13:40.535][encryptor][DBG][21963][   20] 37 4D 4B 38 52 73 75 47 31 41 4D 70 54 41 78 2F 30 75 62 7A
+[10/22 08:13:40.535][encryptor][DBG][21963][   40] 4B 4E 57 41 45 49 51 70
+[10/22 08:13:40.541][encryptor][DBG][21963][protocol.cpp:OnPosGetWK:437] OnPosGetWK: TrackLen = 1
+[10/22 08:13:40.541][encryptor][DBG][21963][protocol.cpp:OnPosGetWK:453] OnPosGetWK, Output Buffer Data:
+[10/22 08:13:40.541][encryptor][DBG][21963][    0] 43 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20
+[10/22 08:13:40.541][encryptor][DBG][21963][   20] 20 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 10 CE
+[10/22 08:13:40.541][encryptor][DBG][21963][   40] 05 88 33 09 85 DB 66 C3 F2 5E AA B1 AA DE 6F 33 16 25 E7 10
+[10/22 08:13:40.541][encryptor][DBG][21963][   60] 6F 60 7B B4 11 78 DE B3 DB 48 36 7C 6F D7 9C E8 5F FD 25 16
+[10/22 08:13:40.541][encryptor][DBG][21963][   80] 10 33 03 6D 31 B5 9E 6A 88 93 42 53 A8 21 2D ED 67 E3 E6 93
+[10/22 08:13:40.541][encryptor][DBG][21963][  100] 8F
+[10/22 08:13:40.541][encryptor][DBG][21963][myservices.cpp:TUXENC:288] CLI[54407194]:TUXENC MSG(back from protocol), LEN = 101
+[10/22 08:13:40.541][encryptor][DBG][21963][    0] 43 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20
+[10/22 08:13:40.541][encryptor][DBG][21963][   20] 20 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 10 CE
+[10/22 08:13:40.541][encryptor][DBG][21963][   40] 05 88 33 09 85 DB 66 C3 F2 5E AA B1 AA DE 6F 33 16 25 E7 10
+[10/22 08:13:40.541][encryptor][DBG][21963][   60] 6F 60 7B B4 11 78 DE B3 DB 48 36 7C 6F D7 9C E8 5F FD 25 16
+[10/22 08:13:40.541][encryptor][DBG][21963][   80] 10 33 03 6D 31 B5 9E 6A 88 93 42 53 A8 21 2D ED 67 E3 E6 93
+[10/22 08:13:40.541][encryptor][DBG][21963][  100] 8F
+[10/22 08:13:40.541][encryptor][DBG][21963][tradeserver.cpp:ReturnHandle:1587] ReturnHandle RETURN_CODE:01
+[10/22 08:13:40.541][encryptor][DBG][21963][tradeserver.cpp:ReturnHandle:1680] Return data for onsign:
+[10/22 08:13:40.541][encryptor][DBG][21963][tradeserver.cpp:ReturnOnSign:1342] ReturnHandle PINK
+[10/22 08:13:40.541][encryptor][DBG][21963][    0] CE 05 88 33 09 85 DB 66 C3 F2 5E AA B1 AA DE 6F
+[10/22 08:13:40.541][encryptor][DBG][21963][tradeserver.cpp:ReturnOnSign:1356] ReturnHandle PINKCV
+[10/22 08:13:40.541][encryptor][DBG][21963][    0] 33 16 25 E7
+[10/22 08:13:40.541][encryptor][DBG][21963][tradeserver.cpp:ReturnOnSign:1372] ReturnHandle MACK:
+[10/22 08:13:40.541][encryptor][DBG][21963][    0] 6F 60 7B B4 11 78 DE B3 DB 48 36 7C 6F D7 9C E8
+[10/22 08:13:40.542][encryptor][DBG][21963][tradeserver.cpp:ReturnOnSign:1386] ReturnHandle MACKCV
+[10/22 08:13:40.542][encryptor][DBG][21963][    0] 5F FD 25 16
+[10/22 08:13:40.542][encryptor][DBG][21963][tradeserver.cpp:ReturnOnSign:1404] ReturnHandle TRACK:
+[10/22 08:13:40.542][encryptor][DBG][21963][    0] 33 03 6D 31 B5 9E 6A 88 93 42 53 A8 21 2D ED 67
+[10/22 08:13:40.542][encryptor][DBG][21963][tradeserver.cpp:ReturnOnSign:1418] ReturnHandle return TRACKCV
+[10/22 08:13:40.542][encryptor][DBG][21963][    0] E3 E6 93 8F
+[10/22 08:13:40.542][encryptor][DBG][21963][myservices.cpp:TUXENC:301] CLI[54407194]:TUXENC Return success! Elapsed: 170(ms)
+[10/22 08:13:40.542][encryptor][DBG][21963][mpaymacro.h:tickTime:35] Services[TUXENC] Invoke END...Charge: 170(ms)
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][tuxcall.cpp:tuxcall:42] tuxcall_a(TUXENC) return succeed.
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][enccomm.cpp:GetPosWK:508] tpcall...TUXENC return iRet=1
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][    0] CE 05 88 33 09 85 DB 66 C3 F2 5E AA B1 AA DE 6F
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][    0] 33 16 25 E7
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][    0] 6F 60 7B B4 11 78 DE B3 DB 48 36 7C 6F D7 9C E8
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][    0] 5F FD 25 16
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][    0] 33 03 6D 31 B5 9E 6A 88 93 42 53 A8 21 2D ED 67
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][    0] E3 E6 93 8F
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][protocol.cpp:SetNextPack:1647] Approaching execute 84 code [16H]...
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][cmd16H.cpp:OnAnalyseCmd_16:62] HGET HASH:TMS:MVOKE 80014099
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][cmd16H.cpp:OnAnalyseCmd_16:66] reply->type:[4] reply->integer[0] reply->len[0]
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][protocol.cpp:SetNextPack:1647] Approaching execute 84 code [24H]...
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][protocol.cpp:SetNextPack:1647] Approaching execute 84 code [25H]...
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][protocol.cpp:SetNextPack:1835] Sent Next Package: Len = 216
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][    0] 00 D6 60 00 00 00 03 84 FA EF 4C 86 02 38 34 39 34 34 30 33
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][   20] 35 33 31 31 36 30 33 31 38 30 30 31 34 30 39 39 00 00 00 00
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][   40] 00 00 00 00 00 A9 02 00 20 14 10 22 08 13 40 00 00 23 00 00
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][   60] 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 31 62
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][   80] 96 30 35 31 04 B9 96 24 02 25 03 00 72 43 00 41 10 CE 05 88
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][  100] 33 09 85 DB 66 C3 F2 5E AA B1 AA DE 6F 33 16 25 E7 42 10 6F
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][  120] 60 7B B4 11 78 DE B3 DB 48 36 7C 6F D7 9C E8 5F FD 25 16 43
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][  140] 10 33 03 6D 31 B5 9E 6A 88 93 42 53 A8 21 2D ED 67 E3 E6 93
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][  160] 8F 00 2C 05 0A 00 0B 00 0C 00 29 1E 20 00 00 00 00 00 00 00
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][  180] 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.552][as_spos_v3][DBG][28280][  200] 00 00 2D 03 00 00 23 00 00 00 00 00 00 00 00 9B
+[10/22 08:13:40.553][as_spos_v3][DBG][28280][protocol.cpp:SaveTradeRec:2294] Trace In SaveTradeRec
+[10/22 08:13:40.553][as_spos_v3][DBG][28280][protocol.cpp:SaveTradeRec:2312] RTradeType is Balance Enquiry or null[00H].
+[10/22 08:13:40.553][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:1208] Before write redis mem. bCleanNode:0; SynchroNo:2
+[10/22 08:13:40.553][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:1217] HSET STR:MPAY:AS:84944035311603180014099FAEF4C86spos_base spos_base_data
+[10/22 08:13:40.553][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:1233] reply->type[3] reply->integer[1]
+[10/22 08:13:40.553][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:1317] redis Cli Delete...
+[10/22 08:13:40.553][as_spos_v3][DBG][28280][protocol.cpp:OnSposAnalyze:1324] End with Suc...
+[10/22 08:13:40.553][as_spos_v3][SYS][28280][myservices.cpp:AS_SPOS_V3:173] CLI[54407194]:AS_SPOS_V3 MSG(back), LEN = 216
+[10/22 08:13:40.553][as_spos_v3][SYS][28280][myservices.cpp:AS_SPOS_V3:183] CLI[54407194]:AS_SPOS_V3 ---BACK--, LEN = 223
+[10/22 08:13:40.554][as_spos_v3][DBG][28280][mpaymacro.h:tickTime:35] Services[AS_SPOS_V3] Invoke END...Charge: 209(ms)
+[10/22 08:13:40.605][transponder][DBG][21968][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbf8d75d0
+[10/22 08:13:40.605][transponder][SYS][21968][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 172
+[10/22 08:13:40.605][transponder][DBG][21968][    0] AC 00 F1 00 00 00 00 A3 60 00 03 00 00 20 20 20 20 20 20 20
+[10/22 08:13:40.605][transponder][DBG][21968][   20] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+[10/22 08:13:40.605][transponder][DBG][21968][   40] 20 20 20 20 20 20 31 37 32 2E 32 30 2E 30 2E 31 33 36 1F 20
+[10/22 08:13:40.605][transponder][DBG][21968][   60] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 87 FA EF
+[10/22 08:13:40.605][transponder][DBG][21968][   80] 4C 86 03 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 38 30
+[10/22 08:13:40.605][transponder][DBG][21968][  100] 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 36 02 00 31 04
+[10/22 08:13:40.605][transponder][DBG][21968][  120] 00 05 00 62 00 00 23 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.605][transponder][DBG][21968][  140] 00 00 00 00 00 00 00 31 62 97 30 35 31 02 B9 96 00 04 30 30
+[10/22 08:13:40.605][transponder][DBG][21968][  160] 30 30 FF FF FF FF FF FF FF FF 6C AA
+[10/22 08:13:40.605][transponder][DBG][21968][myservices.cpp:TRANSPONDER:121] Term Version:'3104', srvr:'AS_SPOS_V3'
+[10/22 08:13:40.605][transponder][DBG][21968][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:40.605][as_spos_v3][DBG][28290][mpaymacro.h:svrCharge:24] Services[AS_SPOS_V3] Invoke BEGIN...0xbfd89450
+[10/22 08:13:40.605][as_spos_v3][SYS][28290][myservices.cpp:AS_SPOS_V3:128] CLI[54407194]:AS_SPOS_V3 ---RECV--, LEN = 172
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][    0] AC 00 F1 00 00 00 00 A3 60 00 03 00 00 20 20 20 20 20 20 20
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][   20] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][   40] 20 20 20 20 20 20 31 37 32 2E 32 30 2E 30 2E 31 33 36 1F 20
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][   60] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 87 FA EF
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][   80] 4C 86 03 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 38 30
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][  100] 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 36 02 00 31 04
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][  120] 00 05 00 62 00 00 23 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][  140] 00 00 00 00 00 00 00 31 62 97 30 35 31 02 B9 96 00 04 30 30
+[10/22 08:13:40.606][as_spos_v3][DBG][28290][  160] 30 30 FF FF FF FF FF FF FF FF 6C AA
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][protocol.cpp:OnSPOS:216] Peer[1413509524]: Trace In OnSPos!
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:294] TermSockAddr:[172.20.0.136]
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:300] Buf:
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][    0] 87 FA EF 4C 86 03 38 34 39 34 34 30 33 35 33 31 31 36 30 33
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][   20] 31 38 30 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 36 02
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][   40] 00 31 04 00 05 00 62 00 00 23 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][   60] 00 00 00 00 00 00 00 00 00 00 31 62 97 30 35 31 02 B9 96 00
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][   80] 04 30 30 30 30 FF FF FF FF FF FF FF FF 6C
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:327] MerNo[849440353116031] TermNo[80014099] TermVer[3104] RandomNo:
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][    0] FA EF 4C 86
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][climodel.cpp:redisCliConnect:86] ping redis suc....[172.20.5.200] [6379]
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][climodel.cpp:redisCliConnect:107] redis suc....
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:344] redis connect suc......
+[10/22 08:13:40.607][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:368] HGET STR:MPAY:AS:84944035311603180014099FAEF4C86spos_base spos_base_data
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:394] reply->type:[1] reply->integer[0] reply->len[10000]
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:402] Peer[1413509524] Merchant[849440353116031] Terminal[80014099]: pos node is found!
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:641] termVer:[3104] PosBatchno:[000023]
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][mpaymacro.h:svrCharge:24] Services[TF>>CheckPosseq>>] Invoke BEGIN...0xbfd85978
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][extern.cpp:Ext_CheckPosseq_Term:151] =====DataCheck====
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][extern.cpp:Ext_CheckPosseq_Term:158] inLMchNo = 849440353116031
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][extern.cpp:Ext_CheckPosseq_Term:159] inLTrmNo = 80014099
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][extern.cpp:Ext_CheckPosseq_Term:160] inLVouchNo = 316297
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][extern.cpp:Ext_CheckPosseq_Term:161] inLBatchNo = 000023
+[10/22 08:13:40.608][as_spos_v3][DBG][28290][extern.cpp:Ext_CheckPosseq_Term:162] inUptBatVouch = true
+[10/22 08:13:40.625][as_spos_v3][DBG][28290][extern.cpp:Ext_CheckPosseq_Term:183] lRet:[0], TradeNo:[051]
+[10/22 08:13:40.625][as_spos_v3][DBG][28290][extern.cpp:Ext_CheckPosseq_Term:220] DATACHECK END.[1]
+[10/22 08:13:40.625][as_spos_v3][DBG][28290][mpaymacro.h:tickTime:35] Services[TF>>CheckPosseq>>] Invoke END...Charge: 17(ms)
+[10/22 08:13:40.625][as_spos_v3][DBG][28290][protocol.cpp:GetIccVer:2717] Peer[1413509524]: Trace In GetModelId!
+[10/22 08:13:40.625][as_spos_v3][DBG][28290][protocol.cpp:GetIccVer:2728] Sql: SELECT  paramvalue  from spos_user1.t_dictinfo where paramtype='103' and paramid='0'
+[10/22 08:13:40.626][as_spos_v3][DBG][28290][protocol.cpp:GetIccVer:2742] iccver:20130184
+[10/22 08:13:40.626][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:993] Approaching execute 87 code [39H]...
+[10/22 08:13:40.626][as_spos_v3][DBG][28290][cmd39H.cpp:OnAnalyseCmd_39:9] OnTposUpdateKey...
+[10/22 08:13:40.626][as_spos_v3][DBG][28290][protocol.cpp:init_socket:4272] ip:172.20.5.200,port:7009
+[10/22 08:13:40.626][as_spos_v3][ERR][28290][protocol.cpp:init_socket:4276] can not find TMS server.
+[10/22 08:13:40.626][as_spos_v3][ERR][28290][cmd39H.cpp:OnAnalyseCmd_39:20] init tms socket err.
+[10/22 08:13:40.627][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:993] Approaching execute 87 code [16H]...
+[10/22 08:13:40.627][as_spos_v3][DBG][28290][cmd16H.cpp:OnAnalyseCmd_16:18] HDEL HASH:TMS:MVOKE 80014099
+[10/22 08:13:40.627][as_spos_v3][DBG][28290][cmd16H.cpp:OnAnalyseCmd_16:22] reply->type:[3],reply->integer:[0] len:[0]
+[10/22 08:13:40.627][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:1116] szFlowNo:051; Buf 03
+[10/22 08:13:40.627][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1356] Trace In SetNextPack...
+[10/22 08:13:40.627][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1363] CommMax=3
+[10/22 08:13:40.627][as_spos_v3][DBG][28290][protocol.cpp:GetNextCommandNum:2072] pDataNode->pItem->CommandNum = 2
+[10/22 08:13:40.629][as_spos_v3][DBG][28290][protocol.cpp:GetNext84Package:1892] The Last Package! CommandNum = 3
+[10/22 08:13:40.629][as_spos_v3][DBG][28290][protocol.cpp:GetNext84Package:1933] Sql: SELECT P.CommandID,P.TransType,P.Paramvalue1, P.BIT1*128+BIT2A3*32+BIT4*16+BIT5A6A7*2+BIT8 as Paramvalue2,                    P.CommandParam, P.ProcessCode, D.UNCONSUMETYPE, P.ResultCode,P.Refreshcode,P.DynamicMenu,P.DynamicMenuTitle,                    P.PRINTDATA, P.inputdata                     FROM T_MenuInfoD D INNER JOIN T_MenuProcess P ON D.SID=P.SID                     WHERE D.modelid ='1' AND D.TransType = '051' AND P.CommandNum = 3 AND P.CanUse <>'0' ORDER BY P.apx
+[10/22 08:13:40.632][as_spos_v3][DBG][28290][protocol.cpp:GetNext84Package:1945] inputdata 0:"01||"     CommandNum=3, CommandID=11H
+[10/22 08:13:40.632][as_spos_v3][DBG][28290][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.632][as_spos_v3][DBG][28290][protocol.cpp:GetNext84Package:1945] inputdata 1:"2||||||"  CommandNum=3, CommandID=22H
+[10/22 08:13:40.632][as_spos_v3][DBG][28290][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.632][as_spos_v3][DBG][28290][protocol.cpp:GetNext84Package:1945] inputdata 2:"" CommandNum=3, CommandID=26H
+[10/22 08:13:40.632][as_spos_v3][DBG][28290][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.632][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1371] CommandNum=CommMax CleanNode
+[10/22 08:13:40.633][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1395] RspCode [00] !!!
+[10/22 08:13:40.633][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1647] Approaching execute 84 code [11H]...
+[10/22 08:13:40.633][as_spos_v3][DBG][28290][cmd11H.cpp:OnAnalyseCmd_11:8] OnTposGetAppver...
+[10/22 08:13:40.633][as_spos_v3][DBG][28290][cmd11H.cpp:OnAnalyseCmd_11:23] OnTposGetAppver, Data Input Terminal [1 bytes]:
+[10/22 08:13:40.633][as_spos_v3][DBG][28290][    0] 01
+[10/22 08:13:40.633][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1647] Approaching execute 84 code [22H]...
+[10/22 08:13:40.633][as_spos_v3][DBG][28290][cmd22H.cpp:OnAnalyseCmd_22:33] ResultCode:'1003'
+[10/22 08:13:40.633][as_spos_v3][DBG][28290][cmd22H.cpp:OnAnalyseCmd_22:34] Sql: SELECT ParamName, ParamValue FROM spos_user1.T_DictInfo WHERE ParamType = 1003 AND (ParamId='00' OR ParamId='default')
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][cmd22H.cpp:OnAnalyseCmd_22:117] subPro->Data:2||||||,curIdx:1
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][cmd22H.cpp:OnAnalyseCmd_22:163] OnTposShowResult, Data Input Terminal [14 bytes]:
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][    0] 00 0C 30 02 30 30 04 B3 C9 B9 A6 00 00 00
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1647] Approaching execute 84 code [26H]...
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1835] Sent Next Package: Len = 114
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][    0] 00 70 60 00 00 00 03 84 FA EF 4C 86 04 38 34 39 34 34 30 33
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][   20] 35 33 31 31 36 30 33 31 38 30 30 31 34 30 39 39 00 00 00 00
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][   40] 00 00 00 00 00 43 02 00 20 14 10 22 08 13 40 00 00 23 00 00
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][   60] 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 31 62
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][   80] 97 30 35 31 03 91 A2 A6 00 0F 01 00 0C 30 02 30 30 04 B3 C9
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][  100] B9 A6 00 00 00 00 00 00 00 00 00 00 00 C8
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:SaveTradeRec:2294] Trace In SaveTradeRec
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:SaveTradeRec:2312] RTradeType is Balance Enquiry or null[00H].
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:SetNextPack:1848] before DeleteShareMemory  CleanNode
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:1208] Before write redis mem. bCleanNode:1; SynchroNo:4
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:1271] HDEL STR:MPAY:AS:84944035311603180014099FAEF4C86spos_base spos_base_data
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:1275] reply->type:[3],reply->integer:[1] len:[0]
+[10/22 08:13:40.634][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:1317] redis Cli Delete...
+[10/22 08:13:40.635][as_spos_v3][DBG][28290][protocol.cpp:OnSposAnalyze:1324] End with Suc...
+[10/22 08:13:40.635][as_spos_v3][SYS][28290][myservices.cpp:AS_SPOS_V3:173] CLI[54407194]:AS_SPOS_V3 MSG(back), LEN = 114
+[10/22 08:13:40.635][as_spos_v3][SYS][28290][myservices.cpp:AS_SPOS_V3:183] CLI[54407194]:AS_SPOS_V3 ---BACK--, LEN = 121
+[10/22 08:13:40.635][as_spos_v3][DBG][28290][mpaymacro.h:tickTime:35] Services[AS_SPOS_V3] Invoke END...Charge: 29(ms)
+[10/22 08:13:40.726][transponder][DBG][21969][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbfb2b600
+[10/22 08:13:40.726][transponder][SYS][21969][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 211
+[10/22 08:13:40.726][transponder][DBG][21969][    0] D3 00 F1 00 00 00 00 CA 60 00 03 00 00 20 20 20 20 20 20 20
+[10/22 08:13:40.726][transponder][DBG][21969][   20] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+[10/22 08:13:40.726][transponder][DBG][21969][   40] 20 20 20 20 20 20 31 37 32 2E 32 30 2E 30 2E 31 33 36 1F 20
+[10/22 08:13:40.726][transponder][DBG][21969][   60] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 87 84 EF
+[10/22 08:13:40.726][transponder][DBG][21969][   80] 11 8C 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 38 30
+[10/22 08:13:40.726][transponder][DBG][21969][  100] 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 5D 02 00 31 04
+[10/22 08:13:40.726][transponder][DBG][21969][  120] 00 05 00 62 00 00 23 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.726][transponder][DBG][21969][  140] 00 00 00 00 00 00 00 31 62 98 31 30 33 03 48 43 48 44 8D 00
+[10/22 08:13:40.726][transponder][DBG][21969][  160] 28 80 00 02 00 18 6E DE 5D CA C1 03 E1 32 12 8C C9 CD C0 AC
+[10/22 08:13:40.726][transponder][DBG][21969][  180] 37 F0 95 E7 07 3C 6D A4 81 7E 02 00 08 FF FF FF FF FF FF FF
+[10/22 08:13:40.726][transponder][DBG][21969][  200] FF FF FF FF FF FF FF FF FF BD 44
+[10/22 08:13:40.726][transponder][DBG][21969][myservices.cpp:TRANSPONDER:121] Term Version:'3104', srvr:'AS_SPOS_V3'
+[10/22 08:13:40.726][transponder][DBG][21969][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][mpaymacro.h:svrCharge:24] Services[AS_SPOS_V3] Invoke BEGIN...0xbfe69db0
+[10/22 08:13:40.726][as_spos_v3][SYS][28299][myservices.cpp:AS_SPOS_V3:128] CLI[54407194]:AS_SPOS_V3 ---RECV--, LEN = 211
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][    0] D3 00 F1 00 00 00 00 CA 60 00 03 00 00 20 20 20 20 20 20 20
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][   20] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][   40] 20 20 20 20 20 20 31 37 32 2E 32 30 2E 30 2E 31 33 36 1F 20
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][   60] 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 87 84 EF
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][   80] 11 8C 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 38 30
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][  100] 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 5D 02 00 31 04
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][  120] 00 05 00 62 00 00 23 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][  140] 00 00 00 00 00 00 00 31 62 98 31 30 33 03 48 43 48 44 8D 00
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][  160] 28 80 00 02 00 18 6E DE 5D CA C1 03 E1 32 12 8C C9 CD C0 AC
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][  180] 37 F0 95 E7 07 3C 6D A4 81 7E 02 00 08 FF FF FF FF FF FF FF
+[10/22 08:13:40.726][as_spos_v3][DBG][28299][  200] FF FF FF FF FF FF FF FF FF BD 44
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][protocol.cpp:OnSPOS:216] Peer[1413509524]: Trace In OnSPos!
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:294] TermSockAddr:[172.20.0.136]
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:300] Buf:
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][    0] 87 84 EF 11 8C 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][   20] 31 38 30 30 31 34 30 39 39 00 00 00 30 20 13 01 84 00 5D 02
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][   40] 00 31 04 00 05 00 62 00 00 23 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][   60] 00 00 00 00 00 00 00 00 00 00 31 62 98 31 30 33 03 48 43 48
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][   80] 44 8D 00 28 80 00 02 00 18 6E DE 5D CA C1 03 E1 32 12 8C C9
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][  100] CD C0 AC 37 F0 95 E7 07 3C 6D A4 81 7E 02 00 08 FF FF FF FF
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][  120] FF FF FF FF FF FF FF FF FF FF FF FF BD
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:327] MerNo[849440353116031] TermNo[80014099] TermVer[3104] RandomNo:
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][    0] 84 EF 11 8C
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][climodel.cpp:redisCliConnect:86] ping redis suc....[172.20.5.200] [6379]
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][climodel.cpp:redisCliConnect:107] redis suc....
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:344] redis connect suc......
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:464] Peer[1413509524] Merchant[849440353116031] Terminal[80014099]: New Node Add 1!
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:472] The First packets. HGET STR:MPAY:AS:8494403531160318001409984EF118Cspos_base spos_base_data
+[10/22 08:13:40.728][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:489] reply->type:[4] reply->integer[0] reply->len[0]
+[10/22 08:13:40.730][as_spos_v3][DBG][28299][protocol.cpp:GetModelId:2683] TmsParam:'0'
+[10/22 08:13:40.730][as_spos_v3][DBG][28299][protocol.cpp:GetModelId:2694] ISICCMENU:[1]
+[10/22 08:13:40.730][as_spos_v3][DBG][28299][protocol.cpp:GetModelId:2704] menuModel:'00050062'
+[10/22 08:13:40.730][as_spos_v3][DBG][28299][mpaymacro.h:svrCharge:24] Services[TF>>CheckTerm>>] Invoke BEGIN...0xbfe662d8
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][mpaymacro.h:tickTime:35] Services[TF>>CheckTerm>>] Invoke END...Charge: 5(ms)
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][    0] 20 13 01 84
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:641] termVer:[3104] PosBatchno:[000023]
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][mpaymacro.h:svrCharge:24] Services[TF>>CheckPosseq>>] Invoke BEGIN...0xbfe662d8
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][extern.cpp:Ext_CheckPosseq_Term:151] =====DataCheck====
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][extern.cpp:Ext_CheckPosseq_Term:158] inLMchNo = 849440353116031
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][extern.cpp:Ext_CheckPosseq_Term:159] inLTrmNo = 80014099
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][extern.cpp:Ext_CheckPosseq_Term:160] inLVouchNo = 316298
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][extern.cpp:Ext_CheckPosseq_Term:161] inLBatchNo = 000023
+[10/22 08:13:40.735][as_spos_v3][DBG][28299][extern.cpp:Ext_CheckPosseq_Term:162] inUptBatVouch = true
+[10/22 08:13:40.750][as_spos_v3][DBG][28299][extern.cpp:Ext_CheckPosseq_Term:183] lRet:[0], TradeNo:[103]
+[10/22 08:13:40.750][as_spos_v3][DBG][28299][extern.cpp:Ext_CheckPosseq_Term:220] DATACHECK END.[1]
+[10/22 08:13:40.750][as_spos_v3][DBG][28299][mpaymacro.h:tickTime:35] Services[TF>>CheckPosseq>>] Invoke END...Charge: 15(ms)
+[10/22 08:13:40.750][as_spos_v3][DBG][28299][protocol.cpp:GetIccVer:2717] Peer[1413509524]: Trace In GetModelId!
+[10/22 08:13:40.750][as_spos_v3][DBG][28299][protocol.cpp:GetIccVer:2728] Sql: SELECT  paramvalue  from spos_user1.t_dictinfo where paramtype='103' and paramid='0'
+[10/22 08:13:40.751][as_spos_v3][DBG][28299][protocol.cpp:GetIccVer:2742] iccver:20130184
+[10/22 08:13:40.751][as_spos_v3][DBG][28299][mpaymacro.h:svrCharge:24] Services[TF>>CheckPosMac>>] Invoke BEGIN...0xbfe662c4
+[10/22 08:13:40.751][as_spos_v3][DBG][28299][protocol.cpp:CheckPosMac:2820] Term Mac:
+[10/22 08:13:40.751][as_spos_v3][DBG][28299][    0] FF FF FF FF FF FF FF FF
+[10/22 08:13:40.751][as_spos_v3][DBG][28299][enccomm.cpp:CalculateMac:103] Before tpcall
+[10/22 08:13:40.751][encryptor][DBG][21965][mpaymacro.h:svrCharge:24] Services[TUXENC] Invoke BEGIN...0xbfb9b474
+[10/22 08:13:40.751][encryptor][DBG][21965][myservices.cpp:TUXENC:243] Entry...TUXENC
+[10/22 08:13:40.751][encryptor][DBG][21965][myservices.cpp:TUXENC:246] ***CLI[54407194]:TUXENC MSG(receive), LEN = 4096***
+[10/22 08:13:40.751][encryptor][DBG][21965][tradeserver.cpp:TradeHandle:1133] TradeHandle CMD, LEN=1
+[10/22 08:13:40.751][encryptor][DBG][21965][    0] 41
+[10/22 08:13:40.751][encryptor][DBG][21965][tradeserver.cpp:OnGetPublicField:1449] OnGetPublicField POS_BANK_FLAG: , LEN=1
+[10/22 08:13:40.751][encryptor][DBG][21965][    0] 01
+[10/22 08:13:40.751][encryptor][DBG][21965][tradeserver.cpp:OnGetPublicField:1459] OnGetPublicField, to add PosMerNo...
+[10/22 08:13:40.751][encryptor][DBG][21965][tradeserver.cpp:OnGetPublicField:1468] OnGetPublicField POS_MERNO: 849440353116031, LEN=16
+[10/22 08:13:40.751][encryptor][DBG][21965][tradeserver.cpp:OnGetPublicField:1480] OnGetPublicField iOffset=21
+[10/22 08:13:40.752][encryptor][DBG][21965][tradeserver.cpp:OnGetPublicField:1490] OnGetPublicField POSNO: 80014099, LEN=9
+[10/22 08:13:40.752][encryptor][DBG][21965][tradeserver.cpp:TradeHandle:1152] OnGetPublicField,POS_Flag:01
+[10/22 08:13:40.752][encryptor][DBG][21965][tradeserver.cpp:TradeHandle:1153] OnGetPublicField,Return Value = 37
+[10/22 08:13:40.752][encryptor][DBG][21965][tradeserver.cpp:TradeHandle:1154] OnGetPublicField,Return tmpBuf:
+[10/22 08:13:40.752][encryptor][DBG][21965][    0] 41 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20 20
+[10/22 08:13:40.752][encryptor][DBG][21965][   20] 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20
+[10/22 08:13:40.752][encryptor][DBG][21965][tradeserver.cpp:ConnectHSM:878] Before to connect HSM, iHsmSocketHandle= 10, IfConnectHSM=0
+[10/22 08:13:40.752][encryptor][DBG][21965][tradeserver.cpp:ConnectHSM:882] tmCurrent =1413936820,tmHsmSocketLive =1413887939,diff_t(tmCurrent, tmHsmSocketLive) = 48881
+[10/22 08:13:40.752][as_spos_v3][DBG][28299][tuxcall.cpp:tuxcall:34] TuxCall_a(TUXENC) icd: 64...
+[10/22 08:13:40.772][encryptor][DBG][21965][tradeserver.cpp:ConnectHSM:889] idle timeout, Closed connect to HSM! iHsmSocketHandle= -1
+[10/22 08:13:40.773][encryptor][SYS][21965][dbpool.cpp:GetConnection:147] GetConnection[0] object is timeout, disconnect begin...
+[10/22 08:13:40.825][encryptor][SYS][21965][dbpool.cpp:GetConnection:155] GetConnection object is timeout, reconnected succeed.
+[10/22 08:13:40.825][encryptor][DBG][21965][databaseproc.cpp:SelectHSMIP:279] SelectHSMIP, sSQL: select hsm_ip,hsm_port,hsm_timeout,hsm_bak from enc_user.hsmconfig where hsm_id = (select hsm_id from enc_user.poskey where merno=:merno and posno=:posno)
+[10/22 08:13:40.826][encryptor][DBG][21965][databaseproc.cpp:SelectHSMIP:285] SelectHSMIP, HSM IP from database: 172.20.5.200
+[10/22 08:13:40.827][encryptor][DBG][21965][tradeserver.cpp:DBSelectHSMIP:1109] DBSelectHSMIP: HSM IP:172.20.5.200,Port: 6667
+[10/22 08:13:40.827][encryptor][DBG][21965][tradeserver.cpp:ConnectHSM:907] After Connect Master HSM, iHsmSocketHandle= 10
+[10/22 08:13:40.827][encryptor][DBG][21965][tradeserver.cpp:ConnectHSM:911] Connect Master HSM succeed[172.20.5.200] [10]!
+[10/22 08:13:40.827][encryptor][DBG][21965][tradeserver.cpp:T_OnGetMAC:166] T_OnGetMAC POS_BANK_FLAG, LEN=1
+[10/22 08:13:40.827][encryptor][DBG][21965][    0] 01
+[10/22 08:13:40.827][encryptor][DBG][21965][tradeserver.cpp:T_OnGetMAC:200] T_OnGetMAC MAC_Arith_FLAG, LEN=1
+[10/22 08:13:40.827][encryptor][DBG][21965][    0] 03
+[10/22 08:13:40.827][encryptor][DBG][21965][tradeserver.cpp:T_OnGetMAC:211] T_OnGetMAC Init_Vector, LEN=8
+[10/22 08:13:40.827][encryptor][DBG][21965][    0] 00 00 00 00 00 00 00 00
+[10/22 08:13:40.827][encryptor][DBG][21965][tradeserver.cpp:T_OnGetMAC:222] T_OnGetMAC MAC_TRACK_DATA, LEN=85
+[10/22 08:13:40.827][encryptor][DBG][21965][    0] 02 00 31 04 00 05 00 62 00 00 23 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.827][encryptor][DBG][21965][   20] 00 00 00 00 00 00 00 00 00 00 00 31 62 98 31 30 33 03 48 43
+[10/22 08:13:40.827][encryptor][DBG][21965][   40] 48 44 8D 00 28 80 00 02 00 18 6E DE 5D CA C1 03 E1 32 12 8C
+[10/22 08:13:40.827][encryptor][DBG][21965][   60] C9 CD C0 AC 37 F0 95 E7 07 3C 6D A4 81 7E 02 00 08 FF FF FF
+[10/22 08:13:40.827][encryptor][DBG][21965][   80] FF FF FF FF FF
+[10/22 08:13:40.827][encryptor][DBG][21965][protocol.cpp:OnGetMac:462] OnGetMac,Recvied Data:
+[10/22 08:13:40.827][encryptor][DBG][21965][    0] 41 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20 20
+[10/22 08:13:40.827][encryptor][DBG][21965][   20] 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 01 20 03
+[10/22 08:13:40.827][encryptor][DBG][21965][   40] 00 00 00 00 00 00 00 00 00 55 02 00 31 04 00 05 00 62 00 00
+[10/22 08:13:40.827][encryptor][DBG][21965][   60] 23 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:40.827][encryptor][DBG][21965][   80] 00 31 62 98 31 30 33 03 48 43 48 44 8D 00 28 80 00 02 00 18
+[10/22 08:13:40.827][encryptor][DBG][21965][  100] 6E DE 5D CA C1 03 E1 32 12 8C C9 CD C0 AC 37 F0 95 E7 07 3C
+[10/22 08:13:40.827][encryptor][DBG][21965][  120] 6D A4 81 7E 02 00 08 FF FF FF FF FF FF FF FF
+[10/22 08:13:40.827][encryptor][DBG][21965][getkey.cpp:TPosGetMac:50] Get POS Mac...,POS No is£º
+[10/22 08:13:40.827][encryptor][DBG][21965][    0] 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20
+[10/22 08:13:40.828][encryptor][DBG][21965][databaseproc.cpp:Pos_SelectMACK:136] POSSelectMACK, sSQL: select keytype,macklen,mack from enc_user.poskey where posno =:posno and merno =:merno
+[10/22 08:13:40.829][encryptor][DBG][21965][getkey.cpp:TPosGetMac:67] TPosGetMac, Get MACK from oracle:
+[10/22 08:13:40.829][encryptor][DBG][21965][    0] 38 51 52 48 56 62 5A 6A 4B 6C 45 62 7A 54 79 6A 72 51 4E 35
+[10/22 08:13:40.829][encryptor][DBG][21965][   20] 37 4D 4B 38 52 73 75 47 31 41 4D 70
+[10/22 08:13:40.829][encryptor][DBG][21965][softenc.cpp:POSGenerateMAC:44] CSoftEnc, POSGenerateMAC, POS MACK from oracle£º
+[10/22 08:13:40.829][encryptor][DBG][21965][    0] 38 51 52 48 56 62 5A 6A 4B 6C 45 62 7A 54 79 6A 72 51 4E 35
+[10/22 08:13:40.829][encryptor][DBG][21965][   20] 37 4D 4B 38 52 73 75 47 31 41 4D 70 54 41 78 2F 30 75 62 7A
+[10/22 08:13:40.829][encryptor][DBG][21965][   40] 4B 4E 57 41 45 49 51 70
+[10/22 08:13:40.829][encryptor][DBG][21965][softenc.cpp:POSGenerateMAC:55] CSoftEnc::POSGenerateMAC, ½â³öµÄMAC Ã÷ÎÄ
+[10/22 08:13:40.829][encryptor][DBG][21965][    0] CA 05 78 38 0B 95 BF 31 4A 07 31 8F 8E 4F 3B 42
+[10/22 08:13:40.829][encryptor][DBG][21965][softenc.cpp:POSGenerateMAC:143] CSoftEnc, POSGenerateMAC, Èí¼ÓÃÜ¼ÆËãµÄMAC£º
+[10/22 08:13:40.829][encryptor][DBG][21965][    0] 66 50 DD C1 59 20 E3 03
+[10/22 08:13:40.829][encryptor][DBG][21965][protocol.cpp:OnGetMac:538] GetMAC success:
+[10/22 08:13:40.829][encryptor][DBG][21965][protocol.cpp:OnGetMac:551] OnGetMac, Output Buffer Data:
+[10/22 08:13:40.829][encryptor][DBG][21965][    0] 41 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20
+[10/22 08:13:40.829][encryptor][DBG][21965][   20] 20 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 66 50
+[10/22 08:13:40.829][encryptor][DBG][21965][   40] DD C1 59 20 E3 03
+[10/22 08:13:40.830][encryptor][DBG][21965][myservices.cpp:TUXENC:288] CLI[54407194]:TUXENC MSG(back from protocol), LEN = 46
+[10/22 08:13:40.830][encryptor][DBG][21965][    0] 41 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20
+[10/22 08:13:40.830][encryptor][DBG][21965][   20] 20 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 66 50
+[10/22 08:13:40.830][encryptor][DBG][21965][   40] DD C1 59 20 E3 03
+[10/22 08:13:40.830][encryptor][DBG][21965][tradeserver.cpp:ReturnHandle:1587] ReturnHandle RETURN_CODE:01
+[10/22 08:13:40.830][encryptor][DBG][21965][tradeserver.cpp:ReturnHandle:1650] ReturnHandle RETURN_DATA, LEN=8
+[10/22 08:13:40.830][encryptor][DBG][21965][    0] 66 50 DD C1 59 20 E3 03
+[10/22 08:13:40.830][encryptor][DBG][21965][myservices.cpp:TUXENC:301] CLI[54407194]:TUXENC Return success! Elapsed: 78(ms)
+[10/22 08:13:40.830][encryptor][DBG][21965][mpaymacro.h:tickTime:35] Services[TUXENC] Invoke END...Charge: 78(ms)
+[10/22 08:13:40.832][as_spos_v3][DBG][28299][tuxcall.cpp:tuxcall:42] tuxcall_a(TUXENC) return succeed.
+[10/22 08:13:40.832][as_spos_v3][DBG][28299][enccomm.cpp:CalculateMac:106] tpcall...TUXENC return iRet=1
+[10/22 08:13:40.832][as_spos_v3][DBG][28299][enccomm.cpp:CalculateMac:123] Get RETURN_CODE: 1
+[10/22 08:13:40.832][as_spos_v3][DBG][28299][enccomm.cpp:CalculateMac:135] Get RETURN_DATA MAC:
+[10/22 08:13:40.832][as_spos_v3][DBG][28299][    0] 66 50 DD C1 59 20 E3 03
+[10/22 08:13:40.832][as_spos_v3][DBG][28299][protocol.cpp:CheckPosMac:2826] CheckMac:
+[10/22 08:13:40.832][as_spos_v3][DBG][28299][    0] 66 50 DD C1 59 20 E3 03
+[10/22 08:13:40.832][as_spos_v3][DBG][28299][mpaymacro.h:tickTime:35] Services[TF>>CheckPosMac>>] Invoke END...Charge: 81(ms)
+[10/22 08:13:40.833][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:993] Approaching execute 87 code [43H]...
+[10/22 08:13:40.833][as_spos_v3][DBG][28299][cmd43H.cpp:OnAnalyseCmd_43:8] OnTposReadCard...
+[10/22 08:13:40.833][as_spos_v3][DBG][28299][tuxcall.cpp:tuxcall:34] TuxCall_a(TUXENC) icd: 1...
+[10/22 08:13:40.833][encryptor][DBG][21964][mpaymacro.h:svrCharge:24] Services[TUXENC] Invoke BEGIN...0xbff2abf4
+[10/22 08:13:40.833][encryptor][DBG][21964][myservices.cpp:TUXENC:243] Entry...TUXENC
+[10/22 08:13:40.833][encryptor][DBG][21964][myservices.cpp:TUXENC:246] ***CLI[54407194]:TUXENC MSG(receive), LEN = 4096***
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:TradeHandle:1133] TradeHandle CMD, LEN=1
+[10/22 08:13:40.833][encryptor][DBG][21964][    0] 42
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:OnGetPublicField:1449] OnGetPublicField POS_BANK_FLAG: , LEN=1
+[10/22 08:13:40.833][encryptor][DBG][21964][    0] 01
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:OnGetPublicField:1459] OnGetPublicField, to add PosMerNo...
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:OnGetPublicField:1468] OnGetPublicField POS_MERNO: 849440353116031, LEN=16
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:OnGetPublicField:1480] OnGetPublicField iOffset=21
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:OnGetPublicField:1490] OnGetPublicField POSNO: 80014099, LEN=9
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:TradeHandle:1152] OnGetPublicField,POS_Flag:01
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:TradeHandle:1153] OnGetPublicField,Return Value = 37
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:TradeHandle:1154] OnGetPublicField,Return tmpBuf:
+[10/22 08:13:40.833][encryptor][DBG][21964][    0] 42 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20 20
+[10/22 08:13:40.833][encryptor][DBG][21964][   20] 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:ConnectHSM:878] Before to connect HSM, iHsmSocketHandle= 10, IfConnectHSM=0
+[10/22 08:13:40.833][encryptor][DBG][21964][tradeserver.cpp:ConnectHSM:882] tmCurrent =1413936820,tmHsmSocketLive =1413887939,diff_t(tmCurrent, tmHsmSocketLive) = 48881
+[10/22 08:13:40.854][encryptor][DBG][21964][tradeserver.cpp:ConnectHSM:889] idle timeout, Closed connect to HSM! iHsmSocketHandle= -1
+[10/22 08:13:40.854][encryptor][SYS][21964][dbpool.cpp:GetConnection:147] GetConnection[0] object is timeout, disconnect begin...
+[10/22 08:13:40.900][encryptor][SYS][21964][dbpool.cpp:GetConnection:155] GetConnection object is timeout, reconnected succeed.
+[10/22 08:13:40.900][encryptor][DBG][21964][databaseproc.cpp:SelectHSMIP:279] SelectHSMIP, sSQL: select hsm_ip,hsm_port,hsm_timeout,hsm_bak from enc_user.hsmconfig where hsm_id = (select hsm_id from enc_user.poskey where merno=:merno and posno=:posno)
+[10/22 08:13:40.901][encryptor][DBG][21964][databaseproc.cpp:SelectHSMIP:285] SelectHSMIP, HSM IP from database: 172.20.5.200
+[10/22 08:13:40.901][encryptor][DBG][21964][tradeserver.cpp:DBSelectHSMIP:1109] DBSelectHSMIP: HSM IP:172.20.5.200,Port: 6667
+[10/22 08:13:40.902][encryptor][DBG][21964][tradeserver.cpp:ConnectHSM:907] After Connect Master HSM, iHsmSocketHandle= 10
+[10/22 08:13:40.902][encryptor][DBG][21964][tradeserver.cpp:ConnectHSM:911] Connect Master HSM succeed[172.20.5.200] [10]!
+[10/22 08:13:40.902][encryptor][DBG][21964][tradeserver.cpp:T_OnEncryData:304] T_OnEncryData POS_BANK_FLAG LEN=1
+[10/22 08:13:40.902][encryptor][DBG][21964][    0] 01
+[10/22 08:13:40.902][encryptor][DBG][21964][tradeserver.cpp:T_OnEncryData:322] T_OnEncryData ENCRY_FLAG, LEN=1
+[10/22 08:13:40.902][encryptor][DBG][21964][    0] 01
+[10/22 08:13:40.902][encryptor][DBG][21964][tradeserver.cpp:T_OnEncryData:334] T_OnEncryData MAC_TRACK_DATA LEN=24
+[10/22 08:13:40.902][encryptor][DBG][21964][    0] 6E DE 5D CA C1 03 E1 32 12 8C C9 CD C0 AC 37 F0 95 E7 07 3C
+[10/22 08:13:40.902][encryptor][DBG][21964][   20] 6D A4 81 7E
+[10/22 08:13:40.902][encryptor][DBG][21964][protocol.cpp:OnGetTrack:780] OnGetTrack...Received Data:
+[10/22 08:13:40.902][encryptor][DBG][21964][    0] 42 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20 20
+[10/22 08:13:40.902][encryptor][DBG][21964][   20] 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 01 01 00
+[10/22 08:13:40.902][encryptor][DBG][21964][   40] 18 6E DE 5D CA C1 03 E1 32 12 8C C9 CD C0 AC 37 F0 95 E7 07
+[10/22 08:13:40.902][encryptor][DBG][21964][   60] 3C 6D A4 81 7E
+[10/22 08:13:40.902][encryptor][DBG][21964][protocol.cpp:OnGetTrack:814] OnGetTrack, Data Length : 24
+[10/22 08:13:40.902][encryptor][DBG][21964][getkey.cpp:TPosGetTrack:345] Get Track Data...,POS No is£º
+[10/22 08:13:40.902][encryptor][DBG][21964][    0] 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20
+[10/22 08:13:40.903][encryptor][DBG][21964][databaseproc.cpp:SelectTrackK:950] SelectTrackK, sSQL: select track from enc_user.poskey p where p.posno =:posno and p.merno =:merno
+[10/22 08:13:40.904][encryptor][DBG][21964][sec.cpp:sec_send:122] before sendtohost,count[46]:
+[10/22 08:13:40.904][encryptor][DBG][21964][    0] 59 00 0B 01 A1 7C 91 44 01 E3 76 E7 49 5C 4F 9E 33 4E 16 DF
+[10/22 08:13:40.904][encryptor][DBG][21964][   20] 00 18 6E DE 5D CA C1 03 E1 32 12 8C C9 CD C0 AC 37 F0 95 E7
+[10/22 08:13:40.904][encryptor][DBG][21964][   40] 07 3C 6D A4 81 7E
+[10/22 08:13:40.914][encryptor][DBG][21964][sec.cpp:sec_send:127] after SendToHost, Elapsed: 10(ms)
+[10/22 08:13:40.914][encryptor][DBG][21964][    0] 41 00 18 2B 08 29 13 F2 95 E3 F3 6E 69 D7 13 B7 FA 90 2E EC
+[10/22 08:13:40.914][encryptor][DBG][21964][   20] 8C 9F A7 3D 97 07 B2
+[10/22 08:13:40.914][encryptor][DBG][21964][sec.cpp:sec_send:129] after SendToHost sockfd:10, ret:1, count:27
+[10/22 08:13:40.914][encryptor][DBG][21964][sec.cpp:DecryptTrackData59:955] DecryptTrackData59, Return from HSM:
+[10/22 08:13:40.914][encryptor][DBG][21964][    0] 41 00 18 2B 08 29 13 F2 95 E3 F3 6E 69 D7 13 B7 FA 90 2E EC
+[10/22 08:13:40.914][encryptor][DBG][21964][   20] 8C 9F A7 3D 97 07 B2
+[10/22 08:13:40.914][encryptor][DBG][21964][protocol.cpp:OnGetTrack:855] OnGetTrack, Output Buffer Data:
+[10/22 08:13:40.914][encryptor][DBG][21964][    0] 42 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20
+[10/22 08:13:40.914][encryptor][DBG][21964][   20] 20 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 00 18
+[10/22 08:13:40.914][encryptor][DBG][21964][   40] 2B 08 29 13 F2 95 E3 F3 6E 69 D7 13 B7 FA 90 2E EC 8C 9F A7
+[10/22 08:13:40.914][encryptor][DBG][21964][   60] 3D 97 07 B2
+[10/22 08:13:40.914][encryptor][DBG][21964][myservices.cpp:TUXENC:288] CLI[54407194]:TUXENC MSG(back from protocol), LEN = 64
+[10/22 08:13:40.914][encryptor][DBG][21964][    0] 42 01 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 20 20 20
+[10/22 08:13:40.914][encryptor][DBG][21964][   20] 20 20 38 30 30 31 34 30 39 39 20 20 20 20 20 20 20 20 00 18
+[10/22 08:13:40.914][encryptor][DBG][21964][   40] 2B 08 29 13 F2 95 E3 F3 6E 69 D7 13 B7 FA 90 2E EC 8C 9F A7
+[10/22 08:13:40.914][encryptor][DBG][21964][   60] 3D 97 07 B2
+[10/22 08:13:40.914][encryptor][DBG][21964][tradeserver.cpp:ReturnHandle:1587] ReturnHandle RETURN_CODE:01
+[10/22 08:13:40.915][encryptor][DBG][21964][tradeserver.cpp:ReturnHandle:1671] ReturnHandle RETURN_DATA, LEN=24
+[10/22 08:13:40.915][encryptor][DBG][21964][    0] 2B 08 29 13 F2 95 E3 F3 6E 69 D7 13 B7 FA 90 2E EC 8C 9F A7
+[10/22 08:13:40.915][encryptor][DBG][21964][   20] 3D 97 07 B2
+[10/22 08:13:40.915][encryptor][DBG][21964][myservices.cpp:TUXENC:301] CLI[54407194]:TUXENC Return success! Elapsed: 81(ms)
+[10/22 08:13:40.915][encryptor][DBG][21964][mpaymacro.h:tickTime:35] Services[TUXENC] Invoke END...Charge: 81(ms)
+[10/22 08:13:40.933][as_spos_v3][DBG][28299][tuxcall.cpp:tuxcall:42] tuxcall_a(TUXENC) return succeed.
+[10/22 08:13:40.933][as_spos_v3][DBG][28299][enccomm.cpp:DecryptTrack:224] tpcall...TUXENC return iRet=1
+[10/22 08:13:40.933][as_spos_v3][DBG][28299][cmd43H.cpp:OnAnalyseCmd_43:138] testinfo:MagneticCard:Track2==expdate:[],Track2[2B082913]
+[10/22 08:13:40.933][as_spos_v3][DBG][28299][cmd43H.cpp:OnAnalyseCmd_43:213] TAG_TERREAD show on char is '2'
+[10/22 08:13:40.933][as_spos_v3][DBG][28299][cmd43H.cpp:OnAnalyseCmd_43:215] TAG_ICCONDITION show on char is '0'
+[10/22 08:13:40.933][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:993] Approaching execute 87 code [44H]...
+[10/22 08:13:40.933][as_spos_v3][DBG][28299][cmd44H.cpp:OnAnalyseCmd_44:9] OnTposCompletePBOC...
+[10/22 08:13:40.934][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:993] Approaching execute 87 code [DH]...
+[10/22 08:13:40.934][as_spos_v3][DBG][28299][protocol.cpp:OnSposAnalyze:1116] szFlowNo:103; Buf 01
+[10/22 08:13:40.934][as_spos_v3][DBG][28299][protocol.cpp:SetNextPack:1356] Trace In SetNextPack...
+[10/22 08:13:40.934][as_spos_v3][DBG][28299][protocol.cpp:GetMaxCommandNum:2148] Step in GetMaxCommandNum CommandNum[1]
+[10/22 08:13:40.942][as_spos_v3][DBG][28299][protocol.cpp:SetNextPack:1363] CommMax=2
+[10/22 08:13:40.942][as_spos_v3][DBG][28299][protocol.cpp:GetNextCommandNum:2072] pDataNode->pItem->CommandNum = 1
+[10/22 08:13:40.947][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:1892] The Last Package! CommandNum = 2
+[10/22 08:13:40.947][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:1933] Sql: SELECT P.CommandID,P.TransType,P.Paramvalue1, P.BIT1*128+BIT2A3*32+BIT4*16+BIT5A6A7*2+BIT8 as Paramvalue2,                    P.CommandParam, P.ProcessCode, D.UNCONSUMETYPE, P.ResultCode,P.Refreshcode,P.DynamicMenu,P.DynamicMenuTitle,                    P.PRINTDATA, P.inputdata                     FROM T_MenuInfoD D INNER JOIN T_MenuProcess P ON D.SID=P.SID                     WHERE D.modelid ='CBA753225C6D20E91C67CEB04C27D417' AND D.TransType = '103' AND P.CommandNum = 2 AND P.CanUse <>'0' ORDER BY P.apx
+[10/22 08:13:40.953][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:1945] inputdata 0:"" CommandNum=2, CommandID=26H
+[10/22 08:13:40.953][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.953][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:1945] inputdata 1:"" CommandNum=2, CommandID=28H
+[10/22 08:13:40.953][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:2004] BankProcess :
+[10/22 08:13:40.953][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:1945] inputdata 2:"60||<1F18>||||"   CommandNum=2, CommandID=22H
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:2004] BankProcess : 2403
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][protocol.cpp:GetNext84Package:1945] inputdata 3:"" CommandNum=2, CommandID=40H
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][protocol.cpp:SetNextPack:1371] CommandNum=CommMax CleanNode
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][extern.cpp:Ext_OrdiTransProc:314] pDataNode->pItem->OrgBankSeq :
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][extern.cpp:Ext_OrdiTransProc:315] pDataNode->pItem->TnfData.HeadData.TransID : 2403
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][extern.cpp:Ext_OrdiTransProc:355] TransID:'2403', OrigLPosSeq:''
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][extern.cpp:Ext_OrdiTransProc:360] #CUP# send TLV Data[Len:133]:
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][    0] 0F 51 0F 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 0F 52
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][   20] 04 D6 D0 B9 FA 0F 53 08 38 30 30 31 34 30 39 39 0F 03 01 00
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][   40] 0F 61 04 33 31 30 34 0F 54 06 33 31 36 32 39 38 0F 55 06 30
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][   60] 30 30 30 32 33 3F 12 01 00 57 08 32 42 30 38 32 39 31 33 0F
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][   80] 02 24 32 39 35 45 33 33 36 45 36 39 44 37 31 33 42 37 41 39
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][  100] 30 32 45 45 43 38 43 39 41 37 33 44 39 37 30 37 42 32 0F 15
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][  120] 04 00 00 00 00 1F 63 01 32 1F 64 01 30
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:274] Account:'2B082913'
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:275] arrRMerchNo:''
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:276] arrRMerName:''
+[10/22 08:13:40.954][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:277] arrRTermNo:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:278] arrSvrName:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:279] arrTermModel:'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:280] arrTPDU:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:281] LBatchNo:'000023'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:282] LMerchNo:'849440353116031'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:283] LPosSeq:'316298'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:284] LTermNo:'80014099'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:285] nLFlowID:'000000'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:286] nOrigLFlowID:'000000'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:287] nrid:'0'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:288] OrigAuthCode:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:289] OrigLBatchNo:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:290] OrigLPosSeq:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:293] Random:84 EF 11 8C
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:294] RAppID:'0'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:295] ReqAmount:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:296] RspCode:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:297] RTradeType:'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:298] SettDate:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:300] SvrPointCode:'02 20'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:301] SysRefNo:''
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:PRINT_USERDATABASE:302] TransID:'2403'
+[10/22 08:13:40.955][as_spos_v3][DBG][28299][extern.cpp:Ext_SendBsInfoToAMQ:1433] begin pack bsinfo!
+[10/22 08:13:40.956][as_spos_v3][DBG][28299][extern.cpp:Ext_SendBsInfoToAMQ:1443] SendMessage.. destURI[locationQueue].SRVURI[failover:(tcp://172.20.5.200:61616)?wireFormat.maxInactivityDuration=0].sendinfo[{"body":{"base":{"bsInfo":[{"age":"","bs_no":"","cell_id":"","id":"","lac":"","mcc":"","mnc":"","plc":"","rssi":"","sp_no":"","timingAdvance":"","trade_info_id":""}],"cmode":3,"id":"","ip":"172.20.0.136","latitude":"","longitude":"","lt_batch_no":"000023","lt_vouch_no":"316298","merchant_no":"849440353116031","phone":"","terminal_no":"80014099","trade_date":"","uid":""},"condition":"","orderType":""},"head":{"destServID":"","extendParam":"","messageID":"","requestID":"","srcSapID":"","srcServID":""}}
+]
+[10/22 08:13:40.957][as_spos_v3][DBG][28299][extern.cpp:Ext_SendBsInfoToAMQ:1453] SendMessage success!
+[10/22 08:13:40.957][as_spos_v3][DBG][28299][extern.cpp:Ext_ConnectTux:713] send AS_SWITCH_V3 Message *****Len:6780
+[10/22 08:13:40.957][as_spos_v3][DBG][28299][tuxcall.cpp:tuxcall:34] TuxCall_a(AS_SWITCH_V3) icd: 2...
+[10/22 08:13:40.957][as_switch_v3][DBG][22073][mpaymacro.h:svrCharge:24] Services[AS_SWITCH_V3] Invoke BEGIN...0xbfae6b40
+[10/22 08:13:40.957][as_switch_v3][DBG][22073][myservices.cpp:AS_SWITCH_V3:207] CLI[54407194]:AS_TRADE ---RECV--, LEN = 6780
+[10/22 08:13:40.957][as_switch_v3][DBG][22073][myservices.cpp:AS_SWITCH_V3:214] Term:80014099
+[10/22 08:13:40.957][as_switch_v3][DBG][22073][myservices.cpp:AS_SWITCH_V3:215] MerNo:849440353116031
+[10/22 08:13:40.957][as_switch_v3][DBG][22073][myservices.cpp:AS_SWITCH_V3:216] BankProcess:2403
+[10/22 08:13:40.958][as_switch_v3][DBG][22073][myservices.cpp:AS_SWITCH_V3:219] MAC Process-----------------
+[10/22 08:13:40.958][as_switch_v3][DBG][22073][myservices.cpp:GetMac:23] UNIT IS NULL
+[10/22 08:13:40.958][as_switch_v3][DBG][22073][    0] 00 00 00 00 00 00 00 00
+[10/22 08:13:40.958][as_switch_v3][DBG][22073][myservices.cpp:AS_SWITCH_V3:233] pLTRData->HeadData.LTermNo=[80014099], pLTRData->HeadData.OrigLPosSeq[], DesCurPosMac[YkjX6ePi4yLhwmQhHQgUtY6Y3YY=]
+[10/22 08:13:40.959][as_switch_v3][SYS][22073][dbpool.cpp:GetConnection:147] GetConnection[0] object is timeout, disconnect begin...
+[10/22 08:13:41.008][as_switch_v3][SYS][22073][dbpool.cpp:GetConnection:155] GetConnection object is timeout, reconnected succeed.
+[10/22 08:13:41.009][as_switch_v3][DBG][22073][myservices.cpp:SetSqlQueue:93] sSql:select t.appid, t.rtype, t.callservicename, t.servicecode, t.type_desc                     from spos_user3.t_tradeelement t where t.bankprocess = '2403'
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][myservices.cpp:SetSqlQueue:103] SERVICE NAME IS: AS_TRPT
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][myservices.cpp:SetSqlQueue:108] TTYPE is :5
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][myservices.cpp:SetSqlQueue:110] TTYPE is :5
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][myservices.cpp:SetSqlQueue:114] the value of APPID: 1002
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][myservices.cpp:SetSqlQueue:120] cSvrCode:00
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][    0] 00
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][myservices.cpp:SetSqlQueue:144] The value of type_desc: Óà¶î²éÑ¯
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][myservices.cpp:AS_SWITCH_V3:247] tpforward => AS_TRPT
+[10/22 08:13:41.021][as_switch_v3][DBG][22073][mpaymacro.h:tickTime:35] Services[AS_SWITCH_V3] Invoke END...Charge: 63(ms)
+[10/22 08:13:41.021][as_trpt][DBG][22078][mpaymacro.h:svrCharge:24] Services[AS_TRPT] Invoke BEGIN...0xbfb0b994
+[10/22 08:13:41.021][as_trpt][DBG][22078][myservices.cpp:AS_TRPT:25] in serviec entrance
+[10/22 08:13:41.022][as_trpt][DBG][22078][myservices.cpp:AS_TRPT:26] the length of rqst: 6780
+[10/22 08:13:41.022][as_trpt][DBG][22078][myservices.cpp:AS_TRPT:32] the length of rqst: 6780
+[10/22 08:13:41.022][as_trpt][DBG][22078][myservices.cpp:AS_TRPT:33] SvrName is:NAC_POSP
+[10/22 08:13:41.022][as_trpt][DBG][22078][mpaymacro.h:tickTime:35] Services[AS_TRPT] Invoke END...Charge: 0(ms)
+[10/22 08:13:41.022][nac_posp][DBG][22085][mpaymacro.h:svrCharge:24] Services[NAC_POSP] Invoke BEGIN...0xbfd091d8
+[10/22 08:13:41.022][nac_posp][DBG][22085][myservices.cpp:NAC_POSP:37] XSvcDataProc starting...
+[10/22 08:13:41.022][nac_posp][DBG][22085][myservices.cpp:NAC_POSP:45] CLI[1413509524]:TradeHandle ---RECV--, LEN = [6780]
+[10/22 08:13:41.022][nac_posp][DBG][22085][myservices.cpp:NAC_POSP:62] (Tuxedo)NAC_POSP Input data [180]:
+[10/22 08:13:41.022][nac_posp][DBG][22085][    0] 0F 51 0F 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 0F 52
+[10/22 08:13:41.022][nac_posp][DBG][22085][   20] 04 D6 D0 B9 FA 0F 53 08 38 30 30 31 34 30 39 39 0F 03 01 00
+[10/22 08:13:41.022][nac_posp][DBG][22085][   40] 0F 61 04 33 31 30 34 0F 54 06 33 31 36 32 39 38 0F 55 06 30
+[10/22 08:13:41.022][nac_posp][DBG][22085][   60] 30 30 30 32 33 3F 12 01 00 57 08 32 42 30 38 32 39 31 33 0F
+[10/22 08:13:41.022][nac_posp][DBG][22085][   80] 02 24 32 39 35 45 33 33 36 45 36 39 44 37 31 33 42 37 41 39
+[10/22 08:13:41.022][nac_posp][DBG][22085][  100] 30 32 45 45 43 38 43 39 41 37 33 44 39 37 30 37 42 32 0F 15
+[10/22 08:13:41.022][nac_posp][DBG][22085][  120] 04 00 00 00 00 1F 63 01 32 1F 64 01 30 0F 01 01 00 1F 13 28
+[10/22 08:13:41.022][nac_posp][DBG][22085][  140] D3 E0 B6 EE B2 E9 D1 AF 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:41.022][nac_posp][DBG][22085][  160] 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:41.022][nac_posp][DBG][22085][myservices.cpp:NAC_POSP:69] LMerNo is :849440353116031
+[10/22 08:13:41.022][nac_posp][DBG][22085][posp.cpp:leftPosTrade:347] posp parse [type:35] [5] .
+[10/22 08:13:41.022][nac_posp][DBG][22085][posp.cpp:GetReqChkInfo:84] request package data, [appid: 1002][term: 80014099][merch: 849440353116031][vouch: 316298][batch: 000023][amount: ]
+[10/22 08:13:41.022][nac_posp][DBG][22085][posp.cpp:GetReqChkInfo:88] [arrSysNo:] [card:2B082913] [OrigNo:] [OrigAuthCode:] [OrigDate:]
+[10/22 08:13:41.022][nac_posp][DBG][22085][posp.cpp:leftPosTrade:380] ******** The operator number is :[]*********
+[10/22 08:13:41.022][nac_posp][DBG][22085][posp.cpp:leftPosTrade:384] ******** The terminal version is :[3104]*********
+[10/22 08:13:41.023][nac_posp][SYS][22085][dbpool.cpp:GetConnection:147] GetConnection[0] object is timeout, disconnect begin...
+[10/22 08:13:41.075][nac_posp][SYS][22085][dbpool.cpp:GetConnection:155] GetConnection object is timeout, reconnected succeed.
+[10/22 08:13:41.075][nac_posp][DBG][22085][databaseprocess.cpp:L_UptOrigin_InsertFlow:420] insert trade flow data, [merch:849440353116031] [term:80014099] [reqvouch:316298] [reqbatch:000023] [amount:] [tradetype:0x35] [cardno:2B082913] [sysno:] [status:0x30] [appid:1002] [operatno:]
+[10/22 08:13:41.075][nac_posp][DBG][22085][databaseprocess.cpp:L_UptOrigin_InsertFlow:423] insert trade flow orig data, [origno: ], [authcode: ] [OrigDate:] .
+[10/22 08:13:41.158][nac_posp][DBG][22085][databaseprocess.cpp:L_UptOrigin_InsertFlow:492] L_UptOrigin_InsertFlow ErrCode:[0]
+[10/22 08:13:41.158][nac_posp][DBG][22085][databaseprocess.cpp:L_UptOrigin_InsertFlow:517] [TradeType:0x35] [arrAmount:] [OrigAmount:0]
+[10/22 08:13:41.158][nac_posp][DBG][22085][posp.cpp:leftPosTrade:455] nLFlowID=[7960101]
+[10/22 08:13:41.158][nac_posp][DBG][22085][posp.cpp:leftPosTrade:459] nOrigLFlowID=[0]
+[10/22 08:13:41.158][nac_posp][DBG][22085][posp.cpp:leftPosTrade:469] ReqAmount[]
+[10/22 08:13:41.158][nac_posp][DBG][22085][tuxedoextservices.cpp:InvokeRiskService_ice:238] start InvokeRiskService_ice
+[10/22 08:13:41.158][nac_posp][DBG][22085][tuxedoextservices.cpp:InvokeRiskService_ice:264] SendSyncMsgT before, [172.20.5.200][30000][10001]
+[10/22 08:13:41.161][nac_posp][DBG][22085][tuxedoextservices.cpp:InvokeRiskService_ice:300] ice SendSyncMsgT faild, nRet[2]
+[10/22 08:13:41.161][nac_posp][DBG][22085][tuxedoextservices.cpp:InvokeRiskService_ice:305] InvokeRiskService_ice end, nRet[-1]
+[10/22 08:13:41.161][nac_posp][DBG][22085][tuxcall.cpp:tuxcall:34] TuxCall_a(NAC_RISK) icd: 143...
+[10/22 08:13:41.161][nac_risk][DBG][22096][mpaymacro.h:svrCharge:24] Services[NAC_RISK] Invoke BEGIN...0xbfc507b4
+[10/22 08:13:41.161][nac_risk][DBG][22096][services.cpp:NAC_RISK:149] (Tuxedo)NAC_RISK Input data [180]:
+[10/22 08:13:41.161][nac_risk][DBG][22096][    0] 0F 51 0F 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 0F 52
+[10/22 08:13:41.161][nac_risk][DBG][22096][   20] 04 D6 D0 B9 FA 0F 53 08 38 30 30 31 34 30 39 39 0F 03 01 00
+[10/22 08:13:41.161][nac_risk][DBG][22096][   40] 0F 61 04 33 31 30 34 0F 54 06 33 31 36 32 39 38 0F 55 06 30
+[10/22 08:13:41.161][nac_risk][DBG][22096][   60] 30 30 30 32 33 3F 12 01 00 57 08 32 42 30 38 32 39 31 33 0F
+[10/22 08:13:41.161][nac_risk][DBG][22096][   80] 02 24 32 39 35 45 33 33 36 45 36 39 44 37 31 33 42 37 41 39
+[10/22 08:13:41.161][nac_risk][DBG][22096][  100] 30 32 45 45 43 38 43 39 41 37 33 44 39 37 30 37 42 32 0F 15
+[10/22 08:13:41.161][nac_risk][DBG][22096][  120] 04 00 00 00 00 1F 63 01 32 1F 64 01 30 0F 01 01 00 1F 13 28
+[10/22 08:13:41.161][nac_risk][DBG][22096][  140] D3 E0 B6 EE B2 E9 D1 AF 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:41.161][nac_risk][DBG][22096][  160] 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:41.161][nac_risk][DBG][22096][services.cpp:NAC_RISK:194] fallback_value[0] = 0
+[10/22 08:13:41.161][nac_risk][DBG][22096][protocol.cpp:DispatchMsg:36] Begin DispatchMsg!
+[10/22 08:13:41.161][nac_risk][DBG][22096][protocol.cpp:OnExecProc:80] Begin OnExecProc!
+[10/22 08:13:41.162][nac_risk][DBG][22096][protocol.cpp:WhiteCardCheck:547] Account[2B082913], Amount[]
+[10/22 08:13:41.193][nac_risk][DBG][22096][protocol.cpp:OnExecProc:104] areaCode:440300
+[10/22 08:13:41.193][nac_risk][DBG][22096][protocol.cpp:OnExecProc:108] redisConnect [172.20.5.200] [6379]
+[10/22 08:13:41.193][nac_risk][DBG][22096][protocol.cpp:GetRiskCardDetect:401] HGET SOA:NAC:RISK:RISK_CARD:2B082913 RISK_CARD
+[10/22 08:13:41.194][nac_risk][DBG][22096][protocol.cpp:OnExecProc:120] set redis risk card record
+[10/22 08:13:41.194][nac_risk][DBG][22096][protocol.cpp:SetRiskCardRedis:476] HSET SOA:NAC:RISK:RISK_CARD:2B082913 RISK_CARD
+[10/22 08:13:41.194][nac_risk][DBG][22096][protocol.cpp:SetRiskCardRedis:483] reply->type[3] reply->integer[1]
+[10/22 08:13:41.194][nac_risk][DBG][22096][protocol.cpp:SetRiskCardRedis:501] EXPIRE SOA:NAC:RISK:RISK_CARD:2B082913 3600
+[10/22 08:13:41.194][nac_risk][DBG][22096][mpaymacro.h:svrCharge:24] Services[RISK_PROCEDURE] Invoke BEGIN...0xbfc4eeb0
+[10/22 08:13:41.256][nac_risk][DBG][22096][protocol.cpp:OnExecProc:180] MerNo is 849440353116031
+[10/22 08:13:41.257][nac_risk][DBG][22096][protocol.cpp:OnExecProc:183] TerNo is 80014099
+[10/22 08:13:41.257][nac_risk][DBG][22096][protocol.cpp:OnExecProc:188] AppId is 1002
+[10/22 08:13:41.257][nac_risk][DBG][22096][protocol.cpp:OnExecProc:191] CardNo is 2B082913
+[10/22 08:13:41.257][nac_risk][DBG][22096][protocol.cpp:OnExecProc:194] Amount is 0
+[10/22 08:13:41.257][nac_risk][DBG][22096][protocol.cpp:OnExecProc:197] TradeType is 5
+[10/22 08:13:41.257][nac_risk][DBG][22096][protocol.cpp:OnExecProc:201] OrigAuthCode is
+[10/22 08:13:41.257][nac_risk][DBG][22096][protocol.cpp:OnExecProc:203] Do StoredProc
+[10/22 08:13:41.424][nac_risk][DBG][22096][protocol.cpp:OnExecProc:207] Return StoredProc
+[10/22 08:13:41.424][nac_risk][SYS][22096][protocol.cpp:OnExecProc:210] Check Result is 0
+[10/22 08:13:41.424][nac_risk][SYS][22096][protocol.cpp:OnExecProc:218] Transaction check is successful
+[10/22 08:13:41.424][nac_risk][DBG][22096][mpaymacro.h:tickTime:35] Services[RISK_PROCEDURE] Invoke END...Charge: 230(ms)
+[10/22 08:13:41.425][nac_risk][DBG][22096][protocol.cpp:OnExecProc:386] End OnExecProc!
+[10/22 08:13:41.425][nac_risk][DBG][22096][protocol.cpp:DispatchMsg:49] RISK Return RspCode[00]
+[10/22 08:13:41.425][nac_risk][DBG][22096][protocol.cpp:DispatchMsg:64] End DispatchMsg!
+[10/22 08:13:41.425][nac_risk][DBG][22096][services.cpp:NAC_RISK:248] Risk return is 1
+[10/22 08:13:41.425][nac_risk][DBG][22096][services.cpp:NAC_RISK:249] Risk rule is []
+[10/22 08:13:41.425][nac_risk][DBG][22096][services.cpp:NAC_RISK:304] (Tuxedo)NAC_RISK Return data [189]:
+[10/22 08:13:41.425][nac_risk][DBG][22096][    0] 0F 51 0F 38 34 39 34 34 30 33 35 33 31 31 36 30 33 31 0F 52
+[10/22 08:13:41.425][nac_risk][DBG][22096][   20] 04 D6 D0 B9 FA 0F 53 08 38 30 30 31 34 30 39 39 0F 03 01 00
+[10/22 08:13:41.425][nac_risk][DBG][22096][   40] 0F 61 04 33 31 30 34 0F 54 06 33 31 36 32 39 38 0F 55 06 30
+[10/22 08:13:41.425][nac_risk][DBG][22096][   60] 30 30 30 32 33 3F 12 01 00 57 08 32 42 30 38 32 39 31 33 0F
+[10/22 08:13:41.425][nac_risk][DBG][22096][   80] 02 24 32 39 35 45 33 33 36 45 36 39 44 37 31 33 42 37 41 39
+[10/22 08:13:41.425][nac_risk][DBG][22096][  100] 30 32 45 45 43 38 43 39 41 37 33 44 39 37 30 37 42 32 0F 15
+[10/22 08:13:41.425][nac_risk][DBG][22096][  120] 04 00 00 00 00 1F 63 01 32 1F 64 01 30 0F 01 01 00 1F 13 28
+[10/22 08:13:41.425][nac_risk][DBG][22096][  140] D3 E0 B6 EE B2 E9 D1 AF 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:41.425][nac_risk][DBG][22096][  160] 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[10/22 08:13:41.425][nac_risk][DBG][22096][  180] 1F 60 01 31 3F 01 02 01 01
+[10/22 08:13:41.425][nac_risk][DBG][22096][mpaymacro.h:tickTime:35] Services[NAC_RISK] Invoke END...Charge: 263(ms)
+[10/22 08:13:41.442][nac_posp][DBG][22085][tuxcall.cpp:tuxcall:42] tuxcall_a(NAC_RISK) return succeed.
+[10/22 08:13:41.442][nac_posp][DBG][22085][tuxedoextservices.cpp:InvokeRiskService:335] tpcall...NAC_RISK return iRet=1
+[10/22 08:13:41.442][nac_posp][DBG][22085][tuxedoextservices.cpp:InvokeRiskService:360] The result of RiskServer:[00]
+[10/22 08:13:41.442][nac_posp][DBG][22085][tuxcall.cpp:tuxcall:34] TuxCall_a(NAC_ROUTE) icd: 144...
+[10/22 08:13:41.442][nac_route][DBG][7951][mpaymacro.h:svrCharge:24] Services[NAC_ROUTE] Invoke BEGIN...0xbfd834f8
+[10/22 08:13:41.442][nac_route][DBG][7951][route_servers.cpp:NAC_ROUTE:93] NAC_ROUTE service receive request data:LMerchNo[849440353116031],LTermNo[80014099],ChannelId[0]
+[10/22 08:13:41.442][nac_route][DBG][7951][channel_dynamic_call.cpp:Procedure_Route:227] Begin to execute route...
+[10/22 08:13:41.443][nac_route][SYS][7951][dbpool.cpp:GetConnection:147] GetConnection[0] object is timeout, disconnect begin...
+[10/22 08:13:41.500][nac_route][SYS][7951][dbpool.cpp:GetConnection:155] GetConnection object is timeout, reconnected succeed.
+[10/22 08:13:41.508][nac_route][DBG][7951][channel_dynamic_call.cpp:Procedure_Route:253] inLAutoID:7960101,inLMchNo:849440353116031,inLTrmNo:80014099,inCardNo:2B082913,inTradeAmount:
+[10/22 08:13:41.508][nac_route][DBG][7951][channel_dynamic_call.cpp:Procedure_Route:263] trade type:5-Óà¶î²éÑ¯ '5'
+[10/22 08:13:41.701][nac_zx_sz][ERR][22163][transthread.cpp:CUPTranThread:131] TradeThread[22163] connect to[172.20.5.200:9005]failure, try later...
+[10/22 08:13:41.703][nac_abc_sz][ERR][22159][transthread.cpp:CUPTranThread:133] nac_abc_sz TradeThread[22159] connect to[172.20.5.200:3004]failure, try later...
+[10/22 08:13:41.816][nac_route][DBG][7951][channel_dynamic_call.cpp:Procedure_Route:273] the outCode is 0
+[10/22 08:13:41.817][nac_route][DBG][7951][channel_dynamic_call.cpp:Procedure_Route:308] HeadData->arrRMerName[¹ãÒøÁª²âÊÔÉÌ»§]
+[10/22 08:13:41.817][nac_route][DBG][7951][channel_dynamic_call.cpp:Procedure_Route:313] route to right info:mchant[849440173920001]                      terminal[47231369]channelid[9],channelServerName[NAC_CUP_POSP_SH]
+[10/22 08:13:41.817][nac_route][DBG][7951][channel_dynamic_call.cpp:Procedure_Route:362] end to execute route!
+[10/22 08:13:41.817][nac_route][DBG][7951][route_servers.cpp:NAC_ROUTE:215] route call trade Óà¶î²éÑ¯ '5':[849440173920001-47231369-¹ãÒøÁª²âÊÔÉÌ»§]
+[10/22 08:13:41.817][nac_route][DBG][7951][channel_dynamic_call.cpp:GatewayTcptoChannel:483] Build socket(172.20.5.200:60000) connection success !
+[10/22 08:13:43.063][transponder][DBG][21970][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbfbf7af0
+[10/22 08:13:43.063][transponder][SYS][21970][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 4
+[10/22 08:13:43.063][transponder][DBG][21970][    0] 00 00 00 00
+[10/22 08:13:43.063][transponder][DBG][21970][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:44.079][transponder][DBG][21968][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbf8d75d0
+[10/22 08:13:44.080][transponder][SYS][21968][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 4
+[10/22 08:13:44.080][transponder][DBG][21968][    0] 00 00 00 00
+[10/22 08:13:44.080][transponder][DBG][21968][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)
+[10/22 08:13:45.060][transponder][DBG][21969][mpaymacro.h:svrCharge:24] Services[TRANSPONDER] Invoke BEGIN...0xbfb2b600
+[10/22 08:13:45.060][transponder][SYS][21969][myservices.cpp:TRANSPONDER:98] ====CLI[54407194]:TRANSPONDER ---RECV--====, LEN = 4
+[10/22 08:13:45.060][transponder][DBG][21969][    0] 00 00 00 00
+[10/22 08:13:45.060][transponder][DBG][21969][mpaymacro.h:tickTime:35] Services[TRANSPONDER] Invoke END...Charge: 0(ms)

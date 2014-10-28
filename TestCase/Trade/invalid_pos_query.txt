@@ -12,31 +12,36 @@ query should fail
 |  | response code should not be  | ${RESPOND SUCCESS}
 |  | ${vouchno}=      | get field       | voucherNo
 |  | ${batchno}=      | get field       | batchNo
-|  | check no tradelist   |       |
-|  | [Arguments]   |  ${lt_termno}  | ${lt_merchno} | ${vouchno} | ${batchno}
+|  | check no tradelist   | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
 
 
 *** Test Cases ***
 query without check in
-|  | checkout pos   |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}      
+|  | checkout pos   |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}    
+|  | set field          | cardno    | ${VALID CARD NO}
+|  | set field          | voucherNo | 000001
+|  | set field          | batchNo   | 000001  
 |  | send pos message   | ${TEMPLATE_POSINQUIRY}  | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID} 
 |  | field should be    | terminalId      |  ${VALID TERMINALID}
 |  | field should be    | merchantId      |  ${VALID MERCHANTID}
 |  | response code should be  | ${RESPOND NOT CHECKIN}
       
 query with invalid terminalId
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSINQUIRY}  | terminalId=${INVALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
 |  | field should be    | terminalId       | ${INVALID TERMINALID}
 |  | field should be    | merchantId       | ${VALID MERCHANTID}
 |  | response code should be  | ${RESPOND INVALID ID}
       
 query with invalid merchantId
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSINQUIRY}  | terminalId=${VALID TERMINALID}  |  merchantId=${INVALID MERCHANTID}
 |  | field should be    | terminalId       | ${VALID TERMINALID}
 |  | field should be    | merchantId       | ${INVALID MERCHANTID}
 |  | response code should be  | ${RESPOND INVALID ID}
       
 query on inactive pos
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSINQUIRY}  | terminalId=${INACTIVE TERMINALID}   | merchantId=${INACTIVE MERCHANTID}
 |  | field should be    | terminalId      |  ${INACTIVE TERMINALID}
 |  | field should be    | merchantId      |  ${INACTIVE MERCHANTID}

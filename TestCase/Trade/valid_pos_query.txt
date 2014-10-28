@@ -6,18 +6,15 @@
 | Test Teardown        |  disconnect and checkout pos
 
 *** Variables ***
-
+| ${Terminal Right Status Not Checkin}  | S
 
 
 *** Keywords ***
-pos query
-|  | [Arguments]   |   @{paralist}
-|  | send pos message   | ${TEMPLATE_POSINQUIRY}  | @{paralist}
-|  | response code should be  | ${RESPOND SUCCESS}
 
 
 *** Test Cases ***
 valid pos query
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSINQUIRY}   | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
 |  | field should be    | terminalId               |  ${VALID TERMINALID}
 |  | field should be    | merchantId               |  ${VALID MERCHANTID}
@@ -25,6 +22,10 @@ valid pos query
 |  | ${vouchno}=      | get field       | voucherNo
 |  | ${batchno}=      | get field       | batchNo
 |  | check query updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
+      
+query before right checkin
+|  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Right Status Not Checkin}
+|  | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
       
 muiltiple query
 |  | pos query    | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 

@@ -1,21 +1,20 @@
 #-*- coding: utf-8 -*-
-import MsgTemplate
 from PosMsg import *
 from pos3client import *
 import random
 from robot.api import logger
 import re
-import codeop
 
 
-class PosLibrary():
+class PosLibrary(object):
    
    def __init__(self):
       self.client = Pos3Client()
       self.currentmsg = ''
       self.voucherNo = ''
       self.batchNo = ''
-      self.protocol = None
+      self.protocol = None            
+      self.fields = {}
       
    def connect_test_server(self, host, port, protocol=TCP_PROTOCOL):
       self.host = host
@@ -30,6 +29,7 @@ class PosLibrary():
          if arg.count('=') == 1:
             k, v = arg.split('=')
             kws[k] = v
+      kws.update(self.fields)
       for k, v in kws.items():
             msg.setField(k, v)
             
@@ -38,15 +38,13 @@ class PosLibrary():
       
       if self.batchNo and (not kws or 'batchNo' not in kws.keys()):
          msg.setField('batchNo', self.batchNo)
-      
+       
       if not kws or 'transactionRandId' not in kws.keys():
          msg.setField('transactionRandId', self.generate_transactionRandId())
-         
-      #Bypass mac
-      msg.setField('MAC', 'ffffffffffffffff')
-         
+                   
       packet = msg.constructMsg()
       ret = self._send_receive_msg(packet)
+      self.fields={}
       return ret
    
    def generate_transactionRandId(self):
@@ -70,6 +68,16 @@ class PosLibrary():
          randid += random.choice(choices)
       
       return randid
+   
+   def set_field(self, fieldId, value):
+      """
+      operationData.cardReadOrderResult.validData=6226160600005000358dc1f7680229b594235c5e3b66cad0
+      """
+      if fieldId.lower() == 'cardno':
+         #358dc1f7680229b594235c5e3b66cad0
+         self.fields['operationData.cardReadOrderResult.validData'] = value + '358dc1f7680229b594235c5e3b66cad0'
+      else:
+         self.fields[fieldId] = value
    
    def get_field(self, fieldId):
       msg = self._get_Pos3Msg()
@@ -125,6 +133,7 @@ class PosLibrary():
       self.client.connect_to_server(self.host, self.port, self.protocol)
       self.currentmsg = self.client.send_receive(msg)
       self.client.close_connection()
+      return self.currentmsg
    
    def close_connection(self):
       self.client.close_connection()
@@ -135,7 +144,10 @@ class PosLibrary():
       elif not self.voucherNo:
          self.voucherNo = '1'
       else:
-         self.voucherNo = toHexstr(int(self.voucherNo, 16)+1)
+         try:
+            self.voucherNo = str(int(self.voucherNo)+1)
+         except:
+            self.voucherNo = str(int(self.voucherNo, 16)+1)
       return self.voucherNo
    
    def update_voucher_number(self):
@@ -150,16 +162,16 @@ class PosLibrary():
          self.currentmsg = Pos3Msg(self.currentmsg)
       return self.currentmsg
    
-   def convert_int_to_bcd(self, base):
+   def convert_int_to_bcd(self, base, force=True):
       re_bcd = re.compile('(3\d)+$')
-      if re_bcd.match(str(base)):
+      if not force and re_bcd.match(str(base)):
          return str(base)
       else:
          return ''.join(['3'+i for i in list(str(base))])
 
-   def convert_bcd_to_int(self, base):
+   def convert_bcd_to_int(self, base, force=True):
       re_bcd = re.compile('(3\d)+$')
-      if re_bcd.match(str(base)):
+      if force or re_bcd.match(str(base)):
          return base[1::2]
       else:
          return str(base)

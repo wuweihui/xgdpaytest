@@ -27,16 +27,21 @@ Documentation  Keywords for trade
 | ${INACTIVE MERCHANTID}   |  313131313131313132323232323232
 
 | ${VALID CARD TRACK}      |  99f9968e277596166fbe792b281151955484ba0c3b957ab6
+| ${VALID CARD NO}         |  6226160600005000
 | ${VALID CARD PASSWD}     |  ffffffffffffffff
 
 | ${TRADE MINIMUM AMOUNT}  |  000000000001
-| ${TRADE MAXIMUM AMOUNT}  |  111111111111
+| ${TRADE MAXIMUM AMOUNT}  |  999999999999
 
 | ${RESPOND SUCCESS}           |  3030
 | ${RESPOND INVALID ID}        |  5331
 | ${RESPOND NOT CHECKIN}       |  5333
 | ${RESPOND NO TRADE RECORD}   |  4d35
 | ${RESPOND NOT SETTLE}        |  5335
+| ${TRADE NOT EXIST}           |  3235
+| ${NOT ENOUGH MONEY}          |  3131
+| ${RIGHT STATUS BUSY}         |  5231
+| ${RIGHT STATUS UNDER SETTLE} |  3930
 
 | ${INVALID VOUCHER NUMBER}    |  999999
 | ${INVALID TRADE MAC}         |  EEEEEEEEFFFFFFFF
@@ -51,7 +56,7 @@ checkin pos
 |  | ${voucherno}=        | get field  | voucherNo
 |  | send pos message     |  ${TEMPLATE_POSCHECKIN_2}  | @{paralist} | terminalId=${terminalId} | merchantId=${merchantId}  | transactionRandId=${Rand ID}
 |  | ${nextvoucherno}=    | get field  | voucherNo
-|  | should be true       | int('${nextvoucherno}',16) == int('${voucherno}',16)+1
+|  | should be true       | int('${nextvoucherno}') == int('${voucherno}')+1
 |  | check in should success
 
 response code should be 
@@ -70,7 +75,8 @@ checkout pos
 |  | send pos message   |  ${TEMPLATE_POSCHECKOUT} | @{paralist} | terminalId=${terminalId} | merchantId=${merchantId}
 
 pos query
-|  | [Arguments]  | ${terminalId} | ${merchantId} | @{paralist}
+|  | [Arguments]  | ${terminalId} | ${merchantId} | ${cardno}=${VALID CARD NO} | @{paralist}
+|  | set field          | cardno    | ${cardno}
 |  | send pos message   | ${TEMPLATE_POSINQUIRY}   | @{paralist}   | terminalId=${terminalId}   | merchantId=${merchantId} 
 |  | field should be    | terminalId               |  ${VALID TERMINALID}
 |  | field should be    | merchantId               |  ${VALID MERCHANTID}
@@ -83,20 +89,21 @@ pos query should success
 |  | response code should be  | ${RESPOND SUCCESS}
 |  | ${vouchno}=      | get field       | voucherNo
 |  | ${batchno}=      | get field       | batchNo
-|  | check query updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
+|  | check query updated in db   | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
 
 pos trade
-|  | [Arguments]  | ${terminalId} | ${merchantId} | ${amount}  | @{paralist} 
+|  | [Arguments]  | ${terminalId} | ${merchantId} | ${cardno}=${VALID CARD NO} | ${amount}=000000003333 | @{paralist} 
+|  | set field          | cardno    | ${cardno}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | @{paralist}   | terminalId=${terminalId} | merchantId=${merchantId} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}
-|  | pos trade should succes  | ${amount}
+|  | pos trade should success  | ${amount}
 
 trade amount should be
 |  | [Arguments]   |  ${amount}
-|  | ${tradelist}=   | get field    | operationData.ICOnlineDataHandle.recordList
-|  | ${tradeamout}=  | Evaluate     | ${tradelist}[0].tradeAmount
-|  | should be equal   |  ${tradeamout}    | ${amount}
+|  | ${tradelist}=   | get field    | operationData.saveTradeList.recordList
+|  | ${tradeamout}=  | Set Variable | ${tradelist[0].tradeAmount}
+|  | should be true  | int('${tradeamout}') == int('${amount}')
 
 pos trade should success
 |  | [Arguments]   |  ${amount}=${EMPTY}
@@ -106,18 +113,30 @@ pos trade should success
 |  | ${batchno}=      | get field       | batchNo
 |  | check trade updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
 
-pos trade should fail
+pos trade should fail with no record
 |  | ${vouchno}=      | get field       | voucherNo
 |  | ${batchno}=      | get field       | batchNo
 |  | check no tradelist  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
+
+check trade status from db
+|  | [Arguments]      |  ${lt_termno}=${EMPTY} | ${lt_merchno}=${EMPTY} | ${vouchno}=${EMPTY} | ${batchno}=${EMPTY} | ${ltl_type}=${EMPTY} | ${ltl_status}=${EMPTY} | ${ltl_demo}=${EMPTY} | ${rtl_type}=${EMPTY} | ${rtl_status}=${EMPTY} | ${rtl_demo}=${EMPTY} | ${amount}=${EMPTY}
+|  | ${lt_termno}=    |  Run Keyword If   | '${lt_termno}'=='${EMPTY}'  | get field | terminalId
+|  | ...              |  ELSE             | Set Variable                | ${lt_termno}
+|  | ${lt_merchno}=   |  Run Keyword If   | '${lt_merchno}'=='${EMPTY}' | get field | merchantId
+|  | ...              |  ELSE             | Set Variable                | ${lt_merchno}
+|  | ${vouchno}=      |  Run Keyword If   | '${vouchno}'=='${EMPTY}'    | get field | voucherNo
+|  | ...              |  ELSE             | Set Variable                | ${vouchno}
+|  | ${batchno}=      |  Run Keyword If   | '${batchno}'=='${EMPTY}'    | get field | batchNo
+|  | ...              |  ELSE             | Set Variable                | ${batchno}
+|  | db check trade status  | ${lt_termno} | ${lt_merchno} | ${vouchno} | ${batchno} | ${ltl_type} | ${ltl_status} | ${ltl_demo} | ${rtl_type} | ${rtl_status} | ${rtl_demo} | ${amount}
 
 connect and checkin pos
 |  | connect test server   |  ${POS SERVER}   | ${POS PORT}   | ${TRANSITION PROTOCOL}
 |  | checkin pos           |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
       
 disconnect and checkout pos
-|  | send pos message  | ${TEMPLATE_POSFAKESETTLE} | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|  | response code should be  | ${RESPOND SUCCESS}
+|  | #send pos message  | ${TEMPLATE_POSFAKESETTLE} | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
+|  | #response code should be  | ${RESPOND SUCCESS}
 |  | checkout pos   | terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
 |  | close connection
       

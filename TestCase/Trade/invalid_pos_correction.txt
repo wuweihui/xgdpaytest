@@ -1,5 +1,7 @@
 *** Settings ***
 | Resource        | TradeResources.txt
+| Suite Setup     |  connect to database | ${TRAD DB TYPE} | ${TRAD DB Name} | ${TRAD DB USER} | ${TRAD DB PASS} | ${TRAD DB SERVERIP} | ${TRAD DB SERVERPORT}
+| Suite Teardown  |  disconnect from database
 | Test Setup      | connect and checkin pos
 | Test Teardown   | disconnect and checkout pos
 
@@ -12,17 +14,20 @@
 
 *** Test Cases ***
 correction with invalid voucher number and mac
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${INVALID VOUCHER NUMBER} | operationData.correctionMsg.tradeMAC=${INVALID TRADE MAC}
-|  | response code should be  | ${RESPOND NOT CHECKIN}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${INVALID VOUCHER NUMBER} | operationData.correctionMsg.tradeMAC=${INVALID TRADE MAC}
+|  | response code should be  | ${TRADE NOT EXIST}
 
 correction with invalid mac
 |  | ${amount}=         | Set Variable    | 000000003333
-|  | pos trade          | ${amount}       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|  | pos trade          | ${VALID TERMINALID}   | ${VALID MERCHANTID} | ${VALID CARD NO} | ${amount} | 
 |  | ${voucherno}=      | get field       | voucherNo
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherno} | operationData.correctionMsg.tradeMAC=${INVALID TRADE MAC}
-|  | response code should be  | ${RESPOND NOT CHECKIN}
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherno} | operationData.correctionMsg.tradeMAC=${INVALID TRADE MAC}
+|  | response code should be  | ${TRADE NOT EXIST}
 
 correction before checkin
 |  | checkout pos       |   terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID}
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} 
+|  | ${voucherno}=      |  Set Variable | 000001
+|  | ${bathcno}=        |  Set Variable | 000001
+|  | send pos message   | ${TEMPLATE_POSCORRECTION}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | voucherNo=${voucherno} | batchNo=${bathcno}
 |  | response code should be  | ${RESPOND NOT CHECKIN}
+

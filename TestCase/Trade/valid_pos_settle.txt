@@ -1,10 +1,11 @@
 *** Settings ***
 | Resource       |  TradeResources.txt
+| Suite Setup    |  connect to database | ${TRAD DB TYPE} | ${TRAD DB Name} | ${TRAD DB USER} | ${TRAD DB PASS} | ${TRAD DB SERVERIP} | ${TRAD DB SERVERPORT}
+| Suite Teardown |  disconnect from database
 | Test Setup     |  connect and checkin pos
 | Test Teardown  |  disconnect and checkout pos
 
 *** Variables ***
-
 
 
 *** Keywords ***
@@ -13,9 +14,11 @@
 *** Test Cases ***
 valid settlement
 |  | ${amount}=         | Set Variable    | 000000003333
-|  | pos trade          | ${amount}       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}
+|  | ${mac}=            | Set Variable    | 969b9a4a20f19a63
+|  | pos trade          | ${VALID TERMINALID}   | ${VALID MERCHANTID} | ${VALID CARD NO} | ${amount} | MAC=${mac} 
 |  | ${voucherno}=      | get field       | voucherNo
-|  | ${MAC}=            | get field       | MAC
-|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherno} | operationData.correctionMsg.tradeMAC=${MAC}
-|  | response code should be  | ${RESPOND SUCCESS}
+|  | send pos message   | ${TEMPLATE_POSSETTLE}  | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.correctionMsg.voucherNo=${voucherno} | operationData.correctionMsg.tradeMAC=${mac}
+|  | field should be    | terminalId                | ${VALID TERMINALID}
+|  | field should be    | merchantId                | ${VALID MERCHANTID}
+|  | #response code should be  | ${RESPOND SUCCESS}  | #TODO: This is fake settle righ now, so no response code
 |  | checkout pos       | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}

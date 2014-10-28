@@ -15,6 +15,7 @@
 *** Test Cases ***
 valid pos trade
 |  | ${amount}=   | Set Variable    | 000000003333
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}
@@ -25,39 +26,45 @@ valid pos trade
 |  | check trade updated in db  | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${vouchno} | ${batchno}
 
 trade with minimum amount
-|  | ${amount}=         | ${TRADE MINIMUM AMOUNT}
+|  | ${amount}=         | Set Variable              | ${TRADE MINIMUM AMOUNT}
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}
-|  | pos trade should succes  | ${amount}
+|  | pos trade should success  | ${amount}
       
 trade before right checkin
 |  | set terminal right check in status  | ${VALID TERMINALID} | ${VALID MERCHANTID}   | ${Terminal Rigth Status Not Checkin}
 |  | ${amount}=   | Set Variable    | 000000003333
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID}  | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}
-|  | pos trade should succes  | ${amount}
+|  | pos trade should success  | ${amount}
       
 trade with maximum amount
 |  | [Documentation]   | TODO: need to udpate balance and check it's large than maximum amount
-|  | ${amount}=        | ${TRADE MAXIMUM AMOUNT}
+|  | ${amount}=        | Set Variable  | ${TRADE MAXIMUM AMOUNT}
+|  | set field         | cardno        | ${VALID CARD NO}
 |  | send pos message  |  ${TEMPLATE_POSTRADE}     |  terminalId=${VALID TERMINALID}  |  merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be   |  terminalId               |  ${VALID TERMINALID}
 |  | field should be   |  merchantId               |  ${VALID MERCHANTID}
-|  | pos trade should succes  | ${amount}
+|  | pos trade should success  | ${amount}
       
 trade with balance
 |  | ${amount}=         | pos query                 | ${VALID TERMINALID}              | ${VALID MERCHANTID}
+|  | set field          | cardno    | ${VALID CARD NO}
 |  | send pos message   | ${TEMPLATE_POSTRADE}      | terminalId=${VALID TERMINALID}   | merchantId=${VALID MERCHANTID} | operationData.tradeAmount=${amount}
 |  | field should be    | terminalId                | ${VALID TERMINALID}
 |  | field should be    | merchantId                | ${VALID MERCHANTID}
-|  | pos trade should succes  | ${amount}
+|  | pos trade should success  | ${amount}
 
 valid trade cancel
 |  | ${amount}=   | Set Variable    | 000000003333
-|  | pos trade    | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${amount}
-|  | ${vouchno}=  | get field     | voucherNo
+|  | pos trade    | ${VALID TERMINALID} | ${VALID MERCHANTID} | ${VALID CARD NO} | ${amount}
+|  | ${vouchno}=  | get field           | voucherNo
+|  | ${vouchno}=  | convert int to bcd  | ${vouchno}
+|  | set field         | cardno    | ${VALID CARD NO}
 |  | send pos message  | ${TEMPLATE_POSTRADECANCEL}  | terminalId=${VALID TERMINALID} | merchantId=${VALID MERCHANTID} | operationData.searchOriginalTradeResult.searchResult=${vouchno}
 |  | response code should be  | ${RESPOND SUCCESS}
 |  | ${vouchno}=      | get field       | voucherNo
